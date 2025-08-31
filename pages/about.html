@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>À propos — Ramy Benali</title>
+
+  <link rel="stylesheet" href="../styles/about-page.css" />
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+</head>
+
+<body>
+
+  <!-- NAV -->
+  <nav class="navbar" role="navigation" aria-label="Navigation principale">
+    <div class="nav-container">
+      <a class="nav-logo" href="../index.html" aria-label="Retour à l’accueil">
+        <i class="fas fa-arrow-left" aria-hidden="true"></i>
+        <span>Retour</span>
+      </a>
+
+      <div class="nav-menu" id="main-menu">
+        <a class="nav-link" href="dev.html">Dév</a>
+        <a class="nav-link" href="creative.html">Créatif</a>
+        <a class="nav-link" href="#resume">Parcours</a>
+        <a class="nav-link" href="#tools">Outils</a>
+        <a class="nav-link" href="#contact" data-open-contact aria-controls="contact-panel" aria-expanded="false">Contact</a>
+      </div>
+
+      <button class="nav-toggle" id="mobile-menu" aria-label="Ouvrir le menu" aria-controls="main-menu" aria-expanded="false">
+        <span class="bar" aria-hidden="true"></span>
+        <span class="bar" aria-hidden="true"></span>
+        <span class="bar" aria-hidden="true"></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- HERO : intro + infos -->
+  <header class="about-hero container" id="top">
+    <!-- Intro -->
+    <section class="hero-card" aria-labelledby="intro-title">
+      <h1 class="hero-title" id="intro-title">Salut, je suis</h1>
+      <h1 class="hero-title"><span class="accent">Ramy Benali</span></h1>
+
+      <p class="hero-intro">
+        Étudiant en <strong>Master Génie Logiciel</strong> et créatif polyvalent,
+        je conçois des expériences digitales élégantes : apps web & mobile,
+        interfaces soignées, motion design et identité visuelle.
+        J’aime transformer des idées en produits utiles et beaux.
+      </p>
+
+      <div class="hero-chips" role="list">
+        <span class="chip" role="listitem"><i class="fa-solid fa-code"></i> Full-stack</span>
+        <span class="chip" role="listitem"><i class="fa-solid fa-wand-magic-sparkles"></i> Direction artistique</span>
+        <span class="chip" role="listitem"><i class="fa-solid fa-film"></i> Motion & Montage</span>
+        <span class="chip" role="listitem"><i class="fa-solid fa-layer-group"></i> UI/UX</span>
+      </div>
+
+      <div class="hero-actions">
+        <a class="btn" href="#resume"><i class="fa-solid fa-user-graduate"></i>Voir mon parcours</a>
+        <a class="btn secondary" href="#contact" data-open-contact aria-controls="contact-panel" aria-expanded="false">
+          <i class="fa-regular fa-paper-plane"></i>Me contacter
+        </a>
+      </div>
+    </section>
+
+    <!-- Carte infos -->
+    <aside class="info-card" aria-labelledby="infos-title">
+      <h3 id="infos-title">Mes infos</h3>
+
+      <div class="info-list">
+        <div class="info-line">
+          <i class="fa-solid fa-id-card"></i><strong>Âge</strong><span>21 ans</span>
+        </div>
+        <div class="info-line">
+          <i class="fa-solid fa-phone"></i><strong>Téléphone</strong><span>+213 555 35 46 81</span>
+        </div>
+        <div class="info-line">
+          <i class="fa-solid fa-location-dot"></i><strong>Ville</strong><span>Béjaïa (DZ)</span>
+        </div>
+        <div class="info-line">
+          <i class="fa-regular fa-envelope"></i><strong>Email</strong><span>benali.ramy.2@gmail.com</span>
+        </div>
+        <div class="info-line">
+          <i class="fa-solid fa-briefcase"></i><strong>Statut</strong><span>Étudiant / Freelance</span>
+        </div>
+        <div class="info-line">
+          <i class="fa-solid fa-language"></i><strong>Langues</strong><span>FR, EN, AR, KAB</span>
+        </div>
+      </div>
+
+      <div class="socials" aria-label="Réseaux sociaux">
+        <a href="https://github.com/RamyBenali" target="_blank" rel="noopener" aria-label="GitHub"><i class="fab fa-github"></i></a>
+        <a href="https://www.linkedin.com/in/ramy-benali-248b70282" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+        <a href="https://www.instagram.com/rmba.exe/" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+      </div>
+
+      <div class="info-cta">
+        <button class="nav-btn primary" type="button" data-open-contact aria-controls="contact-panel" aria-expanded="false">
+          <i class="fa-regular fa-paper-plane"></i> Me contacter
+        </button>
+        <a class="nav-btn secondary" href="../assets/CV-ramy-benali.pdf" target="_blank" rel="noopener">
+          <i class="fa-solid fa-download"></i> Télécharger le CV
+        </a>
+      </div>
+    </aside>
+  </header>
+
+  <!-- PROFILS -->
+  <section class="section container" aria-labelledby="profiles-title">
+    <h2 class="section-title" id="profiles-title">Mes <span class="accent">profils</span></h2>
+
+    <div class="profiles-grid">
+      <article class="profile-card">
+        <h3>Profil créatif</h3>
+        <p>
+          Direction artistique, montage & motion, retouche, identité visuelle,
+          conception d’interfaces et prototypage Figma. J’optimise la clarté,
+          le rythme et l’émotion des contenus.
+        </p>
+        <div class="pill-row">
+          <span class="pill">DA</span><span class="pill">Motion</span><span class="pill">Retouche</span>
+          <span class="pill">UI/UX</span><span class="pill">Figma</span>
+        </div>
+      </article>
+
+      <article class="profile-card">
+        <h3>Profil développeur</h3>
+        <p>
+          Développement full-stack (web & mobile), intégrations propres,
+          composants réutilisables, API, persistance des données et déploiements.
+        </p>
+        <div class="pill-row">
+          <span class="pill">React</span><span class="pill">Node.js</span><span class="pill">Java / JavaFX</span>
+          <span class="pill">Kotlin</span><span class="pill">MySQL</span>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- PARCOURS -->
+  <section id="resume" class="section resume-section">
+    <div class="container">
+      <h2 class="section-title">Mon <span class="accent">Parcours</span></h2>
+
+      <div class="resume-grid">
+        <!-- Éducation -->
+        <div class="resume-column">
+          <h3 class="resume-title">Éducation</h3>
+          <ul class="resume-list">
+            <li>
+              <span class="resume-date">2024 - 2025</span>
+              <h4>Licence 3 Informatique</h4>
+              <p>Université Abderrahmane-Mira, Béjaïa — Systèmes informatiques</p>
+            </li>
+            <li>
+              <span class="resume-date">2023 - 2024</span>
+              <h4>Licence 2 Informatique</h4>
+              <p>Université Abderrahmane-Mira, Béjaïa</p>
+            </li>
+            <li>
+              <span class="resume-date">2022 - 2023</span>
+              <h4>Licence 1 Informatique</h4>
+              <p>Université Abderrahmane-Mira, Béjaïa</p>
+            </li>
+            <li>
+              <span class="resume-date">2022</span>
+              <h4>Baccalauréat Sciences Expérimentales</h4>
+              <p>Lycée El-Houria, Béjaïa — Mention Bien</p>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Expériences -->
+        <div class="resume-column">
+          <h3 class="resume-title">Expériences</h3>
+          <ul class="resume-list">
+            <li>
+              <span class="resume-date">Août — Déc. 2024</span>
+              <h4>Stage alternance</h4>
+              <p>Inspire Agency — Marketing & Consulting Digital</p>
+            </li>
+            <li>
+              <span class="resume-date">2024</span>
+              <h4>Agent de prospection</h4>
+              <p>UB Company</p>
+            </li>
+            <li>
+              <span class="resume-date">2022</span>
+              <h4>Co-Manager</h4>
+              <p>Club Informatique Béjaïa — Dépt. Design & Multimédia</p>
+            </li>
+            <li>
+              <span class="resume-date">2019 — 2020</span>
+              <h4>Équipe nationale de cyclisme</h4>
+              <p>Catégorie Cadet — Algérie</p>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMPÉTENCES -->
+  <section class="section container" id="skills" aria-labelledby="skills-title">
+    <h2 class="section-title" id="skills-title">Mes <span class="accent">Compétences</span></h2>
+
+    <div class="skills-panels">
+      <!-- Développement -->
+      <article class="skill-panel">
+        <h3 class="skill-panel__title"><i class="fa-solid fa-code"></i> Développement</h3>
+
+        <div class="skill-row">
+          <span class="skill-label">React</span>
+          <div class="skill-bar"><div class="skill-progress" data-level="60"></div></div>
+        </div>
+
+        <div class="skill-row">
+          <span class="skill-label">JavaFX</span>
+          <div class="skill-bar"><div class="skill-progress" data-level="95"></div></div>
+        </div>
+
+        <div class="skill-row">
+          <span class="skill-label">HTML & CSS</span>
+          <div class="skill-bar"><div class="skill-progress" data-level="90"></div></div>
+        </div>
+
+        <div class="skill-row">
+          <span class="skill-label">Node.js</span>
+          <div class="skill-bar"><div class="skill-progress" data-level="75"></div></div>
+        </div>
+
+        <div class="skill-row">
+          <span class="skill-label">Python</span>
+          <div class="skill-bar"><div class="skill-progress" data-level="80"></div></div>
+        </div>
+
+        <div class="skill-row">
+          <span class="skill-label">MySQL</span>
+          <div class="skill-bar"><div class="skill-progress" data-level="70"></div></div>
+        </div>
+      </article>
+
+      <!-- Créatif -->
+      <article class="skill-panel">
+        <h3 class="skill-panel__title"><i class="fa-solid fa-wand-magic-sparkles"></i> Créatif</h3>
+
+        <div class="skill-row">
+          <span class="skill-label">Branding</span>
+          <div class="skill-bar"><div class="skill-progress" data-level="92"></div></div>
+        </div>
+
+        <div class="skill-row">
+          <span class="skill-label">Montage & Motion</span>
+          <div class="skill-bar"><div class="skill-progress" data-level="88"></div></div>
+        </div>
+
+        <div class="skill-row">
+          <span class="skill-label">UI / UX</span>
+          <div class="skill-bar"><div class="skill-progress" data-level="90"></div></div>
+        </div>
+
+        <div class="skill-row">
+          <span class="skill-label">Retouche</span>
+          <div class="skill-bar"><div class="skill-progress" data-level="85"></div></div>
+        </div>
+
+        <div class="skill-row">
+          <span class="skill-label">Figma</span>
+          <div class="skill-bar"><div class="skill-progress" data-level="95"></div></div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+
+  <!-- OUTILS -->
+  <section class="section container" id="tools" aria-labelledby="tools-title">
+    <h2 class="section-title" id="tools-title">Outils <span class="accent">favoris</span></h2>
+    <div class="tools-grid">
+      <div class="tool-chip"><i class="fab fa-figma"></i> Figma</div>
+      <div class="tool-chip"><i class="fa-solid fa-cube"></i> JavaFX</div>
+      <div class="tool-chip"><i class="fab fa-react"></i> React</div>
+      <div class="tool-chip"><i class="fab fa-node-js"></i> Node.js</div>
+      <div class="tool-chip"><i class="fab fa-python"></i> Python</div>
+      <div class="tool-chip"><i class="fa-solid fa-database"></i> MySQL</div>
+      <div class="tool-chip"><i class="fab fa-android"></i> Kotlin/Android</div>
+      <div class="tool-chip"><i class="fa-solid fa-wand-magic-sparkles"></i> After Effects</div>
+      <div class="tool-chip"><i class="fa-solid fa-clapperboard"></i> Premiere Pro</div>
+      <div class="tool-chip"><i class="fa-solid fa-image"></i> Photoshop</div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="about-footer">
+    <div class="container footer-grid">
+      <div>
+        <a class="footer-logo" href="#top" aria-label="Retour haut de page">
+          <span class="dot"></span><span>Ramy Benali</span>
+        </a>
+        <p class="footer-tag">Création d’expériences digitales élégantes et performantes.</p>
+      </div>
+
+      <nav class="footer-links" aria-label="Liens utiles">
+        <h3>Navigation</h3>
+        <ul style="list-style:none;display:grid;gap:.5rem;margin:0;padding:0">
+          <li><a href="dev.html">Dév</a></li>
+          <li><a href="creative.html">Créatif</a></li>
+          <li><a href="#resume">Parcours</a></li>
+          <li><a href="#tools">Outils</a></li>
+        </ul>
+      </nav>
+
+      <div>
+        <div class="footer-social" aria-label="Réseaux sociaux">
+          <a href="https://github.com/RamyBenali" target="_blank" rel="noopener"><i class="fab fa-github"></i></a>
+          <a href="https://www.linkedin.com/in/ramy-benali-248b70282" target="_blank" rel="noopener"><i class="fab fa-linkedin-in"></i></a>
+          <a href="https://www.instagram.com/rmba.exe/" target="_blank" rel="noopener"><i class="fab fa-instagram"></i></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="container footer-bottom-inner">
+        <p>© 2025 Ramy Benali. Tous droits réservés.</p>
+        <button class="to-top" type="button" aria-label="Revenir en haut">↑</button>
+      </div>
+    </div>
+  </footer>
+
+  <!-- PANEL CONTACT -->
+  <section id="contact-panel" class="contact-panel" aria-hidden="true">
+    <div class="contact-card container">
+      <button class="contact-close" type="button" aria-label="Fermer">&times;</button>
+      <header class="contact-header">
+        <h2>Entrons en contact</h2>
+        <p>Dites-moi l’essentiel et je reviens vers vous.</p>
+      </header>
+
+      <form id="contact-form" novalidate>
+        <input type="text" name="company" class="hp-field" tabindex="-1" autocomplete="off" />
+        <div class="form-grid">
+          <div class="form-field">
+            <label for="name">Nom</label>
+            <input id="name" name="name" type="text" required placeholder="Votre nom"/>
+            <span class="field-msg"></span>
+          </div>
+          <div class="form-field">
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email" required placeholder="nom@domaine.com"/>
+            <span class="field-msg"></span>
+          </div>
+          <div class="form-field">
+            <label for="subject">Sujet</label>
+            <select id="subject" name="subject" required>
+              <option value="">Choisir</option>
+              <option value="Projet créatif">Projet créatif</option>
+              <option value="Projet dev">Projet dev</option>
+              <option value="Autre">Autre</option>
+            </select>
+            <span class="field-msg"></span>
+          </div>
+          <div class="form-field form-field--full">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" rows="6" required placeholder="Décrivez votre besoin"></textarea>
+            <span class="field-msg"></span>
+          </div>
+        </div>
+
+        <div class="form-actions">
+          <button id="send-btn" class="btn" type="submit">Envoyer</button>
+          <p class="form-status" role="status" aria-live="polite"></p>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <!-- JS : menu mobile + contact -->
+  <script>
+    // menu mobile
+    (function(){
+      const toggle = document.getElementById('mobile-menu');
+      const menu   = document.getElementById('main-menu');
+      if(!toggle || !menu) return;
+      toggle.addEventListener('click', () => {
+        const opened = menu.style.display === 'flex';
+        menu.style.display = opened ? 'none' : 'flex';
+        toggle.setAttribute('aria-expanded', String(!opened));
+      });
+      if (window.matchMedia('(max-width: 768px)').matches) {
+        menu.style.display = 'none';
+      }
+    })();
+
+    // panneau contact
+    (function(){
+      const panel   = document.getElementById('contact-panel');
+      const openers = document.querySelectorAll('[data-open-contact]');
+      const closeBtn= panel?.querySelector('.contact-close');
+      const form    = document.getElementById('contact-form');
+      const sendBtn = document.getElementById('send-btn');
+      const statusEl= panel?.querySelector('.form-status');
+
+      function openPanel(){
+        panel.classList.add('active');
+        panel.setAttribute('aria-hidden','false');
+        openers.forEach(b=>b.setAttribute('aria-expanded','true'));
+        setTimeout(()=>document.getElementById('name')?.focus(),120);
+        document.body.style.overflow = 'hidden';
+      }
+      function closePanel(){
+        panel.classList.remove('active');
+        panel.setAttribute('aria-hidden','true');
+        openers.forEach(b=>b.setAttribute('aria-expanded','false'));
+        document.body.style.overflow = '';
+      }
+
+      openers.forEach(btn=>btn.addEventListener('click',e=>{ e.preventDefault(); openPanel(); }));
+      closeBtn?.addEventListener('click', closePanel);
+      panel?.addEventListener('click', e => { if (e.target === panel) closePanel(); });
+      document.addEventListener('keydown', e => { if (e.key === 'Escape') closePanel(); });
+
+      function validate(){
+        let ok = true;
+        form.querySelectorAll('.form-field').forEach(wrap=>{
+          const input = wrap.querySelector('input, select, textarea');
+          const msg   = wrap.querySelector('.field-msg');
+          if (input && !input.checkValidity()){
+            ok = false; if (msg) msg.textContent = 'Champ requis ou invalide';
+          } else if (msg){ msg.textContent = ''; }
+        });
+        return ok;
+      }
+
+      form?.addEventListener('submit', e=>{
+        e.preventDefault();
+        if (!validate()) return;
+        if (form.company && form.company.value) return;
+
+        statusEl.textContent = 'Envoi en cours...';
+        sendBtn.disabled = true;
+        setTimeout(()=>{
+          statusEl.textContent = 'Message envoyé. Merci !';
+          sendBtn.disabled = false;
+          form.reset();
+        }, 700);
+      });
+
+      // retour en haut
+      document.querySelector('.to-top')?.addEventListener('click', () =>
+        window.scrollTo({ top: 0, behavior: 'smooth' })
+      );
+    })();
+  </script>
+</body>
+</html>

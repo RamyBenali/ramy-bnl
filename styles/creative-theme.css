@@ -1,0 +1,70 @@
+/* Thème Créatif - Version corrigée */
+body {
+    background-color: #fff5eb;
+    color: #333;
+}
+
+.logo {
+    color: #ff5e5b;
+}
+
+.developer-option {
+    background: linear-gradient(135deg, rgba(255, 245, 235, 0.9) 0%, rgba(255, 235, 217, 0.9) 100%);
+}
+
+.creative-option {
+    background: linear-gradient(135deg, rgba(255, 94, 91, 0.9) 0%, rgba(255, 142, 114, 0.9) 100%);
+}
+
+/* Textes en blanc pour meilleure visibilité */
+.creative-option h2 {
+    color: #ff5e5b !important;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.creative-option p {
+    color: #ffffff !important;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.creative-option .option-icon {
+    color: #ffffff !important;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.creative-option .btn {
+    color: #ffffff !important;
+    border-color: #ffffff !important;
+    background-color: rgba(255, 255, 255, 0.2) !important;
+}
+
+.creative-option .btn:hover {
+    background-color: #ffffff !important;
+    color: #ff5e5b !important;
+}
+
+/* Section développeur en mode créatif */
+.developer-option h2 {
+    color: #a5a5a5;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+.developer-option p {
+    color: #ffffff !important;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.developer-option .option-icon {
+    color: #ffffff;
+    text-shadow: 0 0 10px rgba(165, 165, 165, 0.5);
+}
+
+.developer-option .btn {
+    color: #a5a5a5;
+    border-color: #a5a5a5;
+}
+
+.developer-option .btn:hover {
+    background-color: #a5a5a5;
+    color: #fff5eb;
+}

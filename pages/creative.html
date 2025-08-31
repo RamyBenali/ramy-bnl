@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Créatif – Portfolio</title>
+  <link rel="stylesheet" href="../styles/creative-page.css" />
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+</head>
+<body class="creative-theme">
+
+  <!-- NAV -->
+  <nav class="navbar" role="navigation" aria-label="Navigation principale">
+    <div class="nav-container">
+      <a class="nav-logo" href="../index.html" aria-label="Retour à l’accueil">
+        <i class="fas fa-arrow-left" aria-hidden="true"></i>
+        <span>Retour</span>
+      </a>
+      <div class="nav-menu" id="main-menu">
+        <a class="nav-link" href="#showcase">Showcase</a>
+        <a class="nav-link" href="#skills">Compétences</a>
+        <a class="nav-link" href="about.html">À propos</a>
+        <a class="nav-link" href="#contact" data-open-contact aria-controls="contact-panel" aria-expanded="false">Contact</a>
+      </div>
+      <button class="nav-toggle" id="mobile-menu" aria-label="Ouvrir le menu" aria-controls="main-menu" aria-expanded="false">
+        <span class="bar" aria-hidden="true"></span>
+        <span class="bar" aria-hidden="true"></span>
+        <span class="bar" aria-hidden="true"></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header class="crea-hero" id="top">
+    <div class="hero-content">
+      <div class="hero-intro">
+        <span class="hero-greeting">Bonjour, je suis</span>
+        <h1 class="hero-title">Ramy Benali</h1>
+        <p class="hero-tagline">
+          <span class="typewriter">Créateur multimédia</span>
+          <span class="typewriter-cursor" aria-hidden="true">|</span>
+        </p>
+      </div>
+      <p class="hero-description">
+        Designer & monteur vidéo passionné, je crée des expériences visuelles captivantes qui racontent des histoires et suscitent des émotions. Mon expertise couvre la direction artistique, le montage vidéo, le motion design, ainsi que le design UI/UX pour des interfaces intuitives et esthétiques.
+      </p>
+
+      <div class="hero-badges" role="list">
+        <span class="badge" role="listitem"><i class="fas fa-wand-magic-sparkles"></i> DA & Identité</span>
+        <span class="badge" role="listitem"><i class="fas fa-film"></i> Montage & Motion</span>
+        <span class="badge" role="listitem"><i class="fas fa-palette"></i> UI/UX & Visuels</span>
+      </div>
+
+      <div class="hero-actions">
+        <a class="cta-btn primary" href="#showcase"><i class="fas fa-eye" aria-hidden="true"></i> Voir le showcase</a>
+        <a class="cta-btn secondary" href="#contact" data-open-contact aria-controls="contact-panel" aria-expanded="false">
+          <i class="fas fa-paper-plane" aria-hidden="true"></i> Me contacter
+        </a>
+      </div>
+    </div>
+
+    <!-- VISUEL (orbes + chips) -->
+    <div class="hero-visual" aria-hidden="true">
+      <span class="orb orb-1"></span>
+      <span class="orb orb-2"></span>
+      <span class="orb orb-3"></span>
+      <div class="floating-chips">
+        <div class="chip" data-tool="Figma"><i class="fab fa-figma"></i></div>
+        <div class="chip" data-tool="Photoshop"><i class="fas fa-image"></i></div>
+        <div class="chip" data-tool="Premiere Pro"><i class="fas fa-clapperboard"></i></div>
+        <div class="chip" data-tool="After Effects"><i class="fas fa-star"></i></div>
+        <div class="chip" data-tool="DaVinci"><i class="fas fa-adjust"></i></div>
+        <div class="chip" data-tool="Illustrator"><i class="fas fa-pen-nib"></i></div>
+      </div>
+    </div>
+  </header>
+
+  <!-- SHOWCASE CRÉATIF -->
+  <section id="showcase" class="showcase-section" aria-labelledby="showcase-title">
+    <div class="container">
+      <h2 class="section-title" id="showcase-title">Showcase <span class="accent">Créatif</span></h2>
+
+      <!-- Filtre / Catégories -->
+      <div class="showcase-filters" role="tablist" aria-label="Catégories">
+        <button class="filter-btn active" data-filter="all" role="tab" aria-selected="true">Tout</button>
+        <button class="filter-btn" data-filter="video" role="tab">Vidéos</button>
+        <button class="filter-btn" data-filter="figma" role="tab">Figma</button>
+      </div>
+
+      <!-- Mur Masonry organique -->
+      <div class="masonry" id="masonry">
+        <article class="masonry-item card card--video"
+                data-kind="video"
+                data-embed-type="vimeo"
+                data-src="https://player.vimeo.com/video/1114686103?autoplay=1&loop=1&muted=1">
+        <div class="card-cover" style="background-image:url('../assets/creative/covers/powerfitness1.jpg')">
+            <button class="play-badge" aria-label="Lire la vidéo"><i class="fas fa-play"></i></button>
+        </div>
+        <div class="card-meta">
+            <span class="pill">Reel</span>
+            <h3>Trailer PowerFitness</h3>
+            <p>Trailer salle de sport 16:9</p>
+        </div>
+        </article>
+
+        <!-- ITEM — YOUTUBE horizontal -->
+        <article class="masonry-item card card--video vertical"
+                data-kind="video"
+                data-embed-type="vimeo"
+                data-src="https://player.vimeo.com/video/1114686311?autoplay=1&loop=1&muted=1&title=0&byline=0&portrait=0">
+        <div class="card-cover" style="background-image:url('../assets/creative/covers/powerfitness2.jpg')">
+            <button class="play-badge" aria-label="Lire la vidéo"><i class="fas fa-play"></i></button>
+        </div>
+        <div class="card-meta">
+            <span class="pill">Reel</span>
+            <h3>Reel Entrainement</h3>
+            <p>Reel explicatif d'une séance</p>
+        </div>
+        </article>
+
+        <!-- === VIMEO (vertical 9:16) === -->
+        <article class="masonry-item card card--video vertical"
+                data-kind="video"
+                data-embed-type="vimeo"
+                data-src="https://player.vimeo.com/video/1114691957?autoplay=1&muted=1&loop=1&title=0&byline=0&portrait=0">
+            <div class="card-cover" style="background-image:url('../assets/creative/covers/aylan1.png')">
+                <button class="play-badge" aria-label="Lire la vidéo"><i class="fas fa-play"></i></button>
+            </div>
+            <div class="card-meta">
+            <span class="pill">Reel</span>
+            <h3>aylan_fast_and_good_7427918…</h3>
+            <p>Vidéo verticale (9:16) – Vimeo.</p>
+            </div>
+        </article>
+
+        <article class="masonry-item card card--video vertical"
+                data-kind="video"
+                data-embed-type="vimeo"
+                data-src="https://player.vimeo.com/video/1114691983?autoplay=1&muted=1&loop=1&title=0&byline=0&portrait=0">
+            <div class="card-cover" style="background-image:url('../assets/creative/covers/aylan2.png')">
+                <button class="play-badge" aria-label="Lire la vidéo"><i class="fas fa-play"></i></button>
+            </div>
+            <div class="card-meta">
+            <span class="pill">Reel</span>
+            <h3>aylan_fast_and_good_7420064…</h3>
+            <p>Vidéo verticale (9:16) – Vimeo.</p>
+            </div>
+        </article>
+
+        <!-- === GOOGLE DRIVE (lecteur intégré) === -->
+        <article class="masonry-item card card--drive"
+                data-kind="video"
+                data-embed-type="drive"
+                data-src="https://drive.google.com/file/d/1wo7ibROZ6FuC1_gIvmPoUOeNb_9JkTyB/preview">
+            <div class="card-cover" style="background-image:url('../assets/creative/covers/palmera1.png')">
+                <button class="play-badge" aria-label="Lire la vidéo"><i class="fas fa-play"></i></button>
+            </div>
+            <div class="card-meta">
+            <span class="pill">Vidéo</span>
+            <h3>Drive — Vidéo 1</h3>
+            <p>Lecteur Google Drive intégré.</p>
+            </div>
+        </article>
+
+        <article class="masonry-item card card--drive"
+                data-kind="video"
+                data-embed-type="drive"
+                data-src="https://drive.google.com/file/d/1IU8favC8h31p69ORrsm-cHd8rFlgsJ4L/preview">
+            <div class="card-cover" style="background-image:url('../assets/creative/covers/belcourt1.png')">
+                <button class="play-badge" aria-label="Lire la vidéo"><i class="fas fa-play"></i></button>
+            </div>
+            <div class="card-meta">
+            <span class="pill">Vidéo</span>
+            <h3>Drive — Vidéo 2</h3>
+            <p>Lecteur Google Drive intégré.</p>
+            </div>
+        </article>
+
+        <article class="masonry-item card card--drive"
+                data-kind="video"
+                data-embed-type="drive"
+                data-src="https://drive.google.com/file/d/1Y0wUHQEDgesu0gaGEpFdaaGZkAVMTlpq/preview">
+            <div class="card-cover" style="background-image:url('../assets/creative/covers/ofeeling.png')">
+                <button class="play-badge" aria-label="Lire la vidéo"><i class="fas fa-play"></i></button>
+            </div>
+            <div class="card-meta">
+            <span class="pill">Vidéo</span>
+            <h3>Drive — Vidéo 3</h3>
+            <p>Lecteur Google Drive intégré.</p>
+            </div>
+        </article>
+
+        <article class="masonry-item card card--drive"
+                data-kind="video"
+                data-embed-type="drive"
+                data-src="https://drive.google.com/file/d/1RfDLbXr0dbFM2cn5AxtR4Tbs0aCQQFqC/preview">
+            <div class="card-cover" style="background-image:url('../assets/creative/covers/vlog-romain.png')">
+                <button class="play-badge" aria-label="Lire la vidéo"><i class="fas fa-play"></i></button>
+            </div>
+            <div class="card-meta">
+            <span class="pill">Vidéo</span>
+            <h3>Drive — Vidéo 4</h3>
+            <p>Lecteur Google Drive intégré.</p>
+            </div>
+        </article>
+
+        <article class="masonry-item card card--drive"
+                data-kind="video"
+                data-embed-type="drive"
+                data-src="https://drive.google.com/file/d/1ghGpeO-thezMf_dQ3YxXb2zbgPVd87SW/preview">
+            <div class="card-cover" style="background-image:url('../assets/creative/covers/palmera2.png')">
+                <button class="play-badge" aria-label="Lire la vidéo"><i class="fas fa-play"></i></button>
+            </div>
+            <div class="card-meta">
+            <span class="pill">Vidéo</span>
+            <h3>Drive — Vidéo 5</h3>
+            <p>Lecteur Google Drive intégré.</p>
+            </div>
+        </article>
+        <article class="masonry-item card card--figma"
+            data-kind="figma"
+            data-embed-type="figma"
+            data-src="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Fdesign%2FFHA0tnDw6x4uWszDp1RkJI%2FUntitled%3Fnode-id%3D0-1%26m%3Ddev%26t%3DSCZVxKW49ntQC80r-1">
+            <div class="card-cover" style="background-image:url('../assets/creative/covers/homeinspire.png')">
+                <div class="badge-corner"><i class="fab fa-figma"></i> Figma</div>
+            </div>
+            <div class="card-meta">
+                <span class="pill">UI/UX</span>
+                <h3>Home Inspire</h3>
+                <p>Logiciel de gestion d'agence immo</p>
+            </div>
+        </article>
+        <article class="masonry-item card card--figma"
+                data-kind="figma"
+                data-embed-type="figma"
+                data-src="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Fdesign%2Fc8IKKzvayzD8sdypDKH7Ee%2FBinary-Identity%3Fm%3Ddev%26t%3DGckVRvwTZh4ElLH8-1">
+        <div class="card-cover" style="background-image:url('../assets/creative/covers/binary-identity.png')">
+            <div class="badge-corner"><i class="fab fa-figma"></i> Figma</div>
+        </div>
+        <div class="card-meta">
+            <span class="pill">UI/UX</span>
+            <h3>Binary Identity</h3>
+            <p>Identité visuel d'un club d'info</p>
+        </div>
+        </article>
+
+        <article class="masonry-item card card--figma"
+                data-kind="figma"
+                data-embed-type="figma"
+                data-src="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Fdesign%2FmNacvc3E69Ep8XOrVG5A6M%2FEchoes-Deisgn%3Fm%3Ddev%26t%3DGckVRvwTZh4ElLH8-1">
+        <div class="card-cover" style="background-image:url('../assets/creative/covers/echoes.png')">
+            <div class="badge-corner"><i class="fab fa-figma"></i> Figma</div>
+        </div>
+        <div class="card-meta">
+            <span class="pill">UI/UX</span>
+            <h3>Echoes Design</h3>
+            <p>Design complet d'un event</p>
+        </div>
+        </article>
+
+        <article class="masonry-item card card--figma vertical"
+                data-kind="figma"
+                data-embed-type="figma"
+                data-src="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Fdesign%2FtqOS4wClGjLEeoXkjnWeMW%2FSaldaeTrip%3Fnode-id%3D0-1%26m%3Ddev%26t%3DhlTyrl31MDNHzoNb-1">
+        <div class="card-cover" style="background-image:url('../assets/creative/covers/SaldaeTrip.jpg')">
+            <div class="badge-corner"><i class="fab fa-figma"></i> Figma</div>
+        </div>
+        <div class="card-meta">
+            <span class="pill">Prototype</span>
+            <h3>SaldaeTrip</h3>
+            <p>Application Mobile tourisme</p>
+        </div>
+        </article>
+
+        <article class="masonry-item card card--figma"
+                data-kind="figma"
+                data-embed-type="figma"
+                data-src="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Fdesign%2FPZH3nH0Cq2xdkG0OF46H7o%2FMedify%3Fm%3Ddev%26t%3DYSh1wbtpDSkvaoaO-1">
+        <div class="card-cover" style="background-image:url('../assets/creative/covers/medify.png')">
+            <div class="badge-corner"><i class="fab fa-figma"></i> Figma</div>
+        </div>
+        <div class="card-meta">
+            <span class="pill">UI/UX</span>
+            <h3>Medify</h3>
+            <p>Application santé et bien-être.</p>
+        </div>
+        </article>
+
+        <article class="masonry-item card card--figma"
+                data-kind="figma"
+                data-embed-type="figma"
+                data-src="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Fdesign%2Fro1AXrMIX7PxOsXpHc6ib1%2FUntitled%3Fnode-id%3D0-1%26m%3Ddev%26t%3Dkq7JBc405bDzvIxc-1">
+        <div class="card-cover" style="background-image:url('../assets/creative/covers/porte-ouverte.png')">
+            <div class="badge-corner"><i class="fab fa-figma"></i> Figma</div>
+        </div>
+        <div class="card-meta">
+            <span class="pill">UI/UX</span>
+            <h3>Binary porte ouverte</h3>
+            <p>Design porte ouverte de l'université de béjaia.</p>
+        </div>
+        </article>
+        </div>
+    </div>
+</section>
+
+  <!-- COMPÉTENCES -->
+  <section id="skills" class="skills-section" aria-labelledby="skills-title">
+    <div class="container">
+      <h2 class="section-title" id="skills-title">Compétences <span class="accent">Créative</span></h2>
+      <div class="skills-grid">
+        <div class="skill-category">
+          <h3>Graphisme</h3>
+          <div class="skill-list">
+            <div class="skill-item"><span class="skill-name">Branding</span><div class="bar"><div class="fill" data-level="92"></div></div></div>
+            <div class="skill-item"><span class="skill-name">Retouche</span><div class="bar"><div class="fill" data-level="90"></div></div></div>
+            <div class="skill-item"><span class="skill-name">Illustration</span><div class="bar"><div class="fill" data-level="86"></div></div></div>
+          </div>
+        </div>
+        <div class="skill-category">
+          <h3>Vidéo</h3>
+          <div class="skill-list">
+            <div class="skill-item"><span class="skill-name">Montage</span><div class="bar"><div class="fill" data-level="88"></div></div></div>
+            <div class="skill-item"><span class="skill-name">Motion</span><div class="bar"><div class="fill" data-level="85"></div></div></div>
+            <div class="skill-item"><span class="skill-name">Color Grading</span><div class="bar"><div class="fill" data-level="82"></div></div></div>
+          </div>
+        </div>
+        <div class="skill-category">
+          <h3>Produit</h3>
+          <div class="skill-list">
+            <div class="skill-item"><span class="skill-name">UI Design</span><div class="bar"><div class="fill" data-level="90"></div></div></div>
+            <div class="skill-item"><span class="skill-name">UX Research</span><div class="bar"><div class="fill" data-level="78"></div></div></div>
+            <div class="skill-item"><span class="skill-name">Prototypage</span><div class="bar"><div class="fill" data-level="86"></div></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="crea-footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <a class="footer-logo" href="#top" aria-label="Accueil Ramy Benali"><span class="dot"></span><span>Ramy Benali</span></a>
+        <p class="footer-tag">Design & motion pour des expériences mémorables.</p>
+      </div>
+      <nav class="footer-links" aria-label="Liens utiles">
+        <h3>Navigation</h3>
+        <ul>
+          <li><a href="#showcase">Showcase</a></li>
+          <li><a href="#skills">Compétences</a></li>
+          <li><button data-open-contact aria-controls="contact-panel" aria-expanded="false">Contact</button></li>
+        </ul>
+      </nav>
+      <div class="footer-contact">
+        <button class="modal-link" data-open-contact aria-controls="contact-panel" aria-expanded="false">Me contacter</button>
+        <div class="footer-social" aria-label="Réseaux sociaux">
+          <a href="https://www.instagram.com/" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="https://www.linkedin.com/in/ramy-benali-248b70282" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="container footer-bottom-inner">
+        <p>© 2025 Ramy Benali. Tous droits réservés.</p>
+        <button class="to-top" type="button" aria-label="Revenir en haut">↑</button>
+      </div>
+    </div>
+  </footer>
+
+  <!-- PANEL CONTACT -->
+  <section id="contact-panel" class="contact-panel" aria-hidden="true">
+    <div class="contact-card container">
+      <button class="contact-close" type="button" aria-label="Fermer le formulaire">&times;</button>
+      <header class="contact-header">
+        <h2>Entrons en contact</h2>
+        <p>Un brief rapide, et je reviens vers vous.</p>
+      </header>
+      <form id="contact-form" novalidate>
+        <input type="text" name="company" class="hp-field" tabindex="-1" autocomplete="off" />
+        <div class="form-grid">
+          <div class="form-field"><label for="name">Nom</label><input id="name" name="name" type="text" required placeholder="Votre nom"/><span class="field-msg"></span></div>
+          <div class="form-field"><label for="email">Email</label><input id="email" name="email" type="email" required placeholder="nom@domaine.com"/><span class="field-msg"></span></div>
+          <div class="form-field">
+            <label for="subject">Sujet</label>
+            <select id="subject" name="subject" required>
+              <option value="">Choisir</option>
+              <option value="Branding">Branding</option>
+              <option value="Montage / Motion">Montage / Motion</option>
+              <option value="UI/UX">UI/UX</option>
+              <option value="Autre">Autre</option>
+            </select>
+            <span class="field-msg"></span>
+          </div>
+          <div class="form-field form-field--full"><label for="message">Message</label><textarea id="message" name="message" rows="6" required placeholder="Décrivez votre besoin"></textarea><span class="field-msg"></span></div>
+        </div>
+        <div class="form-actions">
+          <button id="send-btn" class="cta-btn primary" type="submit">Envoyer</button>
+          <p class="form-status" role="status" aria-live="polite"></p>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <!-- MODALE EMBED UNIVERSELLE -->
+  <div class="embed-modal" id="embedModal" aria-hidden="true">
+    <div class="embed-content" role="dialog" aria-modal="true" aria-labelledby="embedTitle">
+      <button class="embed-close" id="embedClose" type="button" aria-label="Fermer la modale"><i class="fas fa-times"></i></button>
+      <header class="embed-header">
+        <h2 id="embedTitle">Aperçu</h2>
+        <div class="embed-tags" id="embedTags"></div>
+      </header>
+      <div class="embed-viewport">
+        <!-- Iframe ou image injectés ici -->
+      </div>
+    </div>
+  </div>
+
+  <script src="../scripts/creative-page.js" defer></script>
+</body>
+</html>
