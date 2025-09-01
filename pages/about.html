@@ -15,11 +15,12 @@
   <!-- NAV -->
   <nav class="navbar" role="navigation" aria-label="Navigation principale">
     <div class="nav-container">
-      <a class="nav-logo" href="../index.html" aria-label="Retour à l’accueil">
+      <a class="nav-logo" href="javascript:void(0)" 
+        onclick="if (document.referrer) { history.back(); } else { window.location.href='../index.html'; }" 
+        aria-label="Retour">
         <i class="fas fa-arrow-left" aria-hidden="true"></i>
         <span>Retour</span>
       </a>
-
       <div class="nav-menu" id="main-menu">
         <a class="nav-link" href="#resume">Parcours</a>
         <a class="nav-link" href="#tools">Outils</a>

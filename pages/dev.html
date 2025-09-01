@@ -13,7 +13,9 @@
   <!-- Navigation -->
   <nav class="navbar" role="navigation" aria-label="Navigation principale">
     <div class="nav-container">
-      <a class="nav-logo" href="../index.html" aria-label="Retour à l’accueil">
+      <a class="nav-logo" href="javascript:void(0)" 
+        onclick="if (document.referrer) { history.back(); } else { window.location.href='../index.html'; }" 
+        aria-label="Retour">
         <i class="fas fa-arrow-left" aria-hidden="true"></i>
         <span>Retour</span>
       </a>
@@ -497,6 +499,68 @@
       });
     });
   </script>
+<script>
+(function () {
+  const navH = document.querySelector('.navbar')?.offsetHeight ?? 0;
+
+  // Easing douce
+  const easeInOutCubic = t => (t < 0.5)
+      ? 4 * t * t * t
+      : 1 - Math.pow(-2 * t + 2, 3) / 2;
+
+  function smoothScrollTo(targetY, opts = {}) {
+    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (prefersReduced) { window.scrollTo(0, targetY); return; }
+
+    const startY   = window.scrollY || window.pageYOffset;
+    const delta    = targetY - startY;
+    // Durée auto: 0.4ms par px, bornée entre 450ms et 1200ms
+    const duration = Math.max(450, Math.min(1200, Math.abs(delta) * 0.4));
+    const start    = performance.now();
+
+    function frame(now) {
+      const t = Math.min(1, (now - start) / duration);
+      const eased = easeInOutCubic(t);
+      window.scrollTo(0, startY + delta * eased);
+      if (t < 1) requestAnimationFrame(frame);
+      else if (opts.onComplete) opts.onComplete();
+    }
+    requestAnimationFrame(frame);
+  }
+
+  // Délégation: capte tous les liens internes (header, drawer, footer…)
+  document.addEventListener('click', (e) => {
+    const a = e.target.closest('a[href^="#"]');
+    if (!a) return;
+
+    const id = a.getAttribute('href');
+    const target = document.querySelector(id);
+    if (!target) return; // (#contact peut ouvrir une modale; laisse ton autre JS gérer)
+    e.preventDefault();
+
+    const y = target.getBoundingClientRect().top + window.scrollY - navH;
+
+    smoothScrollTo(y, {
+      onComplete: () => {
+        // focus accessible sans ressaut
+        target.setAttribute('tabindex', '-1');
+        target.focus({ preventScroll: true });
+
+        // ferme le menu mobile si ouvert
+        const drawer  = document.getElementById('mobile-drawer');
+        const overlay = document.getElementById('drawer-overlay');
+        if (drawer?.classList.contains('is-open')) {
+          drawer.classList.remove('is-open');
+          overlay?.classList.remove('is-open');
+          document.body.classList.remove('body-no-scroll');
+          setTimeout(() => overlay?.setAttribute('hidden',''), 250);
+        }
+      }
+    });
+  });
+})();
+</script>
+
   <!-- Overlay cliquable (20%) -->
 <div id="drawer-overlay" class="drawer-overlay" hidden></div>
 

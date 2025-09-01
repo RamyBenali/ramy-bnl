@@ -5,8 +5,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const themeStyle = document.getElementById('theme-style');
 
   const themes = {
-    dev:       { style:'styles/dev-theme.css',       backgroundColor:'#1a1a2e', textColor:'#e6e6e6' },
-    creative:  { style:'styles/creative-theme.css',  backgroundColor:'#fff5eb', textColor:'#333' }
+    dev:       { style:'styles/dev-theme.css',       backgroundColor:'#1a1a2e', textColor:'#e6e6e6ff' },
+    creative:  { style:'styles/creative-theme.css',  backgroundColor:'#fff5eb', textColor:'#e74141ff' }
   };
 
   const isTouch   = matchMedia('(hover: none), (pointer: coarse)').matches;
@@ -57,5 +57,4 @@ document.addEventListener('DOMContentLoaded', () => {
     opt.style.height = '50%';
   });
 }
-
 });

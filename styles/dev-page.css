@@ -29,7 +29,6 @@ body{
   background: linear-gradient(135deg, var(--dev-primary) 0%, var(--dev-secondary) 100%);
   color: var(--dev-text);
   min-height: 100vh;
-  overflow-x: hidden;
 }
 
 .container{ max-width:1200px; margin:0 auto; padding:0 20px; }
@@ -104,7 +103,7 @@ body{
 .cta-btn.secondary:hover{ background:var(--dev-accent); color:var(--dev-primary); transform:translateY(-3px); }
 
 /* Hero visuel */
-.hero-visual{ position:relative; width:100%; height:460px; }
+.hero-visual{ position:relative; width:100%; height:460px;}
 .code-animation{
   position:absolute; inset: 50% auto auto 50%; transform: translate(-50%,-50%);
   width:320px; height:220px; background: rgba(22,33,62,.8); border:1px solid var(--dev-border);
@@ -118,7 +117,7 @@ body{
 
 /* Éléments flottants à droite */
 .floating-elements{
-  position:absolute; top:0; right:0; width:100%; height:100%; pointer-events:none;
+  position:absolute; top:0; right:500px; width:100%; height:100%; pointer-events:none;
 }
 .floating-element{
   position:absolute; width:60px; height:60px; border-radius:50%;
@@ -369,19 +368,25 @@ body{
 .contact-close:hover{ background:var(--dev-accent); color:var(--dev-primary); transform: rotate(90deg); }
 .hp-field{ position:absolute; left:-9999px; opacity:0; }
 
+
+@media (max-width:2000px){
+  .floating-elements{ right:0;}
+}
+
 /* Responsive */
 @media (max-width: 1200px){
   .dev-hero{ grid-template-columns: 1fr 440px; gap:30px; }
   .hero-visual{ height:420px; }
   .floating-element{ width:50px; height:50px; font-size:1.4rem; }
   .hero-content{ padding: 0 30px; }
+  .floating-elements{ right:0;}
 }
 @media (max-width: 992px){
   .dev-hero{ grid-template-columns: 1fr; }
   .hero-visual{ height:auto; margin-top:24px; }
   .floating-elements{
     position:relative; width:100%; height:160px; margin:0 auto;
-    display:grid; grid-template-columns: repeat(5, 1fr); grid-auto-rows:1fr; gap:12px;
+    display:grid; grid-template-columns: repeat(5, 1fr); grid-auto-rows:1fr; gap:12px;right:0px;
   }
   .floating-element{
     position:static; width:45px; height:45px; font-size:1.2rem; animation: floatElementMobile 3s ease-in-out infinite;
@@ -416,14 +421,14 @@ body{
 }
 @media (max-width: 600px){
   .hero-title{ font-size:2.6rem; }
-  .floating-elements{ grid-template-columns: repeat(4, 1fr); height:150px; gap:10px; }
+  .floating-elements{ grid-template-columns: repeat(4, 1fr); height:150px; gap:10px; right:0;}
   .floating-element{ width:40px; height:40px; font-size:1.1rem; }
   .contact-card{ padding:22px 16px; }
   .form-grid{ grid-template-columns:1fr; }
 }
 @media (max-width: 480px){
-  .floating-elements{ grid-template-columns: repeat(3, 1fr); height:170px; }
-  .floating-element{ width:36px; height:36px; font-size:1rem; }
+  .floating-elements{ grid-template-columns: repeat(3, 1fr); height:170px; right:0;}
+  .floating-element{ width:36px; height:36px; font-size:1rem; right:0;}
 }
 @media (max-width: 360px){
   .floating-elements{ display:none; }
@@ -695,3 +700,11 @@ body{
     display: none !important;
   }
 }
+
+/* Autoriser le scroll + smooth natif */
+html, body { overflow-y: auto; }
+html { scroll-behavior: smooth; }
+
+/* Évite que la navbar fixe masque l’ancre */
+:root { --nav-h: 72px; } /* ajuste si ta navbar est plus haute */
+#projects, #skills, #contact-panel { scroll-margin-top: var(--nav-h); }

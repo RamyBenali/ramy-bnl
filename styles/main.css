@@ -95,6 +95,22 @@ header {
     text-align: center;
 }
 
+.btn-about {
+    padding: 15px 40px;
+    border: 2px solid;
+    text-decoration: none;
+    font-weight: 600;
+    border-radius: 30px;
+    transition: all 0.4s ease;
+    display: inline-block;
+    font-size: 1.1rem;
+    letter-spacing: 1px;
+    position: relative;
+    overflow: hidden;
+    color: white;
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
 .btn {
     padding: 15px 40px;
     background-color: transparent;
@@ -168,7 +184,7 @@ footer {
 }
 
 .creative-option .option-content {
-    animation-delay: 0.6s;
+    animation-delay: 0.3s;
 }
 
 /* Responsive */
@@ -237,7 +253,7 @@ header {
 }
 
 .creative-option {
-    background: linear-gradient(rgba(255, 94, 91, 0.7), rgba(255, 142, 114, 0.7)), url('../sources/creatif-mode-back.jpg') center/cover no-repeat !important;
+    background: linear-gradient(rgba(150, 64, 53, 0.7), rgba(134, 75, 60, 0.7)), url('../sources/creatif-mode-back.jpg') center/cover no-repeat !important;
 }
 
 /* Ajustements pour mieux voir le contenu sur l'image de fond */
@@ -404,4 +420,26 @@ header {
   /* header/footer: pas de chevauchement */
   header{ position:absolute; top:0; left:0; right:0; }
   footer{ position:absolute; bottom:0; left:0; right:0; }
+}
+/* Centrage vertical parfait */
+.option-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; /* centre h2 + p + bouton en bloc */
+  gap: 14px;               /* espace homogène entre les éléments */
+  transform: none;         /* enlève le translateY(20px) qui faussait le centrage */
+  height: 100%;            /* prend toute la hauteur dispo dans .option */
+}
+
+/* Ajustements typographiques */
+.option h2 {
+  margin: 0;               /* on enlève margin-bottom */
+  font-size: 4rem;
+}
+
+.option p {
+  margin: 0;               /* enlève le margin-bottom */
+  font-size: 1.2rem;
+  max-width: 400px;
 }
