@@ -239,7 +239,8 @@ body{
   .crea-hero{grid-template-columns:1fr;padding:calc(70px + 48px) var(--gutter) 50px}
   .hero-content{margin-inline:auto;text-align:left;max-width:720px}
   .hero-visual{height:auto;margin-top:24px}
-  .floating-chips{position:relative;height:160px;margin-top:8px}
+  .floating-chips{position:relative; width:100%; height:160px; margin:0 auto;
+    display:grid; grid-template-columns: repeat(5, 1fr); grid-auto-rows:1fr; gap:12px;}
   .chip{position:static;width:48px;height:48px;font-size:1.05rem;margin:0 auto}
   .chip::after{display:none}
   .form-grid{grid-template-columns:1fr 1fr}
