@@ -37,11 +37,34 @@ document.addEventListener('DOMContentLoaded', function() {
     
     options.forEach(option => {
         option.addEventListener('mouseenter', function() {
-            this.style.flex = '4'; // 80%
+            this.style.flex = '3'; // 80%
         });
         
         option.addEventListener('mouseleave', function() {
-            this.style.flex = '1'; // 20%
+            this.style.flex = '2'; // 20%
         });
     });
+    // ===== Mobile: appliquer le thème au TAP (sans modifier le desktop)
+    (function(){
+    const isTouch = window.matchMedia('(hover: none), (pointer: coarse)').matches;
+    if(!isTouch) return; // desktop: on ne change rien
+
+    const body = document.body;
+    const themeStyle = document.getElementById('theme-style');
+    const themes = {
+        dev: { style:'styles/dev-theme.css', backgroundColor:'#1a1a2e', textColor:'#e6e6e6' },
+        creative: { style:'styles/creative-theme.css', backgroundColor:'#fff5eb', textColor:'#333' }
+    };
+
+    function applyTheme(key){
+        const t = themes[key]; if(!t) return;
+        themeStyle.setAttribute('href', t.style);
+        body.style.backgroundColor = t.backgroundColor;
+        body.style.color = t.textColor;
+    }
+
+    document.querySelector('.developer-option')?.addEventListener('click', ()=>applyTheme('dev'));
+    document.querySelector('.creative-option')?.addEventListener('click',  ()=>applyTheme('creative'));
+    })();
+
 });

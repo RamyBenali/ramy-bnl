@@ -8,6 +8,37 @@
   <link rel="preconnect" href="https://cdnjs.cloudflare.com" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
 </head>
+<!-- Overlay cliquable (20%) -->
+<div id="drawer-overlay" class="drawer-overlay" hidden></div>
+
+<!-- Menu mobile off-canvas -->
+<aside id="mobile-drawer" class="mobile-drawer" aria-hidden="true" aria-labelledby="drawer-title">
+    <header class="drawer-header">
+      <h2 id="drawer-title">Menu</h2>
+      <button type="button" class="drawer-close" aria-label="Fermer le menu">×</button>
+    </header>
+
+    <nav class="drawer-nav" role="navigation">
+      <!-- reprends exactement tes liens -->
+      <a class="nav-link" href="../index.html">Accueil</a>
+      <a class="nav-link" href="#projects">Projets</a>
+      <a class="nav-link" href="#skills">Compétences</a>
+      <a class="nav-link" href="about.html">À propos</a>
+      <a class="nav-link" href="#contact" data-open-contact>Contact</a>
+    </nav>
+
+    <div class="drawer-footer">
+      <a class="drawer-cta" href="#contact" data-open-contact>
+        <i class="fas fa-paper-plane" aria-hidden="true"></i> Me contacter
+      </a>
+      <div class="drawer-socials">
+        <a href="https://github.com/RamyBenali" target="_blank" rel="noopener" aria-label="GitHub"><i class="fab fa-github"></i></a>
+        <a href="https://www.linkedin.com/in/ramy-benali-248b70282" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+        <a href="https://www.instagram.com/rmba.exe/" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+      </div>
+    </div>
+  </aside>
+
 <body class="dev-theme">
   <!-- Navigation -->
   <nav class="navbar" role="navigation" aria-label="Navigation principale">
@@ -45,7 +76,7 @@
       <p class="hero-description">
         Étudiant en <strong>Master Génie Logiciel</strong>, je m’épanouis dans la création de solutions digitales innovantes.
         Passionné par le développement fullstack, je combine expertise technique et créativité pour transformer
-        des concepts complexes en expériences utilisateur exceptionnelles.
+        des concepts complexes en expériences utilisateur exceptionnelles. <strong><a href="about.html">En savoir plus.</a></strong>
       </p>
 
       <div class="hero-highlights" role="list">
@@ -71,6 +102,10 @@
         <a class="cta-btn secondary" href="#contact" data-open-contact aria-controls="contact-panel" aria-expanded="false">
           <i class="fas fa-paper-plane" aria-hidden="true"></i>
           <span>Me contacter</span>
+        </a>
+        <a class="cta-btn secondary" href="about.html" aria-expanded="false">
+          <i class="fas fa-address-card" aria-hidden="true"></i>
+          <span>À propos</span>
         </a>
       </div>
     </div>
@@ -448,21 +483,43 @@
     })();
 
     // Menu mobile basique
-    (function(){
-      const toggle = document.getElementById('mobile-menu');
-      const menu   = document.getElementById('main-menu');
-      if(!toggle || !menu) return;
-      toggle.addEventListener('click', ()=>{
-        const opened = menu.getAttribute('data-open') === 'true';
-        menu.setAttribute('data-open', String(!opened));
-        toggle.setAttribute('aria-expanded', String(!opened));
-        menu.style.display = opened ? 'none' : 'flex';
-      });
-      // État initial sur mobile
-      if(window.matchMedia('(max-width: 768px)').matches){
-        document.getElementById('main-menu')?.style.setProperty('display','none');
+    window.addEventListener('DOMContentLoaded', () => {
+      const toggle  = document.getElementById('mobile-menu');
+      const drawer  = document.getElementById('mobile-drawer');
+      const overlay = document.getElementById('drawer-overlay');
+
+      if(!toggle || !drawer || !overlay) return;
+
+      function openDrawer(){
+        drawer.classList.add('is-open');
+        overlay.classList.add('is-open');
+        overlay.hidden = false;
+        document.body.classList.add('body-no-scroll');
+        toggle.setAttribute('aria-expanded','true');
+        drawer.setAttribute('aria-hidden','false');
       }
-    })();
+      function closeDrawer(){
+        drawer.classList.remove('is-open');
+        overlay.classList.remove('is-open');
+        document.body.classList.remove('body-no-scroll');
+        toggle.setAttribute('aria-expanded','false');
+        drawer.setAttribute('aria-hidden','true');
+        setTimeout(()=>{ overlay.hidden = true; }, 250);
+      }
+
+      toggle.addEventListener('click', () => {
+        drawer.classList.contains('is-open') ? closeDrawer() : openDrawer();
+      });
+      overlay.addEventListener('click', closeDrawer);
+      drawer.querySelector('.drawer-close')?.addEventListener('click', closeDrawer);
+
+      drawer.addEventListener('click', (e)=>{
+        if(e.target.closest('a, button[data-open-contact]')) closeDrawer();
+      });
+      document.addEventListener('keydown', (e)=>{
+        if(e.key === 'Escape' && drawer.classList.contains('is-open')) closeDrawer();
+      });
+    });
   </script>
 </body>
 </html>

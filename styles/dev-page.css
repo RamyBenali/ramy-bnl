@@ -54,7 +54,8 @@ body{
   gap:40px;
   padding: 120px 0 60px;
 }
-.hero-content{ padding: 0 40px; }
+.dev-hero{padding:calc(70px + 48px) var(--gutter) 50px; padding-top: 100px;}
+.hero-content{margin-inline:auto;text-align:left;max-width:720px}
 .hero-intro{ margin-bottom:2rem; }
 .hero-greeting{ display:block; font-size:1.2rem; color:var(--dev-accent); margin-bottom:.5rem; font-weight:500; }
 .hero-title{
@@ -69,6 +70,7 @@ body{
 
 .hero-description{ font-size:1.3rem; line-height:1.6; margin-bottom:2.5rem; opacity:.9; max-width:640px; }
 .hero-description strong{ color:var(--dev-accent); font-weight:600; }
+.hero-description strong a{ color:var(--dev-accent); text-decoration:underline; }
 
 .hero-highlights{ display:flex; gap:2rem; flex-wrap:wrap; margin-bottom:3rem; }
 .highlight-item{
@@ -419,7 +421,7 @@ body{
 /* Bouton "Me contacter" du footer : fond bleu foncé */
 .dev-footer .modal-link{
   background: #16213e;             /* bleu foncé */
-  color: var(--dev-accent);        /* texte/icone cyan */
+  color: var(--dev-accent);        /* texte/icone cyan */   
   border: 2px solid var(--dev-accent);
   border-radius: 999px;            /* pastille bien arrondie */
   padding: 12px 25px;
@@ -440,3 +442,152 @@ body{
   transform: translateY(0);
   box-shadow: none;
 }
+
+/* ===== NAV MOBILE — menu vertical déroulant ===== */
+@media (max-width: 768px){
+  .nav-toggle{ display:block; }
+
+  /* le conteneur nav sert d’ancrage */
+  .nav-container{ position: relative; }
+
+  /* menu replié par défaut */
+  #main-menu{
+    position: absolute;
+    top: 100%;
+    left: 0; right: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    background: rgba(20, 16, 22, .92);                 /* fond sombre neutre */
+    backdrop-filter: blur(10px);
+    border-top: 1px solid var(--card-border, var(--border, rgba(255,255,255,.15)));
+    border-bottom: 1px solid var(--card-border, var(--border, rgba(255,255,255,.15)));
+    padding: 10px var(--gutter, 20px);
+
+    /* animation d’ouverture */
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transform: translateY(-8px);
+    transition: max-height .35s ease, opacity .25s ease, transform .25s ease;
+    z-index: 999; /* au-dessus du contenu */
+  }
+
+  /* état ouvert */
+  #main-menu.is-open{
+    max-height: 60vh;   /* assez pour lister tes liens */
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* liens empilés */
+  #main-menu .nav-link,
+  #main-menu a,
+  #main-menu button{
+    display: block;
+    padding: 14px 0;
+    text-decoration: none;
+    color: var(--crea-text, var(--text, #fff));
+    border-bottom: 1px solid rgba(255,255,255,.08);
+  }
+  #main-menu .nav-link:last-child{ border-bottom: 0; }
+
+  /* optionnel : hover */
+  #main-menu .nav-link:hover{
+    color: var(--crea-accent, var(--glow, #9e7bff));
+  }
+}
+
+/* ===== OFF-CANVAS MOBILE (droite, 80%) ===== */
+@media (max-width: 768px){
+  /* on garde le bouton hamburger existant */
+  .nav-toggle{ display:block; }
+  /* masque le menu horizontal d'origine */
+  #main-menu{ display:none !important; }
+
+  /* Overlay 20% cliquable */
+  .drawer-overlay{
+    position: fixed; inset: 0;
+    background: rgba(0,0,0,.55);
+    backdrop-filter: blur(2px);
+    opacity: 0; pointer-events: none;
+    transition: opacity .25s ease;
+    z-index: 998;
+  }
+  .drawer-overlay.is-open{ opacity:1; pointer-events:auto; }
+
+  /* Panneau */
+  .mobile-drawer{
+    position: fixed; top:0; right:0; height:100vh;
+    width: 80vw; max-width: 420px; min-width: 300px;
+    background: var(--dev-card-bg, rgba(22,33,62,.92));
+    /* pour about (thème violet), les var() retomberont sur ces valeurs */
+    backdrop-filter: blur(12px);
+    border-left: 1px solid var(--dev-border, rgba(76,201,240,.28));
+    box-shadow: -18px 0 60px rgba(0,0,0,.35);
+    transform: translateX(100%);
+    transition: transform .35s cubic-bezier(.22,1,.36,1);
+    z-index: 1001; /* au-dessus de la navbar si besoin */
+    display:flex; flex-direction:column;
+    padding: 18px 20px 22px;
+  }
+  .mobile-drawer.is-open{ transform: translateX(0); }
+
+  .drawer-header{
+    display:flex; align-items:center; justify-content:space-between;
+    padding: 6px 2px 12px;
+    border-bottom: 1px solid var(--dev-border, rgba(76,201,240,.22));
+  }
+  .drawer-header h2{
+    font-size: 1.1rem; font-weight: 800;
+    color: var(--dev-text, #e6e6e6); letter-spacing:.2px;
+  }
+  .drawer-close{
+    width:40px; height:40px; border-radius:10px;
+    border:1px solid var(--dev-border, rgba(76,201,240,.3));
+    background: rgba(0,0,0,.2);
+    color: var(--dev-text, #e6e6e6); cursor:pointer;
+  }
+  .drawer-close:hover{ background: var(--dev-accent, #4cc9f0); color: var(--dev-primary, #1a1a2e); }
+
+  .drawer-nav{
+    display:flex; flex-direction:column; gap: 2px;
+    padding: 10px 0;
+  }
+  .drawer-nav .nav-link{
+    display:block; padding: 14px 2px;
+    color: var(--dev-text, #e6e6e6); text-decoration:none;
+    border-bottom: 1px solid rgba(255,255,255,.06);
+    font-weight: 600;
+  }
+  .drawer-nav .nav-link:last-child{ border-bottom:0; }
+  .drawer-nav .nav-link:hover{
+    color: var(--dev-accent, #4cc9f0);
+  }
+
+  .drawer-footer{
+    margin-top: auto; padding-top: 14px;
+    border-top: 1px solid var(--dev-border, rgba(76,201,240,.22));
+    display:flex; flex-direction:column; gap:12px;
+  }
+  .drawer-cta{
+    display:inline-flex; align-items:center; gap:.6rem;
+    padding: 12px 16px; border-radius: 12px;
+    color: var(--dev-primary, #1a1a2e); background: var(--dev-accent, #4cc9f0);
+    text-decoration:none; font-weight: 700; justify-content:center;
+  }
+  .drawer-cta:hover{ transform: translateY(-2px); box-shadow:0 10px 24px rgba(76,201,240,.28); }
+
+  .drawer-socials{ display:flex; gap:10px; }
+  .drawer-socials a{
+    width:42px; height:42px; border-radius:12px;
+    display:flex; align-items:center; justify-content:center;
+    border:1px solid var(--dev-border, rgba(76,201,240,.3));
+    color: var(--dev-accent, #4cc9f0);
+    background: rgba(22,33,62,.35);
+    text-decoration:none;
+  }
+}
+
+/* Empêche le scroll du body quand le drawer est ouvert */
+.body-no-scroll{ overflow: hidden; }
