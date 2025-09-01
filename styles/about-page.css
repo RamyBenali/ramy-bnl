@@ -449,3 +449,18 @@ body{
 
 /* Empêche le scroll du body quand le drawer est ouvert */
 .body-no-scroll{ overflow: hidden; }
+
+
+
+.btnprfl{
+  border:2px solid transparent;
+  border-radius:14px;
+  margin-top: 10px;
+  padding:12px 18px;
+  font-weight:800; cursor:pointer;
+  color:var(--bg-1); background:var(--glow);
+  text-decoration:none; display:list-item; align-items:center;gap:.6rem;
+}
+.btnprfl:hover{transform:translateY(-2px);box-shadow:0 10px 26px rgba(158,123,255,.35)}
+.btnprfl.secondary{background:transparent;color:var(--glow);border-color:var(--glow)}
+.btnprfl.secondary:hover{background:var(--glow);color:var(--bg-1)}
