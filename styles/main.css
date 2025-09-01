@@ -347,7 +347,6 @@ header {
   /* 5) Overlay un peu plus léger pour la lisibilité mais pas trop */
   .option-overlay{ opacity: .55; }
 
-  /* 6) Désactiver tous les effets “hover” et 80/20 inutiles en tactile */
   .fullpage-slider:hover .option:not(:hover) .option-content p,
   .fullpage-slider:hover .option:not(:hover) .option-content .btn,
   .fullpage-slider:hover .option:not(:hover) .option-content h2,
@@ -442,4 +441,74 @@ header {
   margin: 0;               /* enlève le margin-bottom */
   font-size: 1.2rem;
   max-width: 400px;
+}
+/* ====== MOBILE TYPO (iPhone 12 ~ 390px) ====== */
+@media (max-width: 430px){
+  .option-content{
+    gap: 10px;
+    padding: 12px 16px;
+  }
+
+  .option h2{
+    /* taille fluide + meilleure compacité + wrap forcé des mots longs */
+    font-size: clamp(1.4rem, 9.5vw, 2.2rem);
+    line-height: 1.1;
+    letter-spacing: 2px;
+    word-break: break-word; /* “DÉVELOPPEUR” peut passer à la ligne */
+    hyphens: auto;
+    margin: 0;
+  }
+
+  .option p{
+    font-size: clamp(.9rem, 3.8vw, 1.05rem);
+    line-height: 1.35;
+    margin: 0;
+    max-width: 80vw;   /* évite les lignes trop longues */
+  }
+
+  .btn, .btn-about{
+    font-size: clamp(.8rem, 3.4vw, .95rem);
+    padding: 10px 16px;
+    border-width: 2px;
+    border-radius: 22px;
+  }
+}
+
+/* Très petits écrans (sécurité) */
+@media (max-width: 360px){
+  .option-content{
+    transform: scale(.92);          /* mini “zoom out” si ça déborde encore */
+    transform-origin: top center;
+  }
+}
+@media (max-width: 640px){
+  header{
+    grid-template-columns: 1fr auto;         /* logo gauche | bouton */
+    grid-template-areas:
+      "left  btn"
+      "tag   tag";
+    row-gap: 8px;
+  }
+  header .logo:first-of-type{ grid-area: left; }
+  .btn-about{ grid-area: btn; justify-self: end; }
+
+  /* "Choose a side." centré sur la 2e ligne, plus petit */
+  header .logo:last-of-type{
+    grid-area: tag;
+    justify-self: center;
+    font-size: clamp(.95rem, 4.3vw, 1.1rem);
+    opacity: .9;
+  }
+
+  /* bouton encore plus compact sur iPhone */
+  .btn-about{
+    font-size: clamp(.8rem, 3.5vw, .95rem);
+    padding: 8px 14px;
+    border-width: 2px;
+  }
+}
+
+/* ——— Très petites largeurs: si ça serre, on cache la tagline ——— */
+@media (max-width: 360px){
+  header .logo:last-of-type{ display:none; } /* masque "Choose a side." */
 }

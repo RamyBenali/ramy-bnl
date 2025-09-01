@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const themes = {
     dev:       { style:'styles/dev-theme.css',       backgroundColor:'#1a1a2e', textColor:'#e6e6e6ff' },
-    creative:  { style:'styles/creative-theme.css',  backgroundColor:'#fff5eb', textColor:'#e74141ff' }
+    creative:  { style:'styles/creative-theme.css',  backgroundColor:'#fff5eb', textColor:'#ffffffff' }
   };
 
   const isTouch   = matchMedia('(hover: none), (pointer: coarse)').matches;
