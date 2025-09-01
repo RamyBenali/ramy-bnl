@@ -354,3 +354,105 @@ body{
 
 /* Empêche le scroll du body quand le drawer est ouvert */
 .body-no-scroll{ overflow: hidden; }
+
+/* ==== SWITCH DEV/CRÉA ==== */
+.mode-toggle{
+  position: relative;
+  display: inline-grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 0;
+  width: 160px;
+  height: 40px;
+  padding: 4px;
+  border-radius: 999px;
+  text-decoration: none;
+  user-select: none;
+  cursor: pointer;
+  /* fond et bord s’adaptent au thème */
+  background: rgba(255,255,255,.06);
+  border: 1px solid var(--dev-border, var(--card-border, rgba(255,255,255,.18)));
+  backdrop-filter: blur(8px);
+  isolation: isolate; /* pour le thumb */
+}
+.mode-toggle .toggle-half{
+  position: relative;
+  z-index: 2;
+  display:flex; align-items:center; justify-content:center;
+  font-weight: 800;
+  font-size: .95rem;
+  letter-spacing: .2px;
+  border-radius: 999px;
+  color: var(--dev-text, var(--crea-text, #eee));
+  transition: color .25s ease, opacity .25s ease;
+}
+.mode-toggle .half-dev::before,
+.mode-toggle .half-crea::before{
+  content: "";
+  position: absolute; inset: 0;
+  border-radius: 999px;
+  opacity: 0;                       /* allumé éteint */
+  transition: opacity .25s ease;
+  z-index: -1;
+}
+
+/* pastille mobile */
+.mode-toggle .toggle-thumb{
+  position: absolute;
+  z-index: 1;
+  top: 4px; bottom: 4px;
+  width: calc(50% - 4px);
+  border-radius: 999px;
+  background: var(--dev-accent, var(--crea-accent, #ff8a65));
+  box-shadow: 0 8px 24px rgba(0,0,0,.25);
+  transition: transform .28s cubic-bezier(.22,1,.36,1), background .25s ease;
+}
+
+/* États — page DEV allumée à gauche */
+.mode-toggle.is-dev .toggle-thumb{
+  transform: translateX(0);
+  background: var(--dev-accent, #4cc9f0);
+}
+.mode-toggle.is-dev .half-dev{ color: var(--dev-primary, #1a1a2e); }
+.mode-toggle.is-dev .half-dev::before{
+  background: var(--dev-accent, #4cc9f0);
+  opacity: 1;
+}
+.mode-toggle.is-dev .half-crea{ opacity: .9; }
+.mode-toggle.dev::after {
+  left: 3px;                     /* pastille côté gauche */
+  transform: translateX(100%);   /* pousse à droite */
+  background: #4cc9f0;
+}
+
+/* États — page CRÉA allumée à droite */
+.mode-toggle.is-crea .toggle-thumb{
+  transform: translateX(100%);
+  background: var(--crea-accent, #ff8a65);
+}
+.mode-toggle.is-crea .half-crea{ color: var(--crea-primary, #2b1a16); }
+.mode-toggle.is-crea .half-crea::before{
+  background: var(--crea-accent, #ff8a65);
+  opacity: 1;
+}
+.mode-toggle.is-crea .half-dev{ opacity: .9; }
+.mode-toggle.creative::after {
+  left: 3px;                     /* pastille par défaut */
+  transform: translateX(0);      /* reste à gauche */
+  background: #ff8a65;
+}
+
+/* Hover léger (desktop) */
+@media (hover:hover){
+  .mode-toggle .toggle-half:hover{ opacity: 1; }
+}
+
+/* Placement dans la navbar */
+.nav-container .mode-toggle{ margin-left: 12px; }
+
+/* Cacher le switch en dessous de 768px */
+@media (max-width: 768px){
+  .mode-toggle.is-crea.nav{
+    display: none !important;
+  }
+}

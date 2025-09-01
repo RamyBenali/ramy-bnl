@@ -1,7 +1,16 @@
 /* =========================================
    ABOUT — THEME VIOLET (ni bleu ni orange)
    ========================================= */
+#mobile-drawer,
+#drawer-overlay{
+  display: none;
+}
 
+/* Mobile seulement : on les affiche */
+@media (max-width: 768px){
+  #drawer-overlay{ display:block; }   /* l'overlay existe mais reste invisible tant que pas .is-open */
+  #mobile-drawer{ display:flex; }     /* flex car ton panneau est en flex-column */
+}
 /* ---------- Variables ---------- */
 :root{
   --bg-1:#171214;

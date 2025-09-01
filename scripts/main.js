@@ -1,77 +1,61 @@
-document.addEventListener('DOMContentLoaded', function() {
-    const body = document.body;
-    const developerOption = document.querySelector('.developer-option');
-    const creativeOption = document.querySelector('.creative-option');
-    const themeStyle = document.getElementById('theme-style');
-    
-    // Thèmes définis
-    const themes = {
-        dev: {
-            style: 'styles/dev-theme.css',
-            backgroundColor: '#1a1a2e',
-            textColor: '#e6e6e6'
-        },
-        creative: {
-            style: 'styles/creative-theme.css',
-            backgroundColor: '#fff5eb',
-            textColor: '#333'
-        }
-    };
-    
-    // Au survol de l'option Développeur
-    developerOption.addEventListener('mouseenter', function() {
-        themeStyle.setAttribute('href', themes.dev.style);
-        body.style.backgroundColor = themes.dev.backgroundColor;
-        body.style.color = themes.dev.textColor;
-    });
-    
-    // Au survol de l'option Créatif
-    creativeOption.addEventListener('mouseenter', function() {
-        themeStyle.setAttribute('href', themes.creative.style);
-        body.style.backgroundColor = themes.creative.backgroundColor;
-        body.style.color = themes.creative.textColor;
-    });
-    
-    // Animation d'agrandissement au survol - version 80/20
-    const options = document.querySelectorAll('.option');
-    
-    options.forEach(option => {
-        option.addEventListener('mouseenter', function() {
-            this.style.flex = '3'; // 80%
-        });
-        
-        option.addEventListener('mouseleave', function() {
-            this.style.flex = '2'; // 20%
-        });
-    });
-    // ===== Mobile: appliquer le thème au TAP (sans modifier le desktop)
-    (function(){
-    const isTouch = window.matchMedia('(hover: none), (pointer: coarse)').matches;
-    if(!isTouch) return; // desktop: on ne change rien
+document.addEventListener('DOMContentLoaded', () => {
+  const body = document.body;
+  const developerOption = document.querySelector('.developer-option');
+  const creativeOption  = document.querySelector('.creative-option');
+  const themeStyle = document.getElementById('theme-style');
 
-    const body = document.body;
-    const themeStyle = document.getElementById('theme-style');
-    const themes = {
-        dev: { style:'styles/dev-theme.css', backgroundColor:'#1a1a2e', textColor:'#e6e6e6' },
-        creative: { style:'styles/creative-theme.css', backgroundColor:'#fff5eb', textColor:'#333' }
-    };
+  const themes = {
+    dev:       { style:'styles/dev-theme.css',       backgroundColor:'#1a1a2e', textColor:'#e6e6e6' },
+    creative:  { style:'styles/creative-theme.css',  backgroundColor:'#fff5eb', textColor:'#333' }
+  };
 
+  const isTouch   = matchMedia('(hover: none), (pointer: coarse)').matches;
+  const isMobile  = matchMedia('(max-width: 900px)').matches;
+  const hasHover  = matchMedia('(hover: hover)').matches;
+
+  /* --- Thème au survol (desktop) --- */
+  if (hasHover) {
+    developerOption?.addEventListener('mouseenter', () => {
+      themeStyle.setAttribute('href', themes.dev.style);
+      body.style.backgroundColor = themes.dev.backgroundColor;
+      body.style.color = themes.dev.textColor;
+    });
+    creativeOption?.addEventListener('mouseenter', () => {
+      themeStyle.setAttribute('href', themes.creative.style);
+      body.style.backgroundColor = themes.creative.backgroundColor;
+      body.style.color = themes.creative.textColor;
+    });
+  }
+
+  /* --- Thème au tap (mobile) --- */
+  if (isTouch) {
     function applyTheme(key){
-        const t = themes[key]; if(!t) return;
-        themeStyle.setAttribute('href', t.style);
-        body.style.backgroundColor = t.backgroundColor;
-        body.style.color = t.textColor;
+      const t = themes[key]; if(!t) return;
+      themeStyle.setAttribute('href', t.style);
+      body.style.backgroundColor = t.backgroundColor;
+      body.style.color = t.textColor;
     }
+    developerOption?.addEventListener('click', () => applyTheme('dev'));
+    creativeOption?.addEventListener('click',  () => applyTheme('creative'));
+  }
 
-    document.querySelector('.developer-option')?.addEventListener('click', ()=>applyTheme('dev'));
-    document.querySelector('.creative-option')?.addEventListener('click',  ()=>applyTheme('creative'));
-    })();
-    const prefersHover = matchMedia('(hover: hover)').matches;
-    if (window.innerWidth > 900 && prefersHover) {
-    const options = document.querySelectorAll('.option');
-    options.forEach(option => {
-        option.addEventListener('mouseenter', () => { option.style.flex = '4'; });
-        option.addEventListener('mouseleave', () => { option.style.flex = '1'; });
-    });
-    }
+
+    if (hasHover && !isMobile) {
+  // Desktop: effet 80/20
+  const options = document.querySelectorAll('.option');
+  options.forEach(opt => {
+    opt.addEventListener('mouseenter', () => { opt.style.flex = '3'; });
+    opt.addEventListener('mouseleave', () => { opt.style.flex = '2'; });
+  });
+} else {
+  // Mobile: 50/50 strict
+  const slider = document.querySelector('.fullpage-slider');
+  if (slider) slider.style.flexDirection = 'column';
+
+  document.querySelectorAll('.option').forEach(opt => {
+    opt.style.flex   = '0 0 50%';
+    opt.style.height = '50%';
+  });
+}
+
 });

@@ -23,6 +23,12 @@
         <a class="nav-link" href="about.html">À propos</a>
         <a class="nav-link" href="#contact" data-open-contact aria-controls="contact-panel" aria-expanded="false">Contact</a>
       </div>
+      <!-- Switch Dev/Créa -->
+      <a class="mode-toggle is-dev" aria-label="Basculer entre mode Développeur et Créatif">
+        <span class="toggle-half half-dev" aria-current="page">Dev</span>
+        <span class="toggle-thumb" aria-hidden="true"></span>
+        <span class="toggle-half half-crea" onclick="location.href='creative.html'">Créa</span>
+      </a>
       <button class="nav-toggle" id="mobile-menu" aria-label="Ouvrir le menu" aria-controls="main-menu" aria-expanded="false">
         <span class="bar" aria-hidden="true"></span>
         <span class="bar" aria-hidden="true"></span>
@@ -507,10 +513,12 @@
     <a class="nav-link" href="#skills">Compétences</a>
     <a class="nav-link" href="about.html">À propos</a>
     <a class="nav-link" href="#contact" data-open-contact>Contact</a>
-    <a class="drawer-cta" href="creative.html" data-open-contact>
-      <i class="fas fa-paint-brush" aria-hidden="true"></i> Creatif
+    <a class="mode-toggle is-dev" aria-label="Basculer entre mode Développeur et Créatif">
+      <span class="toggle-half half-dev" aria-current="page">Dev</span>
+      <span class="toggle-thumb" aria-hidden="true"></span>
+      <span class="toggle-half half-crea" onclick="location.href='creative.html'">Créa</span>
     </a>
-  </nav>
+  </nav>  
 
   <div class="drawer-footer">
     <a class="drawer-cta" href="#contact" data-open-contact>

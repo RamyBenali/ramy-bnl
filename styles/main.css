@@ -249,35 +249,89 @@ header {
     backdrop-filter: blur(5px);
     background-color: rgba(255, 255, 255, 0.1) !important;
 }
-/* ====== MOBILE/TABLET (adaptation sans changer le design desktop) ====== */
+/* ===== MOBILE: plein écran sans scroll, contenu compact ===== */
 @media (max-width: 900px){
-  /* laisser scroller la page sur mobile */
-  html, body{ height:auto; overflow:auto }
-
-  /* empiler les 2 panneaux en colonne, chacun prend l’écran */
-  .fullpage-slider{
-    flex-direction: column;
-    height: auto;
-    min-height: 100svh;
-    /* pour éviter que le header/footer absolus ne chevauchent le contenu */
-    padding-top: 80px;     /* espace sous le header */
-    padding-bottom: 60px;  /* espace au-dessus du footer */
+  /* 1) Pas de scroll, 100% écran mobile fiable (svh/dvh fallback) */
+  html, body{
+    height: 100svh;              /* unités “small viewport” fiables sur mobile */
+    height: 100dvh;              /* fallback moderne */
+    height: -webkit-fill-available; /* iOS */
+    overflow: hidden;            /* interdit le scroll */
   }
 
+  /* 2) Conteneurs plein écran strict */
+  .fullpage-container{
+    height: 100%;
+    min-height: 100%;
+  }
+
+  .fullpage-slider{
+    height: 100%;
+    min-height: 100%;
+    display: grid;               /* évite la colonne qui dépasse */
+    grid-template-rows: 1fr;     /* une seule “diapo” visible */
+  }
+
+  /* 3) Une seule option visible (au choix : la première) */
   .option{
     flex: none;
-    min-height: 100svh;     /* 1 carte = 1 écran (garde ton look) */
-    transition: none;       /* pas d’animation de flex sur mobile */
+    height: 100%;
+    min-height: 100%;
+    overflow: hidden;            /* cache ce qui dépasse */
+    transition: none;
   }
+  /* si tu veux toujours montrer la moitié Dev + moitié Créa, enlève ce bloc
+     et remets .fullpage-slider en flex + .option{flex:1} — mais on perdra
+     l’absence de scroll si les contenus sont trop grands. */
+
+  /* 4) Réduction des tailles (typo + espacements) pour tout faire tenir */
+  header{
+    position: absolute; top: 0; left: 0; right: 0;
+    padding: 14px 16px;          /* ↓ header plus compact */
+    z-index: 10;
+  }
+  .logo{ font-size: clamp(1.1rem, 4vw, 1.4rem); }
+  .menu-toggle{ font-size: clamp(1rem, 4vw, 1.2rem); }
 
   .option-content{
-    transform: none;        /* pas de décalage vertical */
+    padding: 16px;               /* ↓ marges internes */
+    transform: none;
+    max-width: min(92vw, 520px); /* limite la largeur */
+    margin: 0 auto;
   }
 
-  /* lisibilité un poil meilleure sur fond image, sans changer le style */
-  .option-overlay{ opacity: .6 }
+  .option-icon{
+    font-size: clamp(1.6rem, 8vw, 2.2rem);
+    margin-bottom: 10px;
+  }
 
-  /* IMPORTANT: désactiver les règles “masquage au hover” sur mobile */
+  .option h2{
+    /* grosse mais adaptable, et plus courte en hauteur */
+    font-size: clamp(1.4rem, 7.5vw, 2.2rem);
+    line-height: 1.15;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+  }
+
+  .option p{
+    font-size: clamp(.9rem, 3.6vw, 1.05rem);
+    line-height: 1.35;
+    margin-bottom: 14px;
+    max-width: 80ch;             /* évite les lignes trop longues */
+  }
+
+  .btn{
+    font-size: clamp(.85rem, 3.6vw, 1rem);
+    padding: 10px 18px;          /* ↓ hauteur bouton */
+    border-width: 2px;
+    border-radius: 22px;
+    backdrop-filter: blur(3px);
+  }
+
+  /* 5) Overlay un peu plus léger pour la lisibilité mais pas trop */
+  .option-overlay{ opacity: .55; }
+
+  /* 6) Désactiver tous les effets “hover” et 80/20 inutiles en tactile */
   .fullpage-slider:hover .option:not(:hover) .option-content p,
   .fullpage-slider:hover .option:not(:hover) .option-content .btn,
   .fullpage-slider:hover .option:not(:hover) .option-content h2,
@@ -288,56 +342,51 @@ header {
     font-size: inherit !important;
     margin-bottom: initial !important;
   }
+  .option:hover, .option:not(:hover){ flex: initial; }
 
-  /* neutraliser l’effet 80/20 au hover (inutile au tactile) */
-  .option:hover,
-  .option:not(:hover){
-    flex: initial;
+  /* 7) Footer fixe mais compact (et sans chevaucher le contenu) */
+  footer{
+    position: absolute;
+    bottom: 8px; left: 0; right: 0;
+    padding: 8px 12px;
+    font-size: clamp(.8rem, 3.2vw, .9rem);
+    pointer-events: none; /* clique passe au contenu si nécessaire */
   }
 }
 
-/* ====== MOBILE/TABLET – layout statique, 1 section = 100% écran ====== */
+/* Option: si ton texte dépasse encore sur certains téléphones très petits,
+   tu peux forcer un “zoom” global du contenu pour qu’il tienne: */
+@media (max-width: 380px){
+  .option-content{ transform: scale(.92); transform-origin: top center; }
+}
+/* MOBILE: pile verticale, chaque option = 50% de l’écran */
 @media (max-width: 900px){
-  /* réactiver le scroll et libérer la hauteur */
-  html, body{ height:auto; overflow:auto; }
-
-  /* la pile verticale */
+  html, body{
+    height: 100svh;            /* fiable mobile */
+    height: 100dvh;
+    overflow: hidden;          /* pas de scroll pour cette page */
+  }
   .fullpage-slider{
-    flex-direction: column;
-    height: auto;
-    /* chaque section prend l’écran, la page scrolle vers la suivante */
-    scroll-snap-type: y mandatory;         /* optionnel mais agréable */
+    display: flex;
+    flex-direction: column;    /* Dev au-dessus, Créa en dessous */
+    width: 100%;
+    height: 100%;
   }
-
   .option{
-    flex: none;
-    min-height: 100svh;                    /* 100% de l’écran */
-    scroll-snap-align: start;              /* snap propre au début */
-    transition: none;                      /* pas d’anim flex sur mobile */
+    flex: 0 0 50svh;           /* 50% de la hauteur d’écran */
+    height: 50svh;
+    transition: none;          /* pas d’effet 80/20 en tactile */
   }
 
-  /* lisibilité (inchangé visuellement) */
-  .option-overlay{ opacity:.6; }
-
-  /* annuler tout le masquage “au hover” sur mobile */
+  /* neutralise le masquage “au hover” sur mobile */
   .fullpage-slider:hover .option:not(:hover) .option-content p,
   .fullpage-slider:hover .option:not(:hover) .option-content .btn,
   .fullpage-slider:hover .option:not(:hover) .option-content h2,
   .fullpage-slider:hover .option:not(:hover) .option-content .option-icon{
-    opacity:1 !important;
-    visibility:visible !important;
-    transform:none !important;
-    font-size:inherit !important;
-    margin-bottom:initial !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: none !important;
+    font-size: inherit !important;
+    margin-bottom: initial !important;
   }
-
-  /* neutraliser l’effet 80/20 */
-  .option:hover,
-  .option:not(:hover){
-    flex: initial;
-  }
-
-  /* si ton header/footer sont en absolute, on évite qu’ils chevauchent */
-  header{ position: sticky; top:0; }
-  footer{ position: static; }
 }
