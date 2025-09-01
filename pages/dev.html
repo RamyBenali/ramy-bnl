@@ -8,36 +8,6 @@
   <link rel="preconnect" href="https://cdnjs.cloudflare.com" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
 </head>
-<!-- Overlay cliquable (20%) -->
-<div id="drawer-overlay" class="drawer-overlay" hidden></div>
-
-<!-- Menu mobile off-canvas -->
-<aside id="mobile-drawer" class="mobile-drawer" aria-hidden="true" aria-labelledby="drawer-title">
-    <header class="drawer-header">
-      <h2 id="drawer-title">Menu</h2>
-      <button type="button" class="drawer-close" aria-label="Fermer le menu">×</button>
-    </header>
-
-    <nav class="drawer-nav" role="navigation">
-      <!-- reprends exactement tes liens -->
-      <a class="nav-link" href="../index.html">Accueil</a>
-      <a class="nav-link" href="#projects">Projets</a>
-      <a class="nav-link" href="#skills">Compétences</a>
-      <a class="nav-link" href="about.html">À propos</a>
-      <a class="nav-link" href="#contact" data-open-contact>Contact</a>
-    </nav>
-
-    <div class="drawer-footer">
-      <a class="drawer-cta" href="#contact" data-open-contact>
-        <i class="fas fa-paper-plane" aria-hidden="true"></i> Me contacter
-      </a>
-      <div class="drawer-socials">
-        <a href="https://github.com/RamyBenali" target="_blank" rel="noopener" aria-label="GitHub"><i class="fab fa-github"></i></a>
-        <a href="https://www.linkedin.com/in/ramy-benali-248b70282" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-        <a href="https://www.instagram.com/rmba.exe/" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-      </div>
-    </div>
-  </aside>
 
 <body class="dev-theme">
   <!-- Navigation -->
@@ -521,5 +491,37 @@
       });
     });
   </script>
+  <!-- Overlay cliquable (20%) -->
+<div id="drawer-overlay" class="drawer-overlay" hidden></div>
+
+<!-- Menu mobile off-canvas -->
+<aside id="mobile-drawer" class="mobile-drawer" aria-hidden="true" aria-labelledby="drawer-title">
+  <header class="drawer-header">
+    <h2 id="drawer-title">Menu</h2>
+    <button type="button" class="drawer-close" aria-label="Fermer le menu">×</button>
+  </header>
+
+  <nav class="drawer-nav" role="navigation">
+    <a class="nav-link" href="../index.html">Accueil</a>
+    <a class="nav-link" href="#projects">Projets</a>
+    <a class="nav-link" href="#skills">Compétences</a>
+    <a class="nav-link" href="about.html">À propos</a>
+    <a class="nav-link" href="#contact" data-open-contact>Contact</a>
+    <a class="drawer-cta" href="creative.html" data-open-contact>
+      <i class="fas fa-paint-brush" aria-hidden="true"></i> Creatif
+    </a>
+  </nav>
+
+  <div class="drawer-footer">
+    <a class="drawer-cta" href="#contact" data-open-contact>
+      <i class="fas fa-paper-plane" aria-hidden="true"></i> Me contacter
+    </a>
+    <div class="drawer-socials">
+      <a href="https://github.com/RamyBenali" target="_blank" rel="noopener" aria-label="GitHub"><i class="fab fa-github"></i></a>
+      <a href="https://www.linkedin.com/in/ramy-benali-248b70282" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+      <a href="https://www.instagram.com/rmba.exe/" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+    </div>
+  </div>
+</aside>
 </body>
 </html>

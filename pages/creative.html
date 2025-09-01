@@ -8,35 +8,6 @@
   <link rel="preconnect" href="https://cdnjs.cloudflare.com" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
 </head>
-<!-- Overlay cliquable (20%) -->
-<div id="drawer-overlay" class="drawer-overlay" hidden></div>
-
-<!-- Menu mobile off-canvas -->
-<aside id="mobile-drawer" class="mobile-drawer" aria-hidden="true" aria-labelledby="drawer-title">
-  <header class="drawer-header">
-    <h2 id="drawer-title">Menu</h2>
-    <button type="button" class="drawer-close" aria-label="Fermer le menu">×</button>
-  </header>
-
-  <nav class="drawer-nav" role="navigation">
-    <a class="nav-link" href="../index.html">Accueil</a>
-    <a class="nav-link" href="creative.html">Créatif</a>
-    <a class="nav-link" href="../pages/dev.html">Dév</a>
-    <a class="nav-link" href="../pages/about.html">À propos</a>
-    <a class="nav-link" href="#contact" data-open-contact>Contact</a>
-  </nav>
-
-  <div class="drawer-footer">
-    <a class="drawer-cta" href="#contact" data-open-contact>
-      <i class="fas fa-paper-plane" aria-hidden="true"></i> Me contacter
-    </a>
-    <div class="drawer-socials">
-      <a href="https://github.com/RamyBenali" target="_blank" rel="noopener" aria-label="GitHub"><i class="fab fa-github"></i></a>
-      <a href="https://www.linkedin.com/in/ramy-benali-248b70282" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-      <a href="https://www.instagram.com/rmba.exe/" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-    </div>
-  </div>
-</aside>
 
 <body class="creative-theme">
 
@@ -451,47 +422,75 @@
 
   <script src="../scripts/creative-page.js" defer></script>
   <script>
-window.addEventListener('DOMContentLoaded', () => {
-  const toggle  = document.getElementById('mobile-menu');
-  const drawer  = document.getElementById('mobile-drawer');
-  const overlay = document.getElementById('drawer-overlay');
+    window.addEventListener('DOMContentLoaded', () => {
+      const toggle  = document.getElementById('mobile-menu');
+      const drawer  = document.getElementById('mobile-drawer');
+      const overlay = document.getElementById('drawer-overlay');
 
-  if(!toggle || !drawer || !overlay) return;
+      if(!toggle || !drawer || !overlay) return;
 
-  function openDrawer(){
-    drawer.classList.add('is-open');
-    overlay.classList.add('is-open');
-    overlay.hidden = false;
-    document.body.classList.add('body-no-scroll');
-    toggle.setAttribute('aria-expanded','true');
-    drawer.setAttribute('aria-hidden','false');
-  }
-  function closeDrawer(){
-    drawer.classList.remove('is-open');
-    overlay.classList.remove('is-open');
-    document.body.classList.remove('body-no-scroll');
-    toggle.setAttribute('aria-expanded','false');
-    drawer.setAttribute('aria-hidden','true');
-    setTimeout(()=>{ overlay.hidden = true; }, 250);
-  }
+      function openDrawer(){
+        drawer.classList.add('is-open');
+        overlay.classList.add('is-open');
+        overlay.hidden = false;
+        document.body.classList.add('body-no-scroll');
+        toggle.setAttribute('aria-expanded','true');
+        drawer.setAttribute('aria-hidden','false');
+      }
+      function closeDrawer(){
+        drawer.classList.remove('is-open');
+        overlay.classList.remove('is-open');
+        document.body.classList.remove('body-no-scroll');
+        toggle.setAttribute('aria-expanded','false');
+        drawer.setAttribute('aria-hidden','true');
+        setTimeout(()=>{ overlay.hidden = true; }, 250);
+      }
 
-  toggle.addEventListener('click', () => {
-    drawer.classList.contains('is-open') ? closeDrawer() : openDrawer();
-  });
-  overlay.addEventListener('click', closeDrawer);
-  drawer.querySelector('.drawer-close')?.addEventListener('click', closeDrawer);
+      toggle.addEventListener('click', () => {
+        drawer.classList.contains('is-open') ? closeDrawer() : openDrawer();
+      });
+      overlay.addEventListener('click', closeDrawer);
+      drawer.querySelector('.drawer-close')?.addEventListener('click', closeDrawer);
 
-  // fermer après clic sur un lien du drawer
-  drawer.addEventListener('click', (e)=>{
-    if(e.target.closest('a, button[data-open-contact]')) closeDrawer();
-  });
+      drawer.addEventListener('click', (e)=>{
+        if(e.target.closest('a, button[data-open-contact]')) closeDrawer();
+      });
+      document.addEventListener('keydown', (e)=>{
+        if(e.key === 'Escape' && drawer.classList.contains('is-open')) closeDrawer();
+      });
+    });
+  </script>
+<!-- Overlay cliquable (20%) -->
+<div id="drawer-overlay" class="drawer-overlay" hidden></div>
 
-  // ESC pour fermer
-  document.addEventListener('keydown', (e)=>{
-    if(e.key === 'Escape' && drawer.classList.contains('is-open')) closeDrawer();
-  });
-});
-</script>
+<!-- Menu mobile off-canvas -->
+<aside id="mobile-drawer" class="mobile-drawer" aria-hidden="true" aria-labelledby="drawer-title">
+  <header class="drawer-header">
+    <h2 id="drawer-title">Menu</h2>
+    <button type="button" class="drawer-close" aria-label="Fermer le menu">×</button>
+  </header>
 
+  <nav class="drawer-nav" role="navigation">
+    <a class="nav-link" href="../index.html">Accueil</a>
+    <a class="nav-link" href="#showcase">Showcase</a>
+    <a class="nav-link" href="#skills">Compétences</a>
+    <a class="nav-link" href="../pages/about.html">À propos</a>
+    <a class="nav-link" href="#contact" data-open-contact>Contact</a>
+    <a class="drawer-cta" href="dev.html">
+      <i class="fas fa-code" aria-hidden="true"></i> Dev
+    </a>
+  </nav>
+
+  <div class="drawer-footer">
+    <a class="drawer-cta" href="#contact" data-open-contact>
+      <i class="fas fa-paper-plane" aria-hidden="true"></i> Me contacter
+    </a>
+    <div class="drawer-socials">
+      <a href="https://github.com/RamyBenali" target="_blank" rel="noopener" aria-label="GitHub"><i class="fab fa-github"></i></a>
+      <a href="https://www.linkedin.com/in/ramy-benali-248b70282" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+      <a href="https://www.instagram.com/rmba.exe/" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+    </div>
+  </div>
+</aside>
 </body>
 </html>

@@ -296,3 +296,48 @@ header {
   }
 }
 
+/* ====== MOBILE/TABLET – layout statique, 1 section = 100% écran ====== */
+@media (max-width: 900px){
+  /* réactiver le scroll et libérer la hauteur */
+  html, body{ height:auto; overflow:auto; }
+
+  /* la pile verticale */
+  .fullpage-slider{
+    flex-direction: column;
+    height: auto;
+    /* chaque section prend l’écran, la page scrolle vers la suivante */
+    scroll-snap-type: y mandatory;         /* optionnel mais agréable */
+  }
+
+  .option{
+    flex: none;
+    min-height: 100svh;                    /* 100% de l’écran */
+    scroll-snap-align: start;              /* snap propre au début */
+    transition: none;                      /* pas d’anim flex sur mobile */
+  }
+
+  /* lisibilité (inchangé visuellement) */
+  .option-overlay{ opacity:.6; }
+
+  /* annuler tout le masquage “au hover” sur mobile */
+  .fullpage-slider:hover .option:not(:hover) .option-content p,
+  .fullpage-slider:hover .option:not(:hover) .option-content .btn,
+  .fullpage-slider:hover .option:not(:hover) .option-content h2,
+  .fullpage-slider:hover .option:not(:hover) .option-content .option-icon{
+    opacity:1 !important;
+    visibility:visible !important;
+    transform:none !important;
+    font-size:inherit !important;
+    margin-bottom:initial !important;
+  }
+
+  /* neutraliser l’effet 80/20 */
+  .option:hover,
+  .option:not(:hover){
+    flex: initial;
+  }
+
+  /* si ton header/footer sont en absolute, on évite qu’ils chevauchent */
+  header{ position: sticky; top:0; }
+  footer{ position: static; }
+}

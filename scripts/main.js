@@ -66,5 +66,12 @@ document.addEventListener('DOMContentLoaded', function() {
     document.querySelector('.developer-option')?.addEventListener('click', ()=>applyTheme('dev'));
     document.querySelector('.creative-option')?.addEventListener('click',  ()=>applyTheme('creative'));
     })();
-
+    const prefersHover = matchMedia('(hover: hover)').matches;
+    if (window.innerWidth > 900 && prefersHover) {
+    const options = document.querySelectorAll('.option');
+    options.forEach(option => {
+        option.addEventListener('mouseenter', () => { option.style.flex = '4'; });
+        option.addEventListener('mouseleave', () => { option.style.flex = '1'; });
+    });
+    }
 });

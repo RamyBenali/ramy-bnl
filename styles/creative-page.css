@@ -1,3 +1,15 @@
+/* Par défaut (desktop) : drawer/overlay cachés */
+#mobile-drawer,
+#drawer-overlay{
+  display: none;
+}
+
+/* Mobile seulement : on les affiche */
+@media (max-width: 768px){
+  #drawer-overlay{ display:block; }   /* l'overlay existe mais reste invisible tant que pas .is-open */
+  #mobile-drawer{ display:flex; }     /* flex car ton panneau est en flex-column */
+}
+
 :root{
   --crea-primary:#1a1310;
   --crea-secondary:#221714;
