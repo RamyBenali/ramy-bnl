@@ -19,9 +19,10 @@
     $('.nav-logo span') && ($('.nav-logo span').textContent = tr.nav.back);
     const menu = $('#main-menu');
     if (menu) {
-      menu.querySelector('.nav-link:nth-child(1)')?.replaceChildren(tr.nav.projects);
-      menu.querySelector('.nav-link:nth-child(2)')?.replaceChildren(tr.nav.skills);
-      menu.querySelector('.nav-link:nth-child(3)')?.replaceChildren(tr.nav.about);
+      menu.querySelector('.nav-link:nth-child(1)')?.replaceChildren(tr.nav.home);
+      menu.querySelector('.nav-link:nth-child(2)')?.replaceChildren(tr.nav.projects);
+      menu.querySelector('.nav-link:nth-child(3)')?.replaceChildren(tr.nav.skills);
+      menu.querySelector('.nav-link:nth-child(4)')?.replaceChildren(tr.nav.about);
       menu.querySelector('.nav-link[data-open-contact]')?.replaceChildren(tr.nav.contact);
     }
     $('#drawer-title')?.replaceChildren(tr.nav.drawerTitle);
