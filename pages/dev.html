@@ -7,6 +7,37 @@
   <link rel="stylesheet" href="../styles/dev-page.css" />
   <link rel="preconnect" href="https://cdnjs.cloudflare.com" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+
+  <!-- i18n ADD: petit style pour le switch langue (pas de modif du CSS existant) -->
+  <style>
+    .lang-switch{
+      position: fixed; right: 18px; bottom: 18px; z-index: 11000;
+      user-select: none; -webkit-tap-highlight-color: transparent;
+    }
+    .lang-toggle{
+      position: relative; display: inline-grid; grid-template-columns: 1fr 1fr;
+      width: 120px; height: 40px; padding: 4px; border-radius: 999px;
+      background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.2);
+      backdrop-filter: blur(8px); font-weight: 800; letter-spacing: .2px;
+    }
+    .lang-toggle .lang-pill{
+      display: grid; place-items: center; font-size: .95rem; color: #e6e6e6;
+      z-index: 2;
+    }
+    .lang-toggle .thumb{
+      position: absolute; top: 4px; bottom: 4px; left: 4px;
+      width: calc(50% - 4px); border-radius: 999px;
+      background: #4cc9f0; color: #1a1a2e; display: grid; place-items: center;
+      font-size: .95rem; font-weight: 900;
+      transition: transform .28s cubic-bezier(.22,1,.36,1);
+      box-shadow: 0 8px 24px rgba(0,0,0,.25);
+      pointer-events: none;
+    }
+    #lang-toggle{ position: absolute; opacity: 0; inset: 0; }
+    /* quand coché => EN */
+    #lang-toggle:checked + .lang-toggle .thumb{ transform: translateX(100%); }
+  </style>
+  <!-- /i18n ADD -->
 </head>
 
 <body class="dev-theme">
@@ -595,5 +626,19 @@
     </div>
   </div>
 </aside>
+
+  <!-- i18n ADD: switch langue + import des fichiers i18n -->
+  <div class="lang-switch" aria-label="Language switch">
+    <input type="checkbox" id="lang-toggle" aria-label="Toggle language">
+    <label for="lang-toggle" class="lang-toggle" title="FR / EN">
+      <span class="lang-pill">FR</span>
+      <span class="lang-pill">EN</span>
+      <span class="thumb">FR</span>
+    </label>
+  </div>
+
+  <script src="../assets/i18n/dev-translations.js" defer></script>
+  <script src="../assets/i18n/dev-i18n.js" defer></script>
+  <!-- /i18n ADD -->
 </body>
 </html>

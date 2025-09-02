@@ -8,6 +8,14 @@
   <link rel="stylesheet" href="../styles/about-page.css" />
   <link rel="preconnect" href="https://cdnjs.cloudflare.com" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <style>
+  .lang-switch{position:fixed;right:18px;bottom:18px;z-index:11000;user-select:none;-webkit-tap-highlight-color:transparent}
+  .lang-toggle{position:relative;display:inline-grid;grid-template-columns:1fr 1fr;width:120px;height:40px;padding:4px;border-radius:999px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.2);backdrop-filter:blur(8px);font-weight:800;letter-spacing:.2px}
+  .lang-toggle .lang-pill{display:grid;place-items:center;font-size:.95rem;color:#e6e6e6;z-index:2}
+  .lang-toggle .thumb{position:absolute;top:4px;bottom:4px;left:4px;width:calc(50% - 4px);border-radius:999px;background:#9e7bff;color:#1a1a2e;display:grid;place-items:center;font-size:.95rem;font-weight:900;transition:transform .28s cubic-bezier(.22,1,.36,1);box-shadow:0 8px 24px rgba(0,0,0,.25);pointer-events:none}
+  #lang-toggle{position:absolute;opacity:0;inset:0}
+  #lang-toggle:checked + .lang-toggle .thumb{transform:translateX(100%)}
+</style>
 </head>
 
 <body>
@@ -22,6 +30,7 @@
         <span>Retour</span>
       </a>
       <div class="nav-menu" id="main-menu">
+        <a class="nav-link nav-home" href="../index.html">Accueil</a>
         <a class="nav-link" href="#resume">Parcours</a>
         <a class="nav-link" href="#tools">Outils</a>
         <a class="nav-link" href="#contact" data-open-contact aria-controls="contact-panel" aria-expanded="false">Contact</a>
@@ -99,9 +108,6 @@
       </div>
 
       <div class="info-cta">
-        <button class="nav-btn primary" type="button" data-open-contact aria-controls="contact-panel" aria-expanded="false">
-          <i class="fa-regular fa-paper-plane"></i> Me contacter
-        </button>
         <a class="nav-btn secondary" href="../assets/CV-ramy-benali.pdf" target="_blank" rel="noopener">
           <i class="fa-solid fa-download"></i> Télécharger le CV
         </a>
@@ -125,7 +131,7 @@
           <span class="pill">DA</span><span class="pill">Motion</span><span class="pill">Retouche</span>
           <span class="pill">UI/UX</span><span class="pill">Figma</span>
         </div>
-        <a class="btn" href="Mon Potfolio dev.html"><i class="fa-solid fa-code"></i>Dev</a>
+        <a class="btnprfl" href="creative.html"><i class="fa-solid fa-paint-brush"></i>Mon portfolio Creatif</a>
       </article>
 
       <article class="profile-card">
@@ -138,6 +144,7 @@
           <span class="pill">React</span><span class="pill">Node.js</span><span class="pill">Java / JavaFX</span>
           <span class="pill">Kotlin</span><span class="pill">MySQL</span>
         </div>
+        <a class="btnprfl" href="dev.html"><i class="fa-solid fa-code"></i>Mon portfolio Dev</a>
       </article>
     </div>
   </section>
@@ -316,6 +323,9 @@
       </nav>
 
       <div>
+        <a class="btn secondary" href="#contact" data-open-contact aria-controls="contact-panel" aria-expanded="false">
+          <i class="fa-regular fa-paper-plane"></i>Me contacter
+        </a>
         <div class="footer-social" aria-label="Réseaux sociaux">
           <a href="https://github.com/RamyBenali" target="_blank" rel="noopener"><i class="fab fa-github"></i></a>
           <a href="https://www.linkedin.com/in/ramy-benali-248b70282" target="_blank" rel="noopener"><i class="fab fa-linkedin-in"></i></a>
@@ -430,7 +440,7 @@
           const input = wrap.querySelector('input, select, textarea');
           const msg   = wrap.querySelector('.field-msg');
           if (input && !input.checkValidity()){
-            ok = false; if (msg) msg.textContent = 'Champ requis ou invalide';
+            ok = false; if (msg) msg.textContent = (window.__i18n_contact?.required || 'Champ requis ou invalide');
           } else if (msg){ msg.textContent = ''; }
         });
         return ok;
@@ -441,10 +451,10 @@
         if (!validate()) return;
         if (form.company && form.company.value) return;
 
-        statusEl.textContent = 'Envoi en cours...';
+        statusEl.textContent = (window.__i18n_contact?.sending || 'Envoi en cours...');
         sendBtn.disabled = true;
         setTimeout(()=>{
-          statusEl.textContent = 'Message envoyé. Merci !';
+          statusEl.textContent = (window.__i18n_contact?.sent || 'Message envoyé. Merci !');
           sendBtn.disabled = false;
           form.reset();
         }, 700);
@@ -527,6 +537,18 @@ window.addEventListener('DOMContentLoaded', () => {
     </div>
   </div>
 </aside>
+
+<div class="lang-switch" aria-label="Language switch">
+  <input type="checkbox" id="lang-toggle" aria-label="Toggle language">
+  <label for="lang-toggle" class="lang-toggle" title="FR / EN">
+    <span class="lang-pill">FR</span>
+    <span class="lang-pill">EN</span>
+    <span class="thumb">FR</span>
+  </label>
+</div>
+
+<script src="../assets/i18n/about-translations.js" defer></script>
+<script src="../assets/i18n/about-i18n.js" defer></script>
 
 </body>
 </html>

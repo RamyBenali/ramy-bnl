@@ -111,6 +111,11 @@ header {
     background-color: rgba(255, 255, 255, 0.1);
 }
 
+.btn-about:hover {
+    transform: translateY(-5px);
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
 .btn {
     padding: 15px 40px;
     background-color: transparent;
@@ -487,4 +492,84 @@ header {
 /* ——— Très petites largeurs: si ça serre, on cache la tagline ——— */
 @media (max-width: 360px){
   header .logo:last-of-type{ display:none; }
+}
+
+/* ---- Switch langue (fixé en bas à droite) ---- */
+.lang-switch{
+  position: fixed;
+  bottom: max(16px, env(safe-area-inset-bottom));
+  right:  max(16px, env(safe-area-inset-right));
+  z-index: 2000;
+}
+
+/* on cache la checkbox native */
+.lang-switch input{ position:absolute; opacity:0; pointer-events:none; }
+
+.lang-switch label{
+  --h: 36px;
+  --pad: 4px;
+  --thumb: calc(var(--h) - var(--pad)*2);
+
+  /* FIX 1: pas de "pad" au milieu -> 2×thumb + 2×pad (gauche/droite) */
+  width: calc(var(--thumb)*2 + var(--pad)*2);
+  height: var(--h);
+  padding: var(--pad);
+
+  /* FIX 2: chaque moitié = largeur de la pastille */
+  display: grid;
+  grid-template-columns: var(--thumb) var(--thumb);
+  align-items: center;
+  justify-items: center;
+
+  border-radius: 999px;
+  background: rgba(255,255,255,.14);
+  border: 1px solid rgba(255,255,255,.35);
+  color: #fff;
+  font-weight: 800;
+  font-size: .9rem;
+  letter-spacing: .2px;
+  backdrop-filter: blur(6px);
+  cursor: pointer;
+  position: relative;
+  user-select: none;
+}
+
+/* Pastille */
+.lang-switch label::after{
+  content:"";
+  position:absolute;
+  top: var(--pad);
+  left: var(--pad);
+  width:  var(--thumb);
+  height: var(--thumb);
+  border-radius: 999px;
+  background: #4cc9f0;
+  box-shadow: 0 6px 18px rgba(0,0,0,.25);
+  transition: transform .28s cubic-bezier(.22,1,.36,1);
+  z-index: 0;
+}
+
+/* Quand EN est actif (checkbox cochée), on décale la pastille
+   de sa largeur + l’espace central (= var(--pad)) */
+.lang-switch input:checked + label::after{
+  transform: translateX(var(--thumb));
+}
+
+/* Texte parfaitement centré dans chaque moitié */
+.lang-switch .lang-fr,
+.lang-switch .lang-en{
+  line-height: 1;
+  text-align: center;
+  z-index: 1;
+}
+
+/* Focus accessible */
+.lang-switch label:focus-within{
+  box-shadow: 0 0 0 3px rgba(76,201,240,.35);
+  outline: none;
+}
+
+/* plus compact sur petits écrans */
+@media (max-width: 480px){
+  .lang-switch label{ --h: 32px; --pad: 3px; font-size: .8rem; }
 }

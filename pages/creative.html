@@ -7,6 +7,14 @@
   <link rel="stylesheet" href="../styles/creative-page.css" />
   <link rel="preconnect" href="https://cdnjs.cloudflare.com" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+  <style>
+  .lang-switch{position:fixed;right:18px;bottom:18px;z-index:11000;user-select:none;-webkit-tap-highlight-color:transparent;}
+  .lang-toggle{position:relative;display:inline-grid;grid-template-columns:1fr 1fr;width:120px;height:40px;padding:4px;border-radius:999px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.2);backdrop-filter:blur(8px);font-weight:800;letter-spacing:.2px}
+  .lang-toggle .lang-pill{display:grid;place-items:center;font-size:.95rem;color:#e6e6e6;z-index:2}
+  .lang-toggle .thumb{position:absolute;top:4px;bottom:4px;left:4px;width:calc(50% - 4px);border-radius:999px;background:#ff8a65;color:#1a1a2e;display:grid;place-items:center;font-size:.95rem;font-weight:900;transition:transform .28s cubic-bezier(.22,1,.36,1);box-shadow:0 8px 24px rgba(0,0,0,.25);pointer-events:none}
+  #lang-toggle{position:absolute;opacity:0;inset:0}
+  #lang-toggle:checked + .lang-toggle .thumb{transform:translateX(100%)}
+</style>
 </head>
 
 <body class="creative-theme">
@@ -14,7 +22,9 @@
   <!-- NAV -->
   <nav class="navbar" role="navigation" aria-label="Navigation principale">
     <div class="nav-container">
-      <a class="nav-logo" href="../index.html" aria-label="Retour à l’accueil">
+      <a class="nav-logo" href="javascript:void(0)" 
+        onclick="if (document.referrer) { history.back(); } else { window.location.href='../index.html'; }" 
+        aria-label="Retour">
         <i class="fas fa-arrow-left" aria-hidden="true"></i>
         <span>Retour</span>
       </a>
@@ -138,8 +148,8 @@
             </div>
             <div class="card-meta">
             <span class="pill">Reel</span>
-            <h3>aylan_fast_and_good_7427918…</h3>
-            <p>Vidéo verticale (9:16) – Vimeo.</p>
+            <h3>Reel Bar Aylan</h3>
+            <p>Vidéo verticale (9:16)</p>
             </div>
         </article>
 
@@ -152,8 +162,8 @@
             </div>
             <div class="card-meta">
             <span class="pill">Reel</span>
-            <h3>aylan_fast_and_good_7420064…</h3>
-            <p>Vidéo verticale (9:16) – Vimeo.</p>
+            <h3>Reel Restaurant Aylan</h3>
+            <p>Vidéo verticale (9:16)</p>
             </div>
         </article>
 
@@ -167,8 +177,8 @@
             </div>
             <div class="card-meta">
             <span class="pill">Vidéo</span>
-            <h3>Drive — Vidéo 1</h3>
-            <p>Lecteur Google Drive intégré.</p>
+            <h3>Reel Bar Palmera</h3>
+            <p>Vidéo horizental (16:9)</p>
             </div>
         </article>
 
@@ -181,8 +191,8 @@
             </div>
             <div class="card-meta">
             <span class="pill">Vidéo</span>
-            <h3>Drive — Vidéo 2</h3>
-            <p>Lecteur Google Drive intégré.</p>
+            <h3>Reel Restaurant Le Belcourt</h3>
+            <p>Vidéo verticale (9:16)</p>
             </div>
         </article>
 
@@ -195,8 +205,8 @@
             </div>
             <div class="card-meta">
             <span class="pill">Vidéo</span>
-            <h3>Drive — Vidéo 3</h3>
-            <p>Lecteur Google Drive intégré.</p>
+            <h3>Reel Restaurant O'feeling</h3>
+            <p>Vidéo verticale (16:9)</p>
             </div>
         </article>
 
@@ -209,8 +219,8 @@
             </div>
             <div class="card-meta">
             <span class="pill">Vidéo</span>
-            <h3>Drive — Vidéo 4</h3>
-            <p>Lecteur Google Drive intégré.</p>
+            <h3>Vlog Personel</h3>
+            <p>Vidéo verticale (16:9)</p>
             </div>
         </article>
 
@@ -223,8 +233,8 @@
             </div>
             <div class="card-meta">
             <span class="pill">Vidéo</span>
-            <h3>Drive — Vidéo 5</h3>
-            <p>Lecteur Google Drive intégré.</p>
+            <h3>Trailer Plage Palmera</h3>
+            <p>Vidéo verticale (16:9)</p>
             </div>
         </article>
         <article class="masonry-item card card--figma"
@@ -499,5 +509,16 @@
     </div>
   </div>
 </aside>
+<div class="lang-switch" aria-label="Language switch">
+  <input type="checkbox" id="lang-toggle" aria-label="Toggle language">
+  <label for="lang-toggle" class="lang-toggle" title="FR / EN">
+    <span class="lang-pill">FR</span>
+    <span class="lang-pill">EN</span>
+    <span class="thumb">FR</span>
+  </label>
+</div>
+
+<script src="../assets/i18n/creative-translations.js" defer></script>
+<script src="../assets/i18n/creative-i18n.js" defer></script>
 </body>
 </html>
