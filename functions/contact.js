@@ -1,18 +1,17 @@
 // /functions/contact.js
 export async function onRequestPost({ request, env }) {
   try {
-    // ---------- 0) Lecture & validation des champs ----------
     const { name, email, subject, message, token } = await request.json().catch(() => ({}));
 
+    // 0) Validation basique
     if (!name || !email || !subject || !message || !token) {
       return json({ ok: false, error: "missing_fields" }, 400);
     }
-    // Petites limites anti-abus
     if (name.length > 120 || email.length > 200 || subject.length > 200 || message.length > 5000) {
       return json({ ok: false, error: "payload_too_large" }, 413);
     }
 
-    // ---------- 1) Vérification Turnstile ----------
+    // 1) Vérif Turnstile
     if (!env.TURNSTILE_SECRET) {
       return json({ ok: false, error: "missing_turnstile_secret" }, 500);
     }
@@ -31,13 +30,9 @@ export async function onRequestPost({ request, env }) {
       return json({ ok: false, error: "turnstile_failed", details: verifyJson }, 400);
     }
 
-    // ---------- 2) Envoi via Resend ----------
-    if (!env.RESEND_API_KEY) {
-      return json({ ok: false, error: "missing_resend_api_key" }, 500);
-    }
-    if (!env.CONTACT_TO) {
-      return json({ ok: false, error: "missing_contact_to" }, 500);
-    }
+    // 2) Envoi via Resend
+    if (!env.RESEND_API_KEY) return json({ ok: false, error: "missing_resend_api_key" }, 500);
+    if (!env.CONTACT_TO) return json({ ok: false, error: "missing_contact_to" }, 500);
 
     const clean = {
       name: escapeHtml(name),
@@ -63,8 +58,8 @@ ${clean.message}`;
 <strong>Subject:</strong> ${clean.subject}</p>
 <pre style="white-space:pre-wrap;font-family:inherit">${clean.message}</pre>`;
 
-    const resendPayload = {
-      from: "Portfolio <onboarding@resend.dev>",
+    const payload = {
+      from: "Portfolio <onboarding@resend.dev>", // pas besoin de domaine custom
       to: [env.CONTACT_TO],
       subject: `[Portfolio] ${clean.subject} — ${clean.name}`,
       reply_to: clean.email,
@@ -78,13 +73,16 @@ ${clean.message}`;
         "Authorization": `Bearer ${env.RESEND_API_KEY}`,
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(resendPayload),
+      body: JSON.stringify(payload),
     });
 
-    const rJson = await r.json().catch(() => ({}));
+    const rText = await r.text(); // pour voir brut en cas d’erreur
+    let rJson = {};
+    try { rJson = JSON.parse(rText); } catch {}
+
     if (!r.ok) {
-      // rJson contient souvent { name, message } utile pour débug dans le dashboard
-      return json({ ok: false, error: "resend_failed", details: rJson }, 502);
+      // renvoie TOUT ce que répond Resend -> visible dans la preview/console
+      return json({ ok: false, error: "resend_failed", status: r.status, body: rText }, 502);
     }
 
     return json({ ok: true, id: rJson.id || null });
@@ -93,7 +91,6 @@ ${clean.message}`;
   }
 }
 
-// ---------- Helpers ----------
 function json(obj, status = 200) {
   return new Response(JSON.stringify(obj), {
     status,
