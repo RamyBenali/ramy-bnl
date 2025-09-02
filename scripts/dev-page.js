@@ -427,4 +427,51 @@ document.addEventListener('DOMContentLoaded', function () {
   initImageErrorFallback();
   initProjectModal();
   debugButtons();
+
+  form.addEventListener('submit', async (e) => {
+  e.preventDefault();
+  if (!validate()) return;
+  if (form.company && form.company.value) return; // honeypot
+
+  sendBtn.disabled = true;
+  if (statusEl) statusEl.textContent = window.__i18n_contact?.sending || 'Sending...';
+
+  try {
+    // Récupère le token Turnstile depuis l’input auto-injecté
+    const tokenInput = form.querySelector('input[name="cf-turnstile-response"]');
+    const token = tokenInput ? tokenInput.value : '';
+
+    const payload = {
+      name: form.name.value.trim(),
+      email: form.email.value.trim(),
+      subject: form.subject.value.trim(),
+      message: form.message.value.trim(),
+      token
+    };
+
+    const res = await fetch('/contact', {
+      method: 'POST',
+      headers: { 'content-type': 'application/json' },
+      body: JSON.stringify(payload)
+    });
+
+    const data = await res.json();
+
+    if (res.ok && data.ok) {
+      if (statusEl) statusEl.textContent = window.__i18n_contact?.sent || 'Message sent. Thanks!';
+      form.reset();
+      // Reset Turnstile (si tu veux que l’utilisateur puisse renvoyer un autre message)
+      if (window.turnstile && typeof turnstile.reset === 'function') {
+        turnstile.reset();
+      }
+    } else {
+      throw new Error(data.error || 'Unknown error');
+    }
+  } catch (err) {
+    if (statusEl) statusEl.textContent = (window.__i18n_contact?.error || 'An error occurred') + ' : ' + err.message;
+  } finally {
+    sendBtn.disabled = false;
+  }
+});
+
 });

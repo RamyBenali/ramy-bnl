@@ -1,88 +1,83 @@
-export async function onRequest(context) {
-  const { request, env } = context;
-
-  // CORS
-  const corsHeaders = {
-    "Access-Control-Allow-Origin": env.ALLOWED_ORIGIN || "*",
-    "Access-Control-Allow-Headers": "Content-Type",
-    "Access-Control-Allow-Methods": "POST, OPTIONS"
-  };
-
-  if (request.method === "OPTIONS") {
-    return new Response(null, { headers: corsHeaders });
-  }
-
-  if (request.method !== "POST") {
-    return new Response(JSON.stringify({ message: "Method not allowed" }), {
-      status: 405,
-      headers: { "Content-Type": "application/json", ...corsHeaders }
-    });
-  }
-
-  let data;
+// /functions/contact.js
+export async function onRequestPost({ request, env }) {
   try {
-    data = await request.json();
-  } catch {
-    return new Response(JSON.stringify({ message: "Invalid JSON" }), {
-      status: 400,
-      headers: { "Content-Type": "application/json", ...corsHeaders }
+    const { name, email, subject, message, token } = await request.json().catch(() => ({}));
+
+    // Validation minimale
+    if (!name || !email || !subject || !message || !token) {
+      return json({ ok: false, error: "missing_fields" }, 400);
+    }
+
+    // 1) Vérif Turnstile
+    const formData = new URLSearchParams();
+    formData.append("secret", env.TURNSTILE_SECRET);
+    formData.append("response", token);
+    const ip = request.headers.get("CF-Connecting-IP");
+    if (ip) formData.append("remoteip", ip);
+
+    const verifyResp = await fetch(
+      "https://challenges.cloudflare.com/turnstile/v0/siteverify",
+      { method: "POST", body: formData }
+    );
+    const verifyJson = await verifyResp.json();
+    if (!verifyJson.success) {
+      return json({ ok: false, error: "turnstile_failed" }, 400);
+    }
+
+    // 2) Envoi email via MailChannels
+    const mail = {
+      personalizations: [{ to: [{ email: env.MAIL_TO }] }],
+      from: { email: env.MAIL_FROM, name: "Portfolio Contact" },
+      subject: `[Portfolio] ${subject} — ${name}`,
+      content: [
+        {
+          type: "text/plain",
+          value:
+`Nom: ${name}
+Email: ${email}
+Sujet: ${subject}
+
+Message:
+${message}`
+        },
+        {
+          type: "text/html",
+          value:
+`<h3>Nouveau message depuis le portfolio</h3>
+<p><strong>Nom:</strong> ${escapeHtml(name)}<br/>
+<strong>Email:</strong> ${escapeHtml(email)}<br/>
+<strong>Sujet:</strong> ${escapeHtml(subject)}</p>
+<p style="white-space:pre-wrap">${escapeHtml(message)}</p>`
+        }
+      ]
+    };
+
+    const mc = await fetch("https://api.mailchannels.net/tx/v1/send", {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify(mail)
     });
+
+    if (!mc.ok) {
+      const txt = await mc.text();
+      return json({ ok: false, error: "mail_send_failed", details: txt }, 500);
+    }
+
+    return json({ ok: true });
+  } catch (err) {
+    return json({ ok: false, error: "server_error", details: String(err) }, 500);
   }
+}
 
-  const { name, email, subject, message, turnstileToken } = data;
-
-  if (!name || !email || !subject || !message) {
-    return new Response(JSON.stringify({ message: "Missing fields" }), {
-      status: 400,
-      headers: { "Content-Type": "application/json", ...corsHeaders }
-    });
-  }
-
-  // Vérif Turnstile
-  const verifyRes = await fetch("https://challenges.cloudflare.com/turnstile/v0/siteverify", {
-    method: "POST",
-    body: new URLSearchParams({
-      secret: env.TURNSTILE_SECRET,
-      response: turnstileToken,
-      remoteip: request.headers.get("CF-Connecting-IP") || ""
-    })
+function json(obj, status = 200) {
+  return new Response(JSON.stringify(obj), {
+    status,
+    headers: { "content-type": "application/json" }
   });
-  const verifyJson = await verifyRes.json();
-  if (!verifyJson.success) {
-    return new Response(JSON.stringify({ message: "Captcha failed" }), {
-      status: 400,
-      headers: { "Content-Type": "application/json", ...corsHeaders }
-    });
-  }
+}
 
-  // Envoi email via MailChannels
-  const mailPayload = {
-    personalizations: [{ to: [{ email: env.TO_EMAIL }] }],
-    from: { email: env.FROM_EMAIL, name: "Portfolio Contact" },
-    reply_to: { email, name },
-    subject: `[Portfolio] ${subject}`,
-    content: [{
-      type: "text/plain",
-      value: `Nom: ${name}\nEmail: ${email}\nSujet: ${subject}\n\nMessage:\n${message}`
-    }]
-  };
-
-  const r = await fetch("https://api.mailchannels.net/tx/v1/send", {
-    method: "POST",
-    headers: { "content-type": "application/json" },
-    body: JSON.stringify(mailPayload)
-  });
-
-  if (!r.ok) {
-    const txt = await r.text();
-    return new Response(JSON.stringify({ message: "Mail send failed", detail: txt }), {
-      status: 502,
-      headers: { "Content-Type": "application/json", ...corsHeaders }
-    });
-  }
-
-  return new Response(JSON.stringify({ ok: true }), {
-    status: 200,
-    headers: { "Content-Type": "application/json", ...corsHeaders }
-  });
+function escapeHtml(s = "") {
+  return s.replace(/[&<>"']/g, c => (
+    { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#039;" }[c]
+  ));
 }
