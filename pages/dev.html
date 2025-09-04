@@ -20,7 +20,7 @@
 
   <!-- Turnstile: onload propre + rendu à la demande -->
   <script>
-    // ⚠️ Mets ici ta vraie SITE KEY publique Turnstile :
+    // ⚠️ Ta vraie SITE KEY publique Turnstile :
     const CF_SITE_KEY = '0x4AAAAAABxow_e5JSJvlAmw';
 
     let cfReady = false;
@@ -390,6 +390,14 @@
         return ok;
       }
 
+      // === fetch avec timeout pour éviter le blocage ===
+      function fetchWithTimeout(resource, options = {}, ms = 12000){
+        const controller = new AbortController();
+        const id = setTimeout(() => controller.abort(), ms);
+        const opts = { ...options, signal: controller.signal };
+        return fetch(resource, opts).finally(() => clearTimeout(id));
+      }
+
       form.addEventListener('submit', async (e)=>{
         e.preventDefault();
         if(!validate()) return;
@@ -410,7 +418,7 @@
         if(statusEl) statusEl.textContent = "Envoi en cours...";
 
         try {
-          const res  = await fetch('/contact.php', {
+          const res  = await fetchWithTimeout('../contact.php', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(payload)
@@ -428,7 +436,8 @@
             form.reset();
           }
         } catch (err) {
-          if (statusEl) statusEl.textContent = `Erreur réseau : ${String(err)}`;
+          const msg = (err && err.name === 'AbortError') ? 'Délai dépassé, réessaie.' : `Erreur réseau : ${String(err)}`;
+          if (statusEl) statusEl.textContent = msg;
         } finally {
           sendBtn.disabled = false;
           try { if (cfWidgetId !== null && window.turnstile) turnstile.reset(cfWidgetId); } catch {}
