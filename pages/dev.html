@@ -382,8 +382,29 @@
           </div>
         </div>
         <!-- Remplace par TA site key publique Turnstile -->
-        <div class="cf-turnstile" data-sitekey="0x4AAAAAABxow_e5JSJvlAmw"></div>
+        <!-- champ caché pour le token -->
+        <input type="hidden" id="cf-token" name="cf-token" value="">
+
+        <!-- Turnstile (avec callbacks) -->
+        <div class="cf-turnstile"
+            data-sitekey="0x4AAAAAABxow_e5JSJvlAmw"
+            data-callback="onTurnstileSuccess"
+            data-error-callback="onTurnstileError"
+            data-expired-callback="onTurnstileExpired"></div>
         <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+        <script>
+          // callbacks appelés par Turnstile
+          window.onTurnstileSuccess = function (token) {
+            document.getElementById('cf-token').value = token;
+          };
+          window.onTurnstileExpired = function () {
+            document.getElementById('cf-token').value = '';
+          };
+          window.onTurnstileError = function () {
+            document.getElementById('cf-token').value = '';
+          };
+        </script>
+
         <div class="form-actions">
           <button id="send-btn" class="cta-btn primary" type="submit">Envoyer</button>
           <p class="form-status" role="status" aria-live="polite"></p>
@@ -484,11 +505,47 @@
         if(statusEl) statusEl.textContent = 'Envoi en cours...';
 
         // Placeholder d’envoi. Branchez votre /api/contact plus tard.
-        setTimeout(()=>{
-          if(statusEl) statusEl.textContent = 'Message envoyé. Merci, nous revenons vers vous rapidement.';
-          form.reset();
+        try {
+          const token = document.getElementById('cf-token')?.value || '';
+          if (!token) {
+            if (statusEl) statusEl.textContent = "Vérification anti-bot requise. Merci de cocher le widget.";
+            sendBtn.disabled = false;
+            return;
+          }
+
+          const payload = {
+            name:    document.getElementById('name').value.trim(),
+            email:   document.getElementById('email').value.trim(),
+            subject: document.getElementById('subject').value.trim(),
+            message: document.getElementById('message').value.trim(),
+            token
+          };
+
+          // ⚠️ URL Pages Functions :
+          // un fichier /functions/contact.js => endpoint public /contact (pas /functions/contact)
+          const res = await fetch('/contact', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload)
+          });
+
+          const data = await res.json().catch(()=> ({}));
+
+          if (!res.ok || data.ok === false) {
+            const msg = (data && (data.error || data.body || data.details)) || 'Erreur serveur';
+            if (statusEl) statusEl.textContent = `Échec de l’envoi : ${msg}`;
+          } else {
+            if (statusEl) statusEl.textContent = 'Message envoyé. Merci, je reviens vers vous rapidement.';
+            form.reset();
+          }
+        } catch (err) {
+          if (statusEl) statusEl.textContent = `Erreur réseau : ${String(err)}`;
+        } finally {
           sendBtn.disabled = false;
-        }, 600);
+          // Réinitialise le widget pour regénérer un token pour un prochain envoi
+          try { turnstile.reset(); } catch {}
+          document.getElementById('cf-token').value = '';
+        }
       });
     })();
 
