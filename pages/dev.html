@@ -17,6 +17,30 @@
     #lang-toggle{position:absolute;opacity:0;inset:0}
     #lang-toggle:checked + .lang-toggle .thumb{transform:translateX(100%)}
   </style>
+
+  <!-- Turnstile: onload propre + rendu à la demande -->
+  <script>
+    // ⚠️ Mets ici ta vraie SITE KEY publique Turnstile :
+    const CF_SITE_KEY = '0x4AAAAAABxow_e5JSJvlAmw';
+
+    let cfReady = false;
+    let cfWidgetId = null;
+
+    function turnstileOnload(){ cfReady = true; } // appelé par ?onload=
+    function renderTurnstileIfNeeded(){
+      if (!cfReady || !window.turnstile) return;
+      if (cfWidgetId !== null) return;
+      const host = document.querySelector('#cf-container');
+      if (!host) return;
+      cfWidgetId = turnstile.render('#cf-container', {
+        sitekey: CF_SITE_KEY,
+        callback: (token)=>{ document.getElementById('cf-token').value = token; },
+        'expired-callback': ()=>{ document.getElementById('cf-token').value = ''; },
+        'error-callback':   ()=>{ document.getElementById('cf-token').value = ''; }
+      });
+    }
+  </script>
+  <script src="https://challenges.cloudflare.com/turnstile/v0/api.js?onload=turnstileOnload" async defer></script>
 </head>
 
 <body class="dev-theme">
@@ -317,23 +341,7 @@
   </div>
 
   <!-- Scripts -->
-  <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
   <script src="../scripts/dev-page.js" defer></script>
-
-  <script>
-    // ===== Turnstile render à l'ouverture de la modale =====
-    let cfWidgetId = null;
-    function renderTurnstileIfNeeded() {
-      if (!window.turnstile) return;
-      if (cfWidgetId !== null) return;
-      cfWidgetId = turnstile.render('#cf-container', {
-        sitekey: '0x4AAAAAABxow_e5JSJvlAmw', // <-- ta vraie site key publique
-        callback: (token) => { document.getElementById('cf-token').value = token; },
-        'expired-callback': () => { document.getElementById('cf-token').value = ''; },
-        'error-callback':   () => { document.getElementById('cf-token').value = ''; }
-      });
-    }
-  </script>
 
   <script>
     // Bouton retour en haut
@@ -341,7 +349,7 @@
       window.scrollTo({ top: 0, behavior: 'smooth' });
     });
 
-    // Ouverture panneau contact + rendu Turnstile
+    // Ouverture panneau contact + rendu Turnstile au bon moment
     (function(){
       const panel   = document.getElementById('contact-panel');
       const openers = document.querySelectorAll('[data-open-contact]');
@@ -357,8 +365,7 @@
         panel.setAttribute('aria-hidden','false');
         openers.forEach(b=>b.setAttribute('aria-expanded','true'));
         setTimeout(()=>document.getElementById('name')?.focus(), 120);
-        // >>> Render Turnstile maintenant que la modale est visible
-        setTimeout(renderTurnstileIfNeeded, 50);
+        renderTurnstileIfNeeded();
       }
       function closePanel(){
         panel.classList.remove('active');
@@ -370,7 +377,6 @@
       panel.addEventListener('click', e=>{ if(e.target === panel) closePanel(); });
       document.addEventListener('keydown', e=>{ if(e.key === 'Escape') closePanel(); });
 
-      // Validation simple
       function validate(){
         let ok = true;
         form.querySelectorAll('.form-field').forEach(f=>{
@@ -384,7 +390,6 @@
         return ok;
       }
 
-      // Envoi formulaire vers /contact.php
       form.addEventListener('submit', async (e)=>{
         e.preventDefault();
         if(!validate()) return;
@@ -410,9 +415,13 @@
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(payload)
           });
-          const data = await res.json().catch(()=> ({}));
+
+          let data = {};
+          try { data = await res.clone().json(); }
+          catch { data = { raw: await res.text() }; }
+
           if (!res.ok || data.ok === false) {
-            const msg = (data && (data.error || data.body || data.details)) || 'Erreur serveur';
+            const msg = data.error || data.details || data.body || data.raw || ('HTTP '+res.status);
             if (statusEl) statusEl.textContent = `Échec : ${msg}`;
           } else {
             if (statusEl) statusEl.textContent = 'Message envoyé. Merci !';
@@ -428,7 +437,7 @@
       });
     })();
 
-    // Menu mobile
+    // Menu mobile (tel quel)
     window.addEventListener('DOMContentLoaded', () => {
       const toggle  = document.getElementById('mobile-menu');
       const drawer  = document.getElementById('mobile-drawer');

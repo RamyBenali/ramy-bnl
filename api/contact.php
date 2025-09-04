@@ -3,9 +3,10 @@
 // PHP 7.4+ / 8.x, extension cURL activée
 
 // ============ CONFIG ============
-$RESEND_API_KEY   = getenv('RESEND_API_KEY') ?: 're_iaUkVPMN_DFrsxnMFasTvANPnDE8uLDaj';
-$CONTACT_TO       = getenv('CONTACT_TO')      ?: 'benali.ramy.2@gmail.com';
-$TURNSTILE_SECRET = getenv('TURNSTILE_SECRET')?: '0x4AAAAAABxow386ItI7s5HfFW5mYeVvWMU';
+$RESEND_API_KEY   = getenv('RESEND_API_KEY')   ?: 're_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx';
+$CONTACT_TO       = getenv('CONTACT_TO')       ?: 'benali.ramy.2@gmail.com';
+// ⚠️ SECRET qui correspond à la SITE KEY utilisée dans le HTML
+$TURNSTILE_SECRET = getenv('TURNSTILE_SECRET') ?: '0x4AAAAAABxow386ItI7s5HfFW5mYeVvWMU';
 
 $FROM_EMAIL = 'onboarding@resend.dev';   // OK sans domaine vérifié
 $FROM_NAME  = 'Portfolio Contact';
@@ -20,12 +21,12 @@ function json_response($data, int $status = 200) {
 }
 function escape_html($s){ return htmlspecialchars((string)$s, ENT_QUOTES|ENT_SUBSTITUTE, 'UTF-8'); }
 
-// Autoriser uniquement POST
+// POST uniquement
 if (($_SERVER['REQUEST_METHOD'] ?? 'GET') !== 'POST') {
   json_response(['ok'=>false,'error'=>'method_not_allowed'],405);
 }
 
-// Récup body JSON ou form-encoded
+// Body JSON ou form-encoded
 $raw  = file_get_contents('php://input');
 $body = json_decode($raw, true);
 if (!is_array($body)) { $body = $_POST; }
@@ -62,7 +63,7 @@ curl_setopt_array($ch, [
   CURLOPT_POST           => true,
   CURLOPT_POSTFIELDS     => http_build_query($tsFields),
   CURLOPT_RETURNTRANSFER => true,
-  CURLOPT_TIMEOUT        => 10,
+  CURLOPT_TIMEOUT        => 12,
 ]);
 $tsResp = curl_exec($ch);
 $tsErr  = curl_error($ch);
@@ -101,13 +102,13 @@ $htmlBody = '<h3>New message from portfolio</h3>'
           . '<p><strong>Name:</strong> '.$clean['name'].'<br>'
           . '<strong>Email:</strong> '.$clean['email'].'<br>'
           . '<strong>Subject:</strong> '.$clean['subject'].'</p>'
-          . '<pre style="white-space:pre-wrap;font-family:inherit;">'.$clean['message'].'</pre>';
+          . '<pre style="white-space:pre-wrap;font-family:inherit">'.$clean['message'].'</pre>';
 
 $payload = [
   'from'     => "{$FROM_NAME} <{$FROM_EMAIL}>",
   'to'       => [ $CONTACT_TO ],
   'subject'  => "[Portfolio] {$clean['subject']} — {$clean['name']}",
-  'reply_to' => $clean['email'], // tu pourras répondre direct
+  'reply_to' => $clean['email'],
   'text'     => $textBody,
   'html'     => $htmlBody,
 ];
@@ -134,7 +135,6 @@ if ($rResp === false) {
 $respJson = json_decode($rResp, true);
 
 if ($rCode < 200 || $rCode >= 300) {
-  // Resend renvoie l’erreur utile ici
   json_response(['ok'=>false,'error'=>'resend_failed','status'=>$rCode,'body'=>$respJson ?: $rResp],502);
 }
 
