@@ -383,26 +383,19 @@
         </div>
         <!-- Remplace par TA site key publique Turnstile -->
         <!-- champ caché pour le token -->
-        <input type="hidden" id="cf-token" name="cf-token" value="">
+        <input type="hidden" id="cf-token" name="token" value="">
 
         <!-- Turnstile (avec callbacks) -->
         <div class="cf-turnstile"
-            data-sitekey="0x4AAAAAABxow_e5JSJvlAmw"
-            data-callback="onTurnstileSuccess"
-            data-error-callback="onTurnstileError"
-            data-expired-callback="onTurnstileExpired"></div>
+          data-sitekey="TA_SITE_KEY_PUBLIQUE"
+          data-callback="onTurnstileSuccess"
+          data-error-callback="onTurnstileError"
+          data-expired-callback="onTurnstileExpired"></div>
         <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
         <script>
-          // callbacks appelés par Turnstile
-          window.onTurnstileSuccess = function (token) {
-            document.getElementById('cf-token').value = token;
-          };
-          window.onTurnstileExpired = function () {
-            document.getElementById('cf-token').value = '';
-          };
-          window.onTurnstileError = function () {
-            document.getElementById('cf-token').value = '';
-          };
+          window.onTurnstileSuccess = (token) => { document.getElementById('cf-token').value = token; };
+          window.onTurnstileExpired = () => { document.getElementById('cf-token').value = ''; };
+          window.onTurnstileError   = () => { document.getElementById('cf-token').value = ''; };
         </script>
 
         <div class="form-actions">
@@ -412,6 +405,64 @@
       </form>
     </div>
   </section>
+  <script>
+  // Callbacks Turnstile
+  window.onTurnstileSuccess = (token) => {
+    document.getElementById('cf-token').value = token;
+  };
+  window.onTurnstileExpired = () => { document.getElementById('cf-token').value = ''; };
+  window.onTurnstileError   = () => { document.getElementById('cf-token').value = ''; };
+
+  (function () {
+    const form     = document.getElementById('contact-form');
+    const sendBtn  = document.getElementById('send-btn');
+    const statusEl = document.querySelector('.form-status');
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      // anti-bot + validation rapide
+      const token = document.getElementById('cf-token').value;
+      if (!token) { statusEl.textContent = "Vérification anti-bot requise."; return; }
+
+      const payload = {
+        name:    document.getElementById('name').value.trim(),
+        email:   document.getElementById('email').value.trim(),
+        subject: document.getElementById('subject').value.trim(),
+        message: document.getElementById('message').value.trim(),
+        token   // Turnstile
+      };
+
+      sendBtn.disabled = true;
+      statusEl.textContent = "Envoi en cours...";
+
+      try {
+        // ➜ adapte le chemin si ton fichier est dans /api/contact.php
+        const res  = await fetch('/contact.php', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+        const data = await res.json().catch(() => ({}));
+
+        if (!res.ok || data.ok === false) {
+          const msg = (data && (data.error || data.body || data.details)) || 'Erreur serveur';
+          statusEl.textContent = `Échec : ${msg}`;
+        } else {
+          statusEl.textContent = 'Message envoyé. Merci !';
+          form.reset();
+        }
+      } catch (err) {
+        statusEl.textContent = `Erreur réseau : ${String(err)}`;
+      } finally {
+        sendBtn.disabled = false;
+        try { turnstile.reset(); } catch {}
+        document.getElementById('cf-token').value = '';
+      }
+    });
+  })();
+</script>
+
 
   <!-- Modale projet -->
   <div class="project-modal" id="projectModal" aria-hidden="true">
