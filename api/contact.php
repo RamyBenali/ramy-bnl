@@ -3,7 +3,7 @@
 // PHP 7.4+ / 8.x, extension cURL activée
 
 // ============ CONFIG ============
-$RESEND_API_KEY   = getenv('RESEND_API_KEY')   ?: 're_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx';
+$RESEND_API_KEY   = getenv('RESEND_API_KEY')   ?: 're_iaUkVPMN_DFrsxnMFasTvANPnDE8uLDaj';
 $CONTACT_TO       = getenv('CONTACT_TO')       ?: 'benali.ramy.2@gmail.com';
 // ⚠️ SECRET qui correspond à la SITE KEY utilisée dans le HTML
 $TURNSTILE_SECRET = getenv('TURNSTILE_SECRET') ?: '0x4AAAAAABxow386ItI7s5HfFW5mYeVvWMU';
