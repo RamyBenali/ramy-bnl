@@ -8,36 +8,15 @@
   <link rel="preconnect" href="https://cdnjs.cloudflare.com" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
 
-  <!-- i18n ADD: petit style pour le switch langue (pas de modif du CSS existant) -->
+  <!-- i18n ADD: style pour le switch langue -->
   <style>
-    .lang-switch{
-      position: fixed; right: 18px; bottom: 18px; z-index: 11000;
-      user-select: none; -webkit-tap-highlight-color: transparent;
-    }
-    .lang-toggle{
-      position: relative; display: inline-grid; grid-template-columns: 1fr 1fr;
-      width: 120px; height: 40px; padding: 4px; border-radius: 999px;
-      background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.2);
-      backdrop-filter: blur(8px); font-weight: 800; letter-spacing: .2px;
-    }
-    .lang-toggle .lang-pill{
-      display: grid; place-items: center; font-size: .95rem; color: #e6e6e6;
-      z-index: 2;
-    }
-    .lang-toggle .thumb{
-      position: absolute; top: 4px; bottom: 4px; left: 4px;
-      width: calc(50% - 4px); border-radius: 999px;
-      background: #4cc9f0; color: #1a1a2e; display: grid; place-items: center;
-      font-size: .95rem; font-weight: 900;
-      transition: transform .28s cubic-bezier(.22,1,.36,1);
-      box-shadow: 0 8px 24px rgba(0,0,0,.25);
-      pointer-events: none;
-    }
-    #lang-toggle{ position: absolute; opacity: 0; inset: 0; }
-    /* quand coché => EN */
-    #lang-toggle:checked + .lang-toggle .thumb{ transform: translateX(100%); }
+    .lang-switch{position:fixed;right:18px;bottom:18px;z-index:11000;user-select:none;-webkit-tap-highlight-color:transparent}
+    .lang-toggle{position:relative;display:inline-grid;grid-template-columns:1fr 1fr;width:120px;height:40px;padding:4px;border-radius:999px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.2);backdrop-filter:blur(8px);font-weight:800;letter-spacing:.2px}
+    .lang-toggle .lang-pill{display:grid;place-items:center;font-size:.95rem;color:#e6e6e6;z-index:2}
+    .lang-toggle .thumb{position:absolute;top:4px;bottom:4px;left:4px;width:calc(50% - 4px);border-radius:999px;background:#4cc9f0;color:#1a1a2e;display:grid;place-items:center;font-size:.95rem;font-weight:900;transition:transform .28s cubic-bezier(.22,1,.36,1);box-shadow:0 8px 24px rgba(0,0,0,.25);pointer-events:none}
+    #lang-toggle{position:absolute;opacity:0;inset:0}
+    #lang-toggle:checked + .lang-toggle .thumb{transform:translateX(100%)}
   </style>
-  <!-- /i18n ADD -->
 </head>
 
 <body class="dev-theme">
@@ -70,6 +49,7 @@
       </button>
     </div>
   </nav>
+
   <header class="dev-hero" id="top">
     <div class="hero-content">
       <div class="hero-intro">
@@ -88,33 +68,15 @@
       </p>
 
       <div class="hero-highlights" role="list">
-        <div class="highlight-item" role="listitem">
-          <i class="fas fa-code" aria-hidden="true"></i>
-          <span>Polyvalent et adaptable</span>
-        </div>
-        <div class="highlight-item" role="listitem">
-          <i class="fas fa-lightbulb" aria-hidden="true"></i>
-          <span>Créatif et innovant</span>
-        </div>
-        <div class="highlight-item" role="listitem">
-          <i class="fas fa-rocket" aria-hidden="true"></i>
-          <span>Dynamique et motivé</span>
-        </div>
+        <div class="highlight-item" role="listitem"><i class="fas fa-code" aria-hidden="true"></i><span>Polyvalent et adaptable</span></div>
+        <div class="highlight-item" role="listitem"><i class="fas fa-lightbulb" aria-hidden="true"></i><span>Créatif et innovant</span></div>
+        <div class="highlight-item" role="listitem"><i class="fas fa-rocket" aria-hidden="true"></i><span>Dynamique et motivé</span></div>
       </div>
 
       <div class="hero-actions">
-        <a class="cta-btn primary" href="#projects">
-          <i class="fas fa-eye" aria-hidden="true"></i>
-          <span>Voir mes projets</span>
-        </a>
-        <a class="cta-btn secondary" href="#contact" data-open-contact aria-controls="contact-panel" aria-expanded="false">
-          <i class="fas fa-paper-plane" aria-hidden="true"></i>
-          <span>Me contacter</span>
-        </a>
-        <a class="cta-btn secondary" href="about.html" aria-expanded="false">
-          <i class="fas fa-address-card" aria-hidden="true"></i>
-          <span>À propos</span>
-        </a>
+        <a class="cta-btn primary" href="#projects"><i class="fas fa-eye" aria-hidden="true"></i><span>Voir mes projets</span></a>
+        <a class="cta-btn secondary" href="#contact" data-open-contact aria-controls="contact-panel" aria-expanded="false"><i class="fas fa-paper-plane" aria-hidden="true"></i><span>Me contacter</span></a>
+        <a class="cta-btn secondary" href="about.html" aria-expanded="false"><i class="fas fa-address-card" aria-hidden="true"></i><span>À propos</span></a>
       </div>
     </div>
 
@@ -141,94 +103,62 @@
       <h2 class="section-title" id="projects-title">Mes <span class="accent">Projets</span></h2>
 
       <div class="projects-grid">
-        <!-- Project 1 -->
+        <!-- Project cards (inchangés) -->
         <article class="project-card">
-          <div class="project-image" style="background: linear-gradient(135deg, #1a1a2e 0%, #0f3460 100%);">
+          <div class="project-image" style="background:linear-gradient(135deg,#1a1a2e 0%,#0f3460 100%)">
             <img class="project-logo-img" src="../assets/images/pong-logo.jpg" alt="Pong Game" />
-            <div class="project-overlay" aria-hidden="true">
-              <div class="project-tech"><span>C</span><span>Raylib</span></div>
-            </div>
+            <div class="project-overlay" aria-hidden="true"><div class="project-tech"><span>C</span><span>Raylib</span></div></div>
           </div>
           <div class="project-content">
             <h3 class="project-title">Pong Game</h3>
             <p class="project-description">Jeu de pong élégant avec design moderne et physique réaliste.</p>
             <div class="project-actions">
-              <button class="project-btn" data-project="pong-game" type="button">
-                <i class="fas fa-eye" aria-hidden="true"></i>
-                <span>Voir le projet</span>
-              </button>
-              <a class="project-btn secondary" href="https://github.com/RamyBenali/Pong-Game" target="_blank" rel="noopener">
-                <i class="fab fa-github" aria-hidden="true"></i>
-                <span>Code</span>
-              </a>
+              <button class="project-btn" data-project="pong-game" type="button"><i class="fas fa-eye" aria-hidden="true"></i><span>Voir le projet</span></button>
+              <a class="project-btn secondary" href="https://github.com/RamyBenali/Pong-Game" target="_blank" rel="noopener"><i class="fab fa-github" aria-hidden="true"></i><span>Code</span></a>
             </div>
           </div>
         </article>
 
-        <!-- Project 2 -->
         <article class="project-card">
-          <div class="project-image" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+          <div class="project-image" style="background:linear-gradient(135deg,#667eea 0%,#764ba2 100%)">
             <img class="echoes-logo-img" src="../assets/images/Echoes.jpg" alt="Echoes" />
-            <div class="project-overlay" aria-hidden="true">
-              <div class="project-tech"><span>HTML5</span><span>React</span><span>JavaScript</span><span>CSS3</span><span>MySQL</span></div>
-            </div>
+            <div class="project-overlay" aria-hidden="true"><div class="project-tech"><span>HTML5</span><span>React</span><span>JavaScript</span><span>CSS3</span><span>MySQL</span></div></div>
           </div>
           <div class="project-content">
             <h3 class="project-title">Echoes</h3>
             <p class="project-description">Jeu d’énigmes immersif développé pour le club scientifique universitaire.</p>
             <div class="project-actions">
-              <button class="project-btn" data-project="echoes" type="button">
-                <i class="fas fa-eye" aria-hidden="true"></i>
-                <span>Voir le projet</span>
-              </button>
+              <button class="project-btn" data-project="echoes" type="button"><i class="fas fa-eye" aria-hidden="true"></i><span>Voir le projet</span></button>
             </div>
           </div>
         </article>
 
-        <!-- Project 3 -->
         <article class="project-card">
-          <div class="project-image" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
+          <div class="project-image" style="background:linear-gradient(135deg,#f093fb 0%,#f5576c 100%)">
             <img class="home-inspire-logo-img" src="../assets/images/Home-inspire.jpg" alt="HomeInspire" />
-            <div class="project-overlay" aria-hidden="true">
-              <div class="project-tech"><span>Java</span><span>JavaFX</span><span>MySQL</span></div>
-            </div>
+            <div class="project-overlay" aria-hidden="true"><div class="project-tech"><span>Java</span><span>JavaFX</span><span>MySQL</span></div></div>
           </div>
           <div class="project-content">
             <h3 class="project-title">HomeInspire</h3>
             <p class="project-description">Solution complète de gestion d’agence immobilière avec interface intuitive.</p>
             <div class="project-actions">
-              <button class="project-btn" data-project="home-inspire" type="button">
-                <i class="fas fa-eye" aria-hidden="true"></i>
-                <span>Voir le projet</span>
-              </button>
-              <a class="project-btn secondary" href="https://github.com/RamyBenali/HomeInspire" target="_blank" rel="noopener">
-                <i class="fab fa-github" aria-hidden="true"></i>
-                <span>Code</span>
-              </a>
+              <button class="project-btn" data-project="home-inspire" type="button"><i class="fas fa-eye" aria-hidden="true"></i><span>Voir le projet</span></button>
+              <a class="project-btn secondary" href="https://github.com/RamyBenali/HomeInspire" target="_blank" rel="noopener"><i class="fab fa-github" aria-hidden="true"></i><span>Code</span></a>
             </div>
           </div>
         </article>
 
-        <!-- Project 4 -->
         <article class="project-card">
-          <div class="project-image" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">
+          <div class="project-image" style="background:linear-gradient(135deg,#4facfe 0%,#00f2fe 100%)">
             <img class="saldaetrip-logo-img" src="../assets/images/SaldaeTrip.jpg" alt="SaldaeTrip" />
-            <div class="project-overlay" aria-hidden="true">
-              <div class="project-tech"><span>Kotlin</span><span>Dart</span><span>Android</span><span>Floater</span><span>MySQL</span><span>SupaBase</span></div>
-            </div>
+            <div class="project-overlay" aria-hidden="true"><div class="project-tech"><span>Kotlin</span><span>Dart</span><span>Android</span><span>Floater</span><span>MySQL</span><span>SupaBase</span></div></div>
           </div>
           <div class="project-content">
             <h3 class="project-title">SaldaeTrip</h3>
             <p class="project-description">Application touristique pour découvrir Béjaïa et ses meilleures adresses.</p>
             <div class="project-actions">
-              <button class="project-btn" data-project="saldae-trip" type="button">
-                <i class="fas fa-eye" aria-hidden="true"></i>
-                <span>Voir le projet</span>
-              </button>
-              <a class="project-btn secondary" href="https://github.com/RamyBenali/SaldaeTrip" target="_blank" rel="noopener">
-                <i class="fab fa-github" aria-hidden="true"></i>
-                <span>Code</span>
-              </a>
+              <button class="project-btn" data-project="saldae-trip" type="button"><i class="fas fa-eye" aria-hidden="true"></i><span>Voir le projet</span></button>
+              <a class="project-btn secondary" href="https://github.com/RamyBenali/SaldaeTrip" target="_blank" rel="noopener"><i class="fab fa-github" aria-hidden="true"></i><span>Code</span></a>
             </div>
           </div>
         </article>
@@ -244,54 +174,25 @@
         <div class="skill-category">
           <h3>Frontend</h3>
           <div class="skills-list">
-            <div class="skill-item">
-              <span class="skill-name">React</span>
-              <div class="skill-bar"><div class="skill-progress" data-level="60"></div></div>
-            </div>
-            <div class="skill-item">
-              <span class="skill-name">JavaFX</span>
-              <div class="skill-bar"><div class="skill-progress" data-level="95"></div></div>
-            </div>
-            <div class="skill-item">
-              <span class="skill-name">HTML et CSS</span>
-              <div class="skill-bar"><div class="skill-progress" data-level="90"></div></div>
-            </div>
+            <div class="skill-item"><span class="skill-name">React</span><div class="skill-bar"><div class="skill-progress" data-level="60"></div></div></div>
+            <div class="skill-item"><span class="skill-name">JavaFX</span><div class="skill-bar"><div class="skill-progress" data-level="95"></div></div></div>
+            <div class="skill-item"><span class="skill-name">HTML et CSS</span><div class="skill-bar"><div class="skill-progress" data-level="90"></div></div></div>
           </div>
         </div>
-
         <div class="skill-category">
           <h3>Backend</h3>
           <div class="skills-list">
-            <div class="skill-item">
-              <span class="skill-name">Node.js</span>
-              <div class="skill-bar"><div class="skill-progress" data-level="75"></div></div>
-            </div>
-            <div class="skill-item">
-              <span class="skill-name">Python</span>
-              <div class="skill-bar"><div class="skill-progress" data-level="80"></div></div>
-            </div>
-            <div class="skill-item">
-              <span class="skill-name">MySQL</span>
-              <div class="skill-bar"><div class="skill-progress" data-level="70"></div></div>
-            </div>
+            <div class="skill-item"><span class="skill-name">Node.js</span><div class="skill-bar"><div class="skill-progress" data-level="75"></div></div></div>
+            <div class="skill-item"><span class="skill-name">Python</span><div class="skill-bar"><div class="skill-progress" data-level="80"></div></div></div>
+            <div class="skill-item"><span class="skill-name">MySQL</span><div class="skill-bar"><div class="skill-progress" data-level="70"></div></div></div>
           </div>
         </div>
-
         <div class="skill-category">
           <h3>Outils</h3>
           <div class="skills-list">
-            <div class="skill-item">
-              <span class="skill-name">Git</span>
-              <div class="skill-bar"><div class="skill-progress" data-level="90"></div></div>
-            </div>
-            <div class="skill-item">
-              <span class="skill-name">Flutter</span>
-              <div class="skill-bar"><div class="skill-progress" data-level="80"></div></div>
-            </div>
-            <div class="skill-item">
-              <span class="skill-name">Figma</span>
-              <div class="skill-bar"><div class="skill-progress" data-level="95"></div></div>
-            </div>
+            <div class="skill-item"><span class="skill-name">Git</span><div class="skill-bar"><div class="skill-progress" data-level="90"></div></div></div>
+            <div class="skill-item"><span class="skill-name">Flutter</span><div class="skill-bar"><div class="skill-progress" data-level="80"></div></div></div>
+            <div class="skill-item"><span class="skill-name">Figma</span><div class="skill-bar"><div class="skill-progress" data-level="95"></div></div></div>
           </div>
         </div>
       </div>
@@ -302,10 +203,7 @@
   <footer class="dev-footer">
     <div class="container footer-grid">
       <div class="footer-brand">
-        <a class="footer-logo" href="#top" aria-label="Accueil Ramy Benali">
-          <span class="dot"></span>
-          <span>Ramy Benali</span>
-        </a>
+        <a class="footer-logo" href="#top" aria-label="Accueil Ramy Benali"><span class="dot"></span><span>Ramy Benali</span></a>
         <p class="footer-tag">Création d'expériences digitales élégantes et performantes.</p>
       </div>
 
@@ -381,22 +279,10 @@
             <span class="field-msg"></span>
           </div>
         </div>
-        <!-- Remplace par TA site key publique Turnstile -->
-        <!-- champ caché pour le token -->
-        <input type="hidden" id="cf-token" name="token" value="">
 
-        <!-- Turnstile (avec callbacks) -->
-        <div class="cf-turnstile"
-          data-sitekey="TA_SITE_KEY_PUBLIQUE"
-          data-callback="onTurnstileSuccess"
-          data-error-callback="onTurnstileError"
-          data-expired-callback="onTurnstileExpired"></div>
-        <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
-        <script>
-          window.onTurnstileSuccess = (token) => { document.getElementById('cf-token').value = token; };
-          window.onTurnstileExpired = () => { document.getElementById('cf-token').value = ''; };
-          window.onTurnstileError   = () => { document.getElementById('cf-token').value = ''; };
-        </script>
+        <!-- Token caché + conteneur Turnstile -->
+        <input type="hidden" id="cf-token" name="token" value="">
+        <div id="cf-container" class="cf-turnstile"></div>
 
         <div class="form-actions">
           <button id="send-btn" class="cta-btn primary" type="submit">Envoyer</button>
@@ -405,84 +291,18 @@
       </form>
     </div>
   </section>
-  <script>
-  // Callbacks Turnstile
-  window.onTurnstileSuccess = (token) => {
-    document.getElementById('cf-token').value = token;
-  };
-  window.onTurnstileExpired = () => { document.getElementById('cf-token').value = ''; };
-  window.onTurnstileError   = () => { document.getElementById('cf-token').value = ''; };
-
-  (function () {
-    const form     = document.getElementById('contact-form');
-    const sendBtn  = document.getElementById('send-btn');
-    const statusEl = document.querySelector('.form-status');
-
-    form.addEventListener('submit', async (e) => {
-      e.preventDefault();
-
-      // anti-bot + validation rapide
-      const token = document.getElementById('cf-token').value;
-      if (!token) { statusEl.textContent = "Vérification anti-bot requise."; return; }
-
-      const payload = {
-        name:    document.getElementById('name').value.trim(),
-        email:   document.getElementById('email').value.trim(),
-        subject: document.getElementById('subject').value.trim(),
-        message: document.getElementById('message').value.trim(),
-        token   // Turnstile
-      };
-
-      sendBtn.disabled = true;
-      statusEl.textContent = "Envoi en cours...";
-
-      try {
-        // ➜ adapte le chemin si ton fichier est dans /api/contact.php
-        const res  = await fetch('/contact.php', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(payload)
-        });
-        const data = await res.json().catch(() => ({}));
-
-        if (!res.ok || data.ok === false) {
-          const msg = (data && (data.error || data.body || data.details)) || 'Erreur serveur';
-          statusEl.textContent = `Échec : ${msg}`;
-        } else {
-          statusEl.textContent = 'Message envoyé. Merci !';
-          form.reset();
-        }
-      } catch (err) {
-        statusEl.textContent = `Erreur réseau : ${String(err)}`;
-      } finally {
-        sendBtn.disabled = false;
-        try { turnstile.reset(); } catch {}
-        document.getElementById('cf-token').value = '';
-      }
-    });
-  })();
-</script>
-
 
   <!-- Modale projet -->
   <div class="project-modal" id="projectModal" aria-hidden="true">
     <div class="modal-content" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
-      <button class="modal-close" id="modalClose" type="button" aria-label="Fermer la modale">
-        <i class="fas fa-times" aria-hidden="true"></i>
-      </button>
-
-      <div class="modal-header">
-        <h2 class="modal-title" id="modalTitle">Titre du Projet</h2>
-        <div class="modal-tech" id="modalTech"></div>
-      </div>
-
+      <button class="modal-close" id="modalClose" type="button" aria-label="Fermer la modale"><i class="fas fa-times" aria-hidden="true"></i></button>
+      <div class="modal-header"><h2 class="modal-title" id="modalTitle">Titre du Projet</h2><div class="modal-tech" id="modalTech"></div></div>
       <div class="modal-slider">
         <div class="slider-container" id="sliderContainer"></div>
         <button class="slider-arrow slider-prev" type="button" aria-label="Précédent"><i class="fas fa-chevron-left" aria-hidden="true"></i></button>
         <button class="slider-arrow slider-next" type="button" aria-label="Suivant"><i class="fas fa-chevron-right" aria-hidden="true"></i></button>
         <div class="slider-dots" id="sliderDots" aria-hidden="true"></div>
       </div>
-
       <div class="modal-body">
         <div class="modal-description" id="modalDescription"></div>
         <div class="modal-features">
@@ -490,24 +310,38 @@
           <ul id="modalFeatures"></ul>
         </div>
         <div class="modal-links">
-          <a class="modal-link github-repo" id="githubRepoLink" href="#" target="_blank" rel="noopener">
-            <i class="fab fa-github" aria-hidden="true"></i>
-            <span>Code source GitHub</span>
-          </a>
+          <a class="modal-link github-repo" id="githubRepoLink" href="#" target="_blank" rel="noopener"><i class="fab fa-github" aria-hidden="true"></i><span>Code source GitHub</span></a>
         </div>
       </div>
     </div>
   </div>
 
   <!-- Scripts -->
+  <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
   <script src="../scripts/dev-page.js" defer></script>
+
+  <script>
+    // ===== Turnstile render à l'ouverture de la modale =====
+    let cfWidgetId = null;
+    function renderTurnstileIfNeeded() {
+      if (!window.turnstile) return;
+      if (cfWidgetId !== null) return;
+      cfWidgetId = turnstile.render('#cf-container', {
+        sitekey: '0x4AAAAAABxow_e5JSJvlAmw', // <-- ta vraie site key publique
+        callback: (token) => { document.getElementById('cf-token').value = token; },
+        'expired-callback': () => { document.getElementById('cf-token').value = ''; },
+        'error-callback':   () => { document.getElementById('cf-token').value = ''; }
+      });
+    }
+  </script>
+
   <script>
     // Bouton retour en haut
-    document.querySelector('.to-top')?.addEventListener('click', function(){
+    document.querySelector('.to-top')?.addEventListener('click', () => {
       window.scrollTo({ top: 0, behavior: 'smooth' });
     });
 
-    // Ouverture panneau contact
+    // Ouverture panneau contact + rendu Turnstile
     (function(){
       const panel   = document.getElementById('contact-panel');
       const openers = document.querySelectorAll('[data-open-contact]');
@@ -523,6 +357,8 @@
         panel.setAttribute('aria-hidden','false');
         openers.forEach(b=>b.setAttribute('aria-expanded','true'));
         setTimeout(()=>document.getElementById('name')?.focus(), 120);
+        // >>> Render Turnstile maintenant que la modale est visible
+        setTimeout(renderTurnstileIfNeeded, 50);
       }
       function closePanel(){
         panel.classList.remove('active');
@@ -534,6 +370,7 @@
       panel.addEventListener('click', e=>{ if(e.target === panel) closePanel(); });
       document.addEventListener('keydown', e=>{ if(e.key === 'Escape') closePanel(); });
 
+      // Validation simple
       function validate(){
         let ok = true;
         form.querySelectorAll('.form-field').forEach(f=>{
@@ -547,207 +384,152 @@
         return ok;
       }
 
-      form.addEventListener('submit', async e=>{
+      // Envoi formulaire vers /contact.php
+      form.addEventListener('submit', async (e)=>{
         e.preventDefault();
         if(!validate()) return;
-        if(form.company && form.company.value) return;
+        if(form.company && form.company.value) return; // honeypot
+
+        const token = document.getElementById('cf-token').value;
+        if (!token) { if(statusEl) statusEl.textContent = "Vérification anti-bot requise."; return; }
+
+        const payload = {
+          name:    document.getElementById('name').value.trim(),
+          email:   document.getElementById('email').value.trim(),
+          subject: document.getElementById('subject').value.trim(),
+          message: document.getElementById('message').value.trim(),
+          token
+        };
 
         sendBtn.disabled = true;
-        if(statusEl) statusEl.textContent = 'Envoi en cours...';
+        if(statusEl) statusEl.textContent = "Envoi en cours...";
 
-        // Placeholder d’envoi. Branchez votre /api/contact plus tard.
         try {
-          const token = document.getElementById('cf-token')?.value || '';
-          if (!token) {
-            if (statusEl) statusEl.textContent = "Vérification anti-bot requise. Merci de cocher le widget.";
-            sendBtn.disabled = false;
-            return;
-          }
-
-          const payload = {
-            name:    document.getElementById('name').value.trim(),
-            email:   document.getElementById('email').value.trim(),
-            subject: document.getElementById('subject').value.trim(),
-            message: document.getElementById('message').value.trim(),
-            token
-          };
-
-          // ⚠️ URL Pages Functions :
-          // un fichier /functions/contact.js => endpoint public /contact (pas /functions/contact)
-          const res = await fetch('/contact', {
+          const res  = await fetch('/contact.php', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(payload)
           });
-
           const data = await res.json().catch(()=> ({}));
-
           if (!res.ok || data.ok === false) {
             const msg = (data && (data.error || data.body || data.details)) || 'Erreur serveur';
-            if (statusEl) statusEl.textContent = `Échec de l’envoi : ${msg}`;
+            if (statusEl) statusEl.textContent = `Échec : ${msg}`;
           } else {
-            if (statusEl) statusEl.textContent = 'Message envoyé. Merci, je reviens vers vous rapidement.';
+            if (statusEl) statusEl.textContent = 'Message envoyé. Merci !';
             form.reset();
           }
         } catch (err) {
           if (statusEl) statusEl.textContent = `Erreur réseau : ${String(err)}`;
         } finally {
           sendBtn.disabled = false;
-          // Réinitialise le widget pour regénérer un token pour un prochain envoi
-          try { turnstile.reset(); } catch {}
+          try { if (cfWidgetId !== null && window.turnstile) turnstile.reset(cfWidgetId); } catch {}
           document.getElementById('cf-token').value = '';
         }
       });
     })();
 
-    // Menu mobile basique
+    // Menu mobile
     window.addEventListener('DOMContentLoaded', () => {
       const toggle  = document.getElementById('mobile-menu');
       const drawer  = document.getElementById('mobile-drawer');
       const overlay = document.getElementById('drawer-overlay');
-
       if(!toggle || !drawer || !overlay) return;
 
       function openDrawer(){
-        drawer.classList.add('is-open');
-        overlay.classList.add('is-open');
-        overlay.hidden = false;
+        drawer.classList.add('is-open'); overlay.classList.add('is-open'); overlay.hidden = false;
         document.body.classList.add('body-no-scroll');
-        toggle.setAttribute('aria-expanded','true');
-        drawer.setAttribute('aria-hidden','false');
+        toggle.setAttribute('aria-expanded','true'); drawer.setAttribute('aria-hidden','false');
       }
       function closeDrawer(){
-        drawer.classList.remove('is-open');
-        overlay.classList.remove('is-open');
+        drawer.classList.remove('is-open'); overlay.classList.remove('is-open');
         document.body.classList.remove('body-no-scroll');
-        toggle.setAttribute('aria-expanded','false');
-        drawer.setAttribute('aria-hidden','true');
+        toggle.setAttribute('aria-expanded','false'); drawer.setAttribute('aria-hidden','true');
         setTimeout(()=>{ overlay.hidden = true; }, 250);
       }
-
-      toggle.addEventListener('click', () => {
-        drawer.classList.contains('is-open') ? closeDrawer() : openDrawer();
-      });
+      toggle.addEventListener('click', () => { drawer.classList.contains('is-open') ? closeDrawer() : openDrawer(); });
       overlay.addEventListener('click', closeDrawer);
       drawer.querySelector('.drawer-close')?.addEventListener('click', closeDrawer);
-
-      drawer.addEventListener('click', (e)=>{
-        if(e.target.closest('a, button[data-open-contact]')) closeDrawer();
-      });
-      document.addEventListener('keydown', (e)=>{
-        if(e.key === 'Escape' && drawer.classList.contains('is-open')) closeDrawer();
-      });
+      drawer.addEventListener('click', (e)=>{ if(e.target.closest('a, button[data-open-contact]')) closeDrawer(); });
+      document.addEventListener('keydown', (e)=>{ if(e.key === 'Escape' && drawer.classList.contains('is-open')) closeDrawer(); });
     });
-  </script>
-<script>
-(function () {
-  const navH = document.querySelector('.navbar')?.offsetHeight ?? 0;
 
-  // Easing douce
-  const easeInOutCubic = t => (t < 0.5)
-      ? 4 * t * t * t
-      : 1 - Math.pow(-2 * t + 2, 3) / 2;
-
-  function smoothScrollTo(targetY, opts = {}) {
-    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (prefersReduced) { window.scrollTo(0, targetY); return; }
-
-    const startY   = window.scrollY || window.pageYOffset;
-    const delta    = targetY - startY;
-    // Durée auto: 0.4ms par px, bornée entre 450ms et 1200ms
-    const duration = Math.max(450, Math.min(1200, Math.abs(delta) * 0.4));
-    const start    = performance.now();
-
-    function frame(now) {
-      const t = Math.min(1, (now - start) / duration);
-      const eased = easeInOutCubic(t);
-      window.scrollTo(0, startY + delta * eased);
-      if (t < 1) requestAnimationFrame(frame);
-      else if (opts.onComplete) opts.onComplete();
-    }
-    requestAnimationFrame(frame);
-  }
-
-  // Délégation: capte tous les liens internes (header, drawer, footer…)
-  document.addEventListener('click', (e) => {
-    const a = e.target.closest('a[href^="#"]');
-    if (!a) return;
-
-    const id = a.getAttribute('href');
-    const target = document.querySelector(id);
-    if (!target) return; // (#contact peut ouvrir une modale; laisse ton autre JS gérer)
-    e.preventDefault();
-
-    const y = target.getBoundingClientRect().top + window.scrollY - navH;
-
-    smoothScrollTo(y, {
-      onComplete: () => {
-        // focus accessible sans ressaut
-        target.setAttribute('tabindex', '-1');
-        target.focus({ preventScroll: true });
-
-        // ferme le menu mobile si ouvert
-        const drawer  = document.getElementById('mobile-drawer');
-        const overlay = document.getElementById('drawer-overlay');
-        if (drawer?.classList.contains('is-open')) {
-          drawer.classList.remove('is-open');
-          overlay?.classList.remove('is-open');
-          document.body.classList.remove('body-no-scroll');
-          setTimeout(() => overlay?.setAttribute('hidden',''), 250);
+    // Smooth scroll interne
+    (function () {
+      const navH = document.querySelector('.navbar')?.offsetHeight ?? 0;
+      const easeInOutCubic = t => (t < 0.5) ? 4*t*t*t : 1 - Math.pow(-2*t + 2, 3)/2;
+      function smoothScrollTo(targetY, opts = {}) {
+        const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        if (reduced) { window.scrollTo(0, targetY); return; }
+        const startY = window.scrollY || window.pageYOffset; const delta = targetY - startY;
+        const duration = Math.max(450, Math.min(1200, Math.abs(delta) * 0.4));
+        const start = performance.now();
+        function frame(now) {
+          const t = Math.min(1, (now - start) / duration);
+          const eased = easeInOutCubic(t);
+          window.scrollTo(0, startY + delta * eased);
+          if (t < 1) requestAnimationFrame(frame); else if (opts.onComplete) opts.onComplete();
         }
+        requestAnimationFrame(frame);
       }
-    });
-  });
-})();
-</script>
+      document.addEventListener('click', (e) => {
+        const a = e.target.closest('a[href^="#"]'); if (!a) return;
+        const id = a.getAttribute('href'); const target = document.querySelector(id); if (!target) return;
+        e.preventDefault();
+        const y = target.getBoundingClientRect().top + window.scrollY - navH;
+        smoothScrollTo(y, {
+          onComplete: () => {
+            target.setAttribute('tabindex','-1'); target.focus({ preventScroll: true });
+            const drawer  = document.getElementById('mobile-drawer'); const overlay = document.getElementById('drawer-overlay');
+            if (drawer?.classList.contains('is-open')) {
+              drawer.classList.remove('is-open'); overlay?.classList.remove('is-open'); document.body.classList.remove('body-no-scroll');
+              setTimeout(() => overlay?.setAttribute('hidden',''), 250);
+            }
+          }
+        });
+      });
+    })();
+  </script>
 
-  <!-- Overlay cliquable (20%) -->
-<div id="drawer-overlay" class="drawer-overlay" hidden></div>
+  <!-- Overlay -->
+  <div id="drawer-overlay" class="drawer-overlay" hidden></div>
 
-<!-- Menu mobile off-canvas -->
-<aside id="mobile-drawer" class="mobile-drawer" aria-hidden="true" aria-labelledby="drawer-title">
-  <header class="drawer-header">
-    <h2 id="drawer-title">Menu</h2>
-    <button type="button" class="drawer-close" aria-label="Fermer le menu">×</button>
-  </header>
-
-  <nav class="drawer-nav" role="navigation">
-    <a class="nav-link" href="../index.html">Accueil</a>
-    <a class="nav-link" href="#projects">Projets</a>
-    <a class="nav-link" href="#skills">Compétences</a>
-    <a class="nav-link" href="about.html">À propos</a>
-    <a class="nav-link" href="#contact" data-open-contact>Contact</a>
-    <a class="mode-toggle is-dev" aria-label="Basculer entre mode Développeur et Créatif">
-      <span class="toggle-half half-dev" aria-current="page">Dev</span>
-      <span class="toggle-thumb" aria-hidden="true"></span>
-      <span class="toggle-half half-crea" onclick="location.href='creative.html'">Créa</span>
-    </a>
-  </nav>  
-
-  <div class="drawer-footer">
-    <a class="drawer-cta" href="#contact" data-open-contact>
-      <i class="fas fa-paper-plane" aria-hidden="true"></i> Me contacter
-    </a>
-    <div class="drawer-socials">
-      <a href="https://github.com/RamyBenali" target="_blank" rel="noopener" aria-label="GitHub"><i class="fab fa-github"></i></a>
-      <a href="https://www.linkedin.com/in/ramy-benali-248b70282" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-      <a href="https://www.instagram.com/rmba.exe/" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+  <!-- Menu mobile off-canvas -->
+  <aside id="mobile-drawer" class="mobile-drawer" aria-hidden="true" aria-labelledby="drawer-title">
+    <header class="drawer-header">
+      <h2 id="drawer-title">Menu</h2>
+      <button type="button" class="drawer-close" aria-label="Fermer le menu">×</button>
+    </header>
+    <nav class="drawer-nav" role="navigation">
+      <a class="nav-link" href="../index.html">Accueil</a>
+      <a class="nav-link" href="#projects">Projets</a>
+      <a class="nav-link" href="#skills">Compétences</a>
+      <a class="nav-link" href="about.html">À propos</a>
+      <a class="nav-link" href="#contact" data-open-contact>Contact</a>
+      <a class="mode-toggle is-dev" aria-label="Basculer entre mode Développeur et Créatif">
+        <span class="toggle-half half-dev" aria-current="page">Dev</span>
+        <span class="toggle-thumb" aria-hidden="true"></span>
+        <span class="toggle-half half-crea" onclick="location.href='creative.html'">Créa</span>
+      </a>
+    </nav>
+    <div class="drawer-footer">
+      <a class="drawer-cta" href="#contact" data-open-contact><i class="fas fa-paper-plane" aria-hidden="true"></i> Me contacter</a>
+      <div class="drawer-socials">
+        <a href="https://github.com/RamyBenali" target="_blank" rel="noopener" aria-label="GitHub"><i class="fab fa-github"></i></a>
+        <a href="https://www.linkedin.com/in/ramy-benali-248b70282" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+        <a href="https://www.instagram.com/rmba.exe/" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+      </div>
     </div>
-  </div>
-</aside>
+  </aside>
 
-  <!-- i18n ADD: switch langue + import des fichiers i18n -->
+  <!-- i18n ADD: switch langue -->
   <div class="lang-switch" aria-label="Language switch">
     <input type="checkbox" id="lang-toggle" aria-label="Toggle language">
     <label for="lang-toggle" class="lang-toggle" title="FR / EN">
-      <span class="lang-pill">FR</span>
-      <span class="lang-pill">EN</span>
-      <span class="thumb">FR</span>
+      <span class="lang-pill">FR</span><span class="lang-pill">EN</span><span class="thumb">FR</span>
     </label>
   </div>
 
   <script src="../assets/i18n/dev-translations.js" defer></script>
   <script src="../assets/i18n/dev-i18n.js" defer></script>
-  <!-- /i18n ADD -->
 </body>
 </html>
