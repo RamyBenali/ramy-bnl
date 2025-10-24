@@ -90,7 +90,7 @@ window.DEV_I18N = {
       btnView: "Voir le projet",
       btnCode: "Code"
       },
-      "Caryago": {
+      "caryago": {
       cardDesc: "Plateforme en ligne de Location de voitures dans toute l'algérie, cette plateforme est l'intermédiaire parfait entre les agences de locations et les clients, la réservation se fait en ligne, y'a plus qu'a payer et récupérer les clés du véhicule.",
       modalDesc:
           "Plateforme en ligne de Location de voitures dans toute l'algérie, cette plateforme est l'intermédiaire parfait entre les agences de locations et les clients, la réservation se fait en ligne, y'a plus qu'a payer et récupérer les clés du véhicule.",
@@ -232,7 +232,7 @@ window.DEV_I18N = {
         btnView: "View project",
         btnCode: "Code"
       },
-      "Caryago": {
+      "caryago": {
         cardDesc: "Online car rental platform across Algeria — the perfect bridge between rental agencies and clients. Booking is done online, just pay and pick up your keys.",
         modalDesc:
           "Online car rental platform available throughout Algeria. It connects rental agencies with customers seamlessly — reservations are made online, with payment and vehicle pickup made easy.",
