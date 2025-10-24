@@ -230,7 +230,45 @@ document.addEventListener('DOMContentLoaded', function () {
       ],
       liveDemo: '#',
       githubRepo: 'https://github.com/RamyBenali/SaldaeTrip'
-    }
+    },
+    'sopenbiz': {
+      title: 'Sopenbiz',
+      technologies: ['Wordpress', 'Elementor Pro', 'CartFlows', 'LearnDash', 'WooComerce'],
+      description: "Site vitrine pour une formation de Musculation/Lifestyle et nutrition, Tunnel de vente complet et accés a la formation depuis le site directement grâce à LearnDash, Voici les features principales du site :",
+      features: [
+        'Achat en ligne de la formation',
+        'Tunnel de vente complet',
+        'UI/UX attirant',
+        'Accès à la formation depuis le site grâce à LearnDash'
+      ],
+      images: [
+        '../assets/images/sopenbiz/sopenbiz-screen1.png',
+        '../assets/images/sopenbiz/sopenbiz-screen2.png',
+        '../assets/images/sopenbiz/sopenbiz-screen3.png'
+      ],
+      liveDemo: '#',
+      githubRepo: ''
+    },
+    'caryago': {
+      title: 'Caryago',
+      technologies: ['Wordpress', 'Elementor Pro', 'Dukan', 'JetEngine', 'JetPack', 'JetSmartEngine'],
+      description: "Plateforme en ligne de Location de voitures dans toute l'algérie, cette plateforme est l'intermédiaire parfait entre les agences de locations et les clients, la réservation se fait en ligne, y'a plus qu'a payer et récupérer les clés du véhicule, Les features principales :",
+      features: [
+        "Création d'un compte Client ou Agence",
+        'Dashboard Agence complet avec stats et gestions compléte des client / Supports et Véhicules',
+        'Recherche dynamique et filtrés des véhicules',
+        'Systéme de reservation par date',
+        'Calendrier dynamique pour chaque véhicule',
+        'UI/UX beau et ludique'
+      ],
+      images: [
+        '../assets/images/caryago/caryago-screen1.png',
+        '../assets/images/caryago/caryago-screen2.png',
+        '../assets/images/caryago/caryago-screen3.png'
+      ],
+      liveDemo: '#',
+      githubRepo: ''
+    },
   };
 
   // =============================
