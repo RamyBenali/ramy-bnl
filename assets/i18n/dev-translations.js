@@ -88,7 +88,7 @@ window.DEV_I18N = {
           "Back-end Supabase"
       ],
       btnView: "Voir le projet",
-      btnCode: "Code"
+      btnCode: "Site Web"
       },
       "caryago": {
       cardDesc: "Plateforme en ligne de Location de voitures dans toute l'algérie, cette plateforme est l'intermédiaire parfait entre les agences de locations et les clients, la réservation se fait en ligne, y'a plus qu'a payer et récupérer les clés du véhicule.",
@@ -103,7 +103,7 @@ window.DEV_I18N = {
         'UI/UX beau et ludique'
       ],
       btnView: "Voir le projet",
-      btnCode: "Code"
+      btnCode: "Site Web"
       }
     },
 
@@ -230,7 +230,7 @@ window.DEV_I18N = {
           "Optimized for conversion"
         ],
         btnView: "View project",
-        btnCode: "Code"
+        btnCode: "Web Site"
       },
       "caryago": {
         cardDesc: "Online car rental platform across Algeria — the perfect bridge between rental agencies and clients. Booking is done online, just pay and pick up your keys.",
@@ -245,7 +245,7 @@ window.DEV_I18N = {
           "Clean and user-friendly UI/UX"
         ],
         btnView: "View project",
-        btnCode: "Code"
+        btnCode: "Web Site"
       }
     },
 
