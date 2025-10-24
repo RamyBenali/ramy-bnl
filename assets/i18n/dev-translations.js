@@ -76,6 +76,34 @@ window.DEV_I18N = {
         ],
         btnView: "Voir le projet",
         btnCode: "Code"
+      },
+      "sopenbiz": {
+      cardDesc: "Site vitrine pour une formation de Musculation/Lifestyle et nutrition, Tunnel de vente complet et accés a la formation depuis le site directement grâce à LearnDash.",
+      modalDesc:
+          "Site vitrine pour une formation de Musculation/Lifestyle et nutrition, Tunnel de vente complet et accés a la formation depuis le site directement grâce à LearnDash.",
+      features: [
+          "Cartes & itinéraires",
+          "Favoris et notes utilisateurs",
+          "Contenu hybride en cache",
+          "Back-end Supabase"
+      ],
+      btnView: "Voir le projet",
+      btnCode: "Code"
+      },
+      "Caryago": {
+      cardDesc: "Plateforme en ligne de Location de voitures dans toute l'algérie, cette plateforme est l'intermédiaire parfait entre les agences de locations et les clients, la réservation se fait en ligne, y'a plus qu'a payer et récupérer les clés du véhicule.",
+      modalDesc:
+          "Plateforme en ligne de Location de voitures dans toute l'algérie, cette plateforme est l'intermédiaire parfait entre les agences de locations et les clients, la réservation se fait en ligne, y'a plus qu'a payer et récupérer les clés du véhicule.",
+      features: [
+        "Création d'un compte Client ou Agence",
+        'Dashboard Agence complet avec stats et gestions compléte des client / Supports et Véhicules',
+        'Recherche dynamique et filtrés des véhicules',
+        'Systéme de reservation par date',
+        'Calendrier dynamique pour chaque véhicule',
+        'UI/UX beau et ludique'
+      ],
+      btnView: "Voir le projet",
+      btnCode: "Code"
       }
     },
 
@@ -187,6 +215,34 @@ window.DEV_I18N = {
           "Favorites and user notes",
           "Hybrid cached content",
           "Supabase back-end"
+        ],
+        btnView: "View project",
+        btnCode: "Code"
+      },
+      "sopenbiz": {
+        cardDesc: "Showcase website for a Fitness/Lifestyle and Nutrition training, featuring a full sales funnel and direct access to the course through LearnDash.",
+        modalDesc:
+          "Showcase website for a Fitness/Lifestyle and Nutrition training. Includes a complete sales funnel and direct course access via LearnDash.",
+        features: [
+          "Complete sales funnel",
+          "Direct course access through LearnDash",
+          "Responsive and modern design",
+          "Optimized for conversion"
+        ],
+        btnView: "View project",
+        btnCode: "Code"
+      },
+      "Caryago": {
+        cardDesc: "Online car rental platform across Algeria — the perfect bridge between rental agencies and clients. Booking is done online, just pay and pick up your keys.",
+        modalDesc:
+          "Online car rental platform available throughout Algeria. It connects rental agencies with customers seamlessly — reservations are made online, with payment and vehicle pickup made easy.",
+        features: [
+          "Client and Agency account creation",
+          "Full Agency dashboard with stats and management of clients, support, and vehicles",
+          "Dynamic and filtered vehicle search",
+          "Date-based reservation system",
+          "Dynamic calendar for each vehicle",
+          "Clean and user-friendly UI/UX"
         ],
         btnView: "View project",
         btnCode: "Code"
