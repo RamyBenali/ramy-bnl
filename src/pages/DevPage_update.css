@@ -1,0 +1,97 @@
+/* --- CONTAINER & SPACING --- */
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 4rem;
+    /* Added padding as requested */
+    width: 100%;
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 0 1.5rem;
+    }
+}
+
+/* --- FLOATING TAGS EXTENDED --- */
+.t4 {
+    top: 15%;
+    left: 10%;
+    animation: float 5s infinite ease-in-out 0.5s;
+}
+
+.t5 {
+    bottom: 15%;
+    right: 10%;
+    animation: float 4.5s infinite ease-in-out 1.5s;
+}
+
+.t6 {
+    top: 60%;
+    right: -5%;
+    animation: float 6s infinite ease-in-out 2.5s;
+}
+
+.t7 {
+    bottom: 5%;
+    left: 20%;
+    animation: float 5.5s infinite ease-in-out 1s;
+}
+
+.t8 {
+    top: -5%;
+    left: 50%;
+    animation: float 7s infinite ease-in-out 3s;
+}
+
+/* Existing tags adjustment ensures no overlap */
+.t1 {
+    top: 10%;
+    right: 0;
+    animation: float 4s infinite ease-in-out;
+}
+
+.t2 {
+    bottom: 20%;
+    left: -10%;
+    animation: float 5s infinite ease-in-out 1s;
+}
+
+.t3 {
+    top: 40%;
+    left: 0%;
+    animation: float 6s infinite ease-in-out 2s;
+}
+
+/* --- BENTO REFINEMENTS --- */
+.bento-section {
+    padding: 100px 0;
+    /* Adjusted spacing */
+}
+
+.bento-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-auto-rows: 220px;
+    /* Slightly taller for aesthetics */
+    gap: 2rem;
+    /* Increased gap for "esthetic" spacing */
+}
+
+/* --- PROJECT GRID REFINEMENTS --- */
+.modern-projects-grid {
+    display: grid;
+    /* More modular: smaller min-width allows 3 cards on big screens */
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2.5rem;
+    margin-top: 3rem;
+}
+
+.project-wrapper {
+    transition: transform 0.3s ease;
+}
+
+.project-wrapper:hover {
+    transform: translateY(-5px);
+    z-index: 5;
+}

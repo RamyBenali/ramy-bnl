@@ -1,0 +1,272 @@
+.contact-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(10px);
+    z-index: 2000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+}
+
+.contact-modal {
+    position: relative;
+    width: 95%;
+    max-width: 420px;
+    background: #0a0a0b;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 24px;
+    padding: 2.2rem;
+    z-index: 2001;
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.8);
+    max-height: 85vh;
+    overflow-y: auto;
+    color: #fff;
+    transition: all 0.4s ease;
+}
+
+/* --- THEME VARIATIONS --- */
+
+/* Dev Theme (Blue) */
+.contact-modal.dev {
+    border-color: rgba(0, 242, 255, 0.3);
+    box-shadow: 0 20px 50px rgba(0, 242, 255, 0.15);
+}
+
+/* Creative Theme (Orange) */
+.contact-modal.creative {
+    background: #0f0500;
+    border-color: rgba(255, 120, 0, 0.3);
+    box-shadow: 0 20px 50px rgba(255, 120, 0, 0.15);
+}
+
+/* Fusion Theme (Neutral/About) */
+.contact-modal.fusion {
+    background: #ffffff;
+    border-color: rgba(0, 0, 0, 0.1);
+    color: #1a1a1a;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
+}
+
+.contact-modal.fusion .contact-header p {
+    color: #666;
+}
+
+.contact-modal.fusion .close-btn {
+    color: #000;
+}
+
+.close-btn {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    background: transparent;
+    border: none;
+    color: var(--text-color);
+    cursor: pointer;
+    opacity: 0.6;
+    transition: opacity 0.2s;
+}
+
+.close-btn:hover {
+    opacity: 1;
+}
+
+.contact-header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.contact-header h2 {
+    font-size: 1.6rem;
+    /* Reduced from 2.2rem */
+    font-weight: 800;
+    margin-bottom: 0.4rem;
+}
+
+.contact-header p {
+    color: var(--text-muted);
+}
+
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+}
+
+@media (max-width: 600px) {
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.turnstile-container {
+    display: flex;
+    justify-content: center;
+    margin: 1rem 0;
+    min-height: 65px;
+}
+
+
+.form-group label {
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    opacity: 0.6;
+    margin-bottom: 0.5rem;
+    display: block;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.05);
+    /* Slightly darker for better contrast */
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    padding: 0.85rem;
+    border-radius: 12px;
+    color: inherit;
+    font-family: inherit;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+}
+
+/* Fix for Chrome Autocomplete (White background/text) */
+.form-group input:-webkit-autofill,
+.form-group input:-webkit-autofill:hover,
+.form-group input:-webkit-autofill:focus {
+    -webkit-text-fill-color: #fff;
+    -webkit-box-shadow: 0 0 0px 1000px #1a1a1c inset;
+    transition: background-color 5000s ease-in-out 0s;
+}
+
+.contact-modal.fusion .form-group input:-webkit-autofill {
+    -webkit-text-fill-color: #1a1a1a;
+    -webkit-box-shadow: 0 0 0px 1000px #f8f9fa inset;
+}
+
+/* Fix dropdown options visibility - dark background for dark themes */
+.contact-modal.dev select option,
+.contact-modal.creative select option {
+    background-color: #1a1a1c;
+    color: #fff;
+}
+
+/* Fusion Specific Inputs */
+.contact-modal.fusion .form-group input,
+.contact-modal.fusion .form-group select,
+.contact-modal.fusion .form-group textarea {
+    background: #f8f9fa;
+    border-color: #e9ecef;
+    color: #1a1a1a;
+}
+
+.contact-modal.fusion select option {
+    background-color: #fff;
+    color: #1a1a1a;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    outline: none;
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.contact-modal.dev .form-group input:focus,
+.contact-modal.dev .form-group select:focus,
+.contact-modal.dev .form-group textarea:focus {
+    border-color: #00f2ff;
+    /* Explicit Cyan */
+    box-shadow: 0 0 0 4px rgba(0, 242, 255, 0.1);
+}
+
+.contact-modal.creative .form-group input:focus,
+.contact-modal.creative .form-group select:focus,
+.contact-modal.creative .form-group textarea:focus {
+    border-color: #ff7800;
+    /* Explicit Orange */
+    box-shadow: 0 0 0 4px rgba(255, 120, 0, 0.1);
+}
+
+.contact-modal.fusion .form-group input:focus,
+.contact-modal.fusion .form-group select:focus,
+.contact-modal.fusion .form-group textarea:focus {
+    background: #fff;
+    border-color: #000;
+    box-shadow: 0 0 0 4px rgba(0, 0, 0, 0.05);
+}
+
+.submit-btn {
+    background: #333;
+    /* Default gray for safety */
+    color: #fff;
+    border: none;
+    padding: 1rem;
+    border-radius: 12px;
+    font-weight: 800;
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.8rem;
+    transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+    margin-top: 0.5rem;
+}
+
+.contact-modal.dev .submit-btn {
+    background: #00f2ff;
+}
+
+.contact-modal.creative .submit-btn {
+    background: #ff7800;
+}
+
+.contact-modal.fusion .submit-btn {
+    background: #000;
+    color: #fff;
+}
+
+.submit-btn:hover:not(:disabled) {
+    transform: translateY(-3px);
+    filter: brightness(1.1);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+}
+
+.contact-modal.dev .submit-btn:hover:not(:disabled) {
+    box-shadow: 0 10px 25px rgba(0, 242, 255, 0.3);
+}
+
+.contact-modal.creative .submit-btn:hover:not(:disabled) {
+    box-shadow: 0 10px 25px rgba(255, 120, 0, 0.3);
+}
+
+.success-message {
+    text-align: center;
+    padding: 2rem 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.success-message h3 {
+    font-size: 1.8rem;
+}
+
+.success-message p {
+    color: var(--text-muted);
+    max-width: 400px;
+}

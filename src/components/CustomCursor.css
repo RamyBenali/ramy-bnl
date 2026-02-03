@@ -1,0 +1,25 @@
+.cursor-dot {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 12px;
+    height: 12px;
+    background-color: #ffffff;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 2147483647 !important;
+    /* Max integer z-index */
+    margin-left: -6px;
+    margin-top: -6px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    /* Shadow for contrast on white */
+    mix-blend-mode: normal;
+    /* "Difference" can sometimes make it invisible if bg is grey mid-tone */
+}
+
+/* Ensure no media query hides it on desktop, but hide on touch devices if needed */
+@media (hover: none) and (pointer: coarse) {
+    .cursor-dot {
+        display: none;
+    }
+}

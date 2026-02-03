@@ -1,0 +1,45 @@
+@import './styles/variables.css';
+
+:root {
+  /* Default to dev theme for initial load */
+  --bg-color: var(--dev-bg);
+  --accent-color: var(--dev-accent);
+  --text-color: var(--dev-text);
+  --text-muted: var(--dev-text-muted);
+  --glass-bg: var(--dev-glass-bg);
+  --glass-border: var(--dev-glass-border);
+}
+
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* GLOBAL CURSOR HIDE */
+/* Hide default cursor everywhere to prevent overlap with CustomCursor */
+*,
+*::before,
+*::after,
+a,
+button,
+input,
+select,
+textarea {
+  cursor: none !important;
+}
+
+/* Fallback for touch devices where we don't want to hide system interactions if any */
+@media (hover: none) and (pointer: coarse) {
+
+  *,
+  *::before,
+  *::after,
+  a,
+  button,
+  input,
+  select,
+  textarea {
+    cursor: auto !important;
+  }
+}

@@ -1,0 +1,295 @@
+/* --- SPLIT SCREEN LAYOUT --- */
+.landing-container {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    overflow: hidden;
+    background: #000;
+    position: relative;
+    font-family: 'Inter', sans-serif;
+    /* Fallback */
+    /* cursor: none; */
+    /* Disabled: System cursor is fallback if custom fails */
+}
+
+/* Ensure the custom cursor is visible above everything */
+:global(.cursor-dot),
+:global(.cursor-ring) {
+    z-index: 9999 !important;
+}
+
+.landing-side {
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+    /* Use 'none' if we want custom cursor only, or 'pointer' if we want system hand */
+    cursor: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Backgrounds */
+.side-bg {
+    position: absolute;
+    inset: 0;
+    transition: opacity 0.5s ease, filter 0.5s ease;
+    filter: brightness(0.6) contrast(1.1);
+}
+
+.landing-side:hover .side-bg {
+    opacity: 1;
+    filter: brightness(1) contrast(1.2);
+}
+
+.dev-bg {
+    background:
+        /* Main Glow */
+        radial-gradient(circle at 20% 50%, rgba(0, 242, 255, 0.25), transparent 60%),
+        /* Secondary Deep Blue */
+        radial-gradient(circle at 80% 80%, rgba(0, 48, 255, 0.15), transparent 50%),
+        /* Top Light */
+        radial-gradient(circle at 50% 0%, rgba(0, 242, 255, 0.1), transparent 50%),
+        /* The Grid */
+        var(--dev-grid),
+        /* Base Dark Blue */
+        linear-gradient(135deg, #020a15 0%, #051020 100%);
+
+    background-size: cover, cover, cover, 50px 50px, cover;
+}
+
+.crea-bg {
+    background:
+        /* Main Glow */
+        radial-gradient(circle at 80% 50%, rgba(255, 100, 0, 0.25), transparent 60%),
+        /* Secondary Purple/Pink for depth */
+        radial-gradient(circle at 20% 80%, rgba(255, 0, 100, 0.15), transparent 50%),
+        /* Top Light */
+        radial-gradient(circle at 50% 0%, rgba(255, 150, 0, 0.1), transparent 50%),
+        /* The Grid */
+        var(--crea-grid),
+        /* Base Dark Red/Orange */
+        linear-gradient(135deg, #1a0500 0%, #200a05 100%);
+
+    background-size: cover, cover, cover, 50px 50px, cover;
+}
+
+/* Overlay */
+.side-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.4));
+    z-index: 1;
+    pointer-events: none;
+}
+
+/* Content */
+.side-content {
+    position: relative;
+    z-index: 10;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 2rem;
+    color: #fff;
+    max-width: 500px;
+    width: 100%;
+    pointer-events: none;
+    /* Let clicks pass to the parent side container for choice */
+}
+
+/* Re-enable pointer events for buttons if needed, but the whole side is clickable */
+.side-cta {
+    pointer-events: auto;
+    margin-top: 2rem;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #fff;
+    padding: 1rem 2.5rem;
+    border-radius: var(--radius-pill);
+    font-family: var(--font-header);
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    cursor: none;
+    /* Custom cursor */
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all 0.3s ease;
+}
+
+.dev-side .side-cta:hover {
+    background: var(--dev-accent);
+    color: #000;
+    border-color: var(--dev-accent);
+    box-shadow: 0 0 30px var(--dev-accent-glow);
+}
+
+.crea-side .side-cta:hover {
+    background: var(--crea-accent);
+    color: #000;
+    border-color: var(--crea-accent);
+    box-shadow: 0 0 30px var(--crea-accent-glow);
+}
+
+.compressed .side-title {
+    opacity: 0.3;
+    scale: 0.8;
+}
+
+.compressed .side-desc,
+.compressed .side-cta {
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* --- FRONTIER (LASER BEAM) --- */
+.frontier-line {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 6px;
+    z-index: 50;
+    transform: translateX(-50%);
+    pointer-events: none;
+    background: currentColor;
+    /* Uses the React dynamic 'color' */
+
+    /* MASSIVE GLOW */
+    box-shadow:
+        0 0 10px currentColor,
+        0 0 30px currentColor,
+        0 0 60px currentColor,
+        0 0 100px currentColor;
+
+    transition: color 0.4s ease;
+}
+
+/* --- BADGE --- */
+.center-badge-container {
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 60;
+    pointer-events: none;
+}
+
+.badge-inner-dynamic {
+    background: #000;
+    border: 3px solid currentColor;
+    padding: 1.2rem 2.5rem;
+    border-radius: 999px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    /* BADGE GLOW */
+    box-shadow:
+        0 0 20px currentColor,
+        inset 0 0 15px currentColor;
+
+    transition: color 0.4s ease, border-color 0.4s ease;
+}
+
+.badge-text {
+    font-family: var(--font-header);
+    font-weight: 900;
+    font-size: 1rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    white-space: nowrap;
+    text-shadow: 0 0 10px currentColor;
+    color: #fff;
+}
+
+/* --- HEADER STYLES --- */
+.landing-header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding: 2rem 3rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 100;
+    pointer-events: none;
+}
+
+.landing-brand {
+    font-family: var(--font-header);
+    font-weight: 800;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #fff;
+    pointer-events: auto;
+    text-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    cursor: none;
+}
+
+.landing-about-link {
+    pointer-events: auto;
+    color: #fff;
+    text-decoration: none;
+    font-family: var(--font-body);
+    font-weight: 500;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    opacity: 0.8;
+    transition: all 0.3s ease;
+    padding: 0.5rem 1rem;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: var(--radius-pill);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(5px);
+    cursor: none;
+}
+
+.landing-about-link:hover {
+    opacity: 1;
+    background: rgba(255, 255, 255, 0.15);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+@media (max-width: 768px) {
+    .landing-container {
+        flex-direction: column;
+        cursor: auto;
+    }
+
+    /* Mobile usually has normal cursor */
+    .landing-side {
+        width: 100% !important;
+        height: 50% !important;
+        cursor: auto;
+    }
+
+    .side-title {
+        font-size: 2.5rem;
+    }
+
+    .frontier-line {
+        width: 100%;
+        height: 6px;
+        top: 50%;
+        bottom: auto;
+        left: 0 !important;
+        transform: translateY(-50%);
+    }
+
+    .center-badge-container {
+        left: 50% !important;
+        top: 50%;
+    }
+
+    .landing-header {
+        padding: 1.5rem;
+    }
+}

@@ -1,0 +1,602 @@
+/* --- FUSION PAGE CONTAINER --- */
+.about-fusion {
+    background: var(--dev-bg);
+    min-height: 200vh;
+    padding-bottom: 5rem;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Background Effects */
+.about-fusion::before {
+    content: '';
+    position: absolute;
+    top: -10%;
+    right: -10%;
+    width: 60vw;
+    height: 60vw;
+    background: radial-gradient(circle, rgba(0, 242, 255, 0.08) 0%, transparent 70%);
+    filter: blur(80px);
+    z-index: 0;
+    pointer-events: none;
+}
+
+.about-fusion::after {
+    content: '';
+    position: absolute;
+    bottom: 10%;
+    left: -10%;
+    width: 50vw;
+    height: 50vw;
+    background: radial-gradient(circle, rgba(255, 107, 53, 0.08) 0%, transparent 70%);
+    filter: blur(80px);
+    z-index: 0;
+    pointer-events: none;
+}
+
+/* --- HERO FUSION --- */
+.hero-fusion {
+    min-height: 90vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 10;
+    padding-top: 80px;
+}
+
+.fusion-content {
+    text-align: center;
+    max-width: 1000px;
+    padding: 0 1rem;
+}
+
+.fusion-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.5rem 1.5rem;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 50px;
+    margin-bottom: 2rem;
+}
+
+.fusion-pill span {
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.fusion-title {
+    font-size: 6rem;
+    line-height: 1;
+    font-weight: 800;
+    letter-spacing: -2px;
+    margin-bottom: 2rem;
+}
+
+.text-dev {
+    color: #fff;
+    text-shadow: 0 0 30px rgba(0, 242, 255, 0.3);
+}
+
+.text-crea {
+    color: #fff;
+    text-shadow: 0 0 30px rgba(255, 107, 53, 0.3);
+}
+
+.fusion-divider {
+    width: 2px;
+    height: 60px;
+    background: linear-gradient(to bottom, var(--dev-accent), var(--crea-accent));
+    margin: 0 auto 2rem auto;
+}
+
+.fusion-lead {
+    font-size: 1.25rem;
+    color: rgba(255, 255, 255, 0.6);
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
+/* --- PROFILE FUSION SECTION --- */
+.profile-fusion-section {
+    padding: 0 1rem;
+    margin-bottom: 8rem;
+    position: relative;
+    z-index: 5;
+}
+
+.profile-fusion-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.profile-bio-card,
+.profile-infos-card {
+    background: rgba(18, 18, 24, 0.6);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 24px;
+    padding: 3rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.bio-greeting {
+    font-size: 1.2rem;
+    color: var(--dev-accent);
+    margin-bottom: 0.5rem;
+}
+
+.bio-name {
+    font-size: 3rem;
+    font-weight: 800;
+    margin-bottom: 1.5rem;
+    letter-spacing: -1px;
+}
+
+.bio-text {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.7);
+    margin-bottom: 2rem;
+}
+
+.bio-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+    margin-bottom: 3rem;
+}
+
+.fusion-tag {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.bio-actions {
+    display: flex;
+    gap: 1rem;
+    margin-top: auto;
+}
+
+.btn-fusion-primary {
+    background: #fff;
+    color: #000;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    border-radius: 12px;
+    font-weight: 700;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: 0.3s;
+}
+
+.btn-fusion-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 20px rgba(255, 255, 255, 0.2);
+}
+
+.btn-fusion-outline {
+    background: transparent;
+    color: #fff;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 0.8rem 1.5rem;
+    border-radius: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: 0.3s;
+    text-decoration: none;
+}
+
+.btn-fusion-outline:hover {
+    border-color: #fff;
+    background: rgba(255, 255, 255, 0.05);
+}
+
+/* Infos Card */
+.infos-title {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding-bottom: 1rem;
+}
+
+.infos-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+}
+
+.info-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+}
+
+.i-label {
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.5);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.i-val {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #fff;
+}
+
+.social-fusion-row {
+    display: flex;
+    gap: 1rem;
+    margin-top: auto;
+}
+
+.s-icon {
+    width: 45px;
+    height: 45px;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.05);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba(255, 255, 255, 0.7);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    transition: 0.3s;
+}
+
+.s-icon:hover {
+    background: #fff;
+    color: #000;
+    transform: translateY(-3px);
+}
+
+
+/* --- TIMELINE SECTION --- */
+.timeline-section {
+    padding: 4rem 1rem;
+    max-width: 1200px;
+    margin: 0 auto 8rem;
+    position: relative;
+}
+
+.timeline-split-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    /* Gap between columns */
+    position: relative;
+}
+
+/* Spine Lines */
+.timeline-column {
+    position: relative;
+    padding-left: 2rem;
+    border-left: 2px solid rgba(255, 255, 255, 0.1);
+    /* The spine */
+}
+
+/* Header */
+.col-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 3rem;
+    position: relative;
+    left: -15px;
+    /* Pull back to align icon with spine */
+    background: var(--dev-bg);
+    /* Mask spine behind icon */
+    padding: 0.5rem 0;
+}
+
+/* Visual Cards */
+.t-card-visual {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 16px;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    position: relative;
+    transition: 0.3s;
+}
+
+.t-card-visual:hover {
+    background: rgba(255, 255, 255, 0.06);
+    border-color: rgba(255, 255, 255, 0.1);
+    transform: translateX(5px);
+}
+
+/* Dot Connector */
+.t-card-visual::before {
+    content: '';
+    position: absolute;
+    top: 2rem;
+    left: -2.6rem;
+    /* Position on the spine */
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--dev-bg);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    transition: 0.3s;
+}
+
+.timeline-column:first-child .t-card-visual::before {
+    border-color: var(--dev-accent);
+}
+
+.timeline-column:last-child .t-card-visual::before {
+    border-color: var(--crea-accent);
+}
+
+.t-card-visual:hover::before {
+    background: #fff;
+    transform: scale(1.2);
+}
+
+.t-date {
+    font-size: 0.85rem;
+    opacity: 0.5;
+    display: block;
+    margin-bottom: 0.3rem;
+}
+
+.t-title {
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 0.2rem;
+}
+
+.t-place {
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+
+/* --- BENTO GRID --- */
+.fusion-bento-section {
+    padding: 0 1rem;
+    max-width: 1200px;
+    margin: 0 auto 8rem;
+}
+
+.fusion-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-auto-rows: 200px;
+    gap: 1.5rem;
+}
+
+.f-card {
+    background: rgba(18, 18, 24, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    /* Faint border */
+    border-radius: 24px;
+    padding: 1.5rem;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: 0.3s;
+}
+
+.f-card:hover {
+    border-color: rgba(255, 255, 255, 0.2);
+    transform: translateY(-5px);
+}
+
+.f-card.large {
+    grid-column: span 2;
+}
+
+.f-card.tall {
+    grid-row: span 2;
+}
+
+.f-title {
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.5);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.f-content {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    z-index: 2;
+}
+
+/* Stack Pills */
+.stack-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 1rem;
+}
+
+.stack-pill {
+    font-size: 0.8rem;
+    padding: 0.3rem 0.8rem;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 6px;
+}
+
+.stat-val {
+    font-size: 4rem;
+    font-weight: 800;
+    line-height: 1;
+    letter-spacing: -2px;
+}
+
+@media (max-width: 900px) {
+    .fusion-title {
+        font-size: 3.5rem;
+    }
+
+    .profile-fusion-grid,
+    .timeline-split-container {
+        grid-template-columns: 1fr;
+    }
+
+    .timeline-column {
+        border-left: none;
+        padding-left: 0;
+    }
+
+    .t-card-visual::before {
+        display: none;
+    }
+
+    .col-header {
+        left: 0;
+        flex-direction: row;
+    }
+
+    .fusion-grid {
+        grid-template-columns: 1fr;
+        grid-auto-rows: auto;
+    }
+
+    .f-card.large,
+    .f-card.tall {
+        grid-column: span 1;
+        grid-row: span 1;
+    }
+}
+
+/* --- ACCESS NAVIGATION --- */
+.access-section {
+    padding: 20px 0 100px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.access-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    padding: 0 2rem;
+}
+
+.access-card {
+    background: rgba(18, 18, 24, 0.6);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 24px;
+    padding: 2.5rem;
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.access-card:hover {
+    transform: translateY(-5px);
+}
+
+.access-card.crea:hover {
+    border-color: var(--crea-accent);
+    box-shadow: 0 10px 40px rgba(255, 107, 53, 0.15);
+}
+
+.access-card.dev:hover {
+    border-color: var(--dev-accent);
+    box-shadow: 0 10px 40px rgba(0, 242, 255, 0.15);
+}
+
+.access-title {
+    font-size: 1.8rem;
+    font-weight: 800;
+    margin-bottom: 1rem;
+    color: #fff;
+}
+
+.access-desc {
+    font-size: 1rem;
+    line-height: 1.6;
+    opacity: 0.7;
+    margin-bottom: 2rem;
+    flex-grow: 1;
+}
+
+.access-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 2rem;
+}
+
+.access-tags span {
+    padding: 0.4rem 1rem;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 50px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.access-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.8rem;
+    padding: 1rem;
+    font-size: 1rem;
+    font-weight: 700;
+    border-radius: 12px;
+    border: none;
+    cursor: pointer;
+    transition: 0.3s;
+    width: fit-content;
+}
+
+.access-card.crea .access-btn {
+    background: var(--crea-accent);
+    color: #fff;
+    box-shadow: 0 5px 20px rgba(255, 107, 53, 0.3);
+}
+
+.access-card.dev .access-btn {
+    background: var(--dev-accent);
+    color: #000;
+    box-shadow: 0 5px 20px rgba(0, 242, 255, 0.3);
+}
+
+.access-btn:hover {
+    transform: scale(1.05);
+}
+
+@media (max-width: 900px) {
+    .access-grid {
+        grid-template-columns: 1fr;
+    }
+}

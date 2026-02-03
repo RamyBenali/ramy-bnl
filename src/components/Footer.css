@@ -1,0 +1,593 @@
+/* ============================================
+   FOOTER - DYNAMIC THEME SYSTEM
+   ============================================ */
+
+/* Base Footer Styles */
+.footer-dynamic {
+    padding: 0;
+    margin-top: 8rem;
+    position: relative;
+    overflow: hidden;
+}
+
+/* DEV THEME (Blue) */
+.footer-dynamic.dev {
+    background: linear-gradient(180deg, #05070a 0%, #0a0f1e 100%);
+    border-top: 1px solid rgba(0, 242, 255, 0.1);
+}
+
+.footer-dynamic.dev::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80%;
+    height: 1px;
+    background: linear-gradient(90deg,
+            transparent 0%,
+            rgba(0, 242, 255, 0.4) 50%,
+            transparent 100%);
+}
+
+/* CREATIVE THEME (Orange) */
+.footer-dynamic.creative {
+    background: linear-gradient(180deg, #0a0503 0%, #150a06 100%);
+    border-top: 1px solid rgba(255, 107, 53, 0.15);
+}
+
+.footer-dynamic.creative::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80%;
+    height: 1px;
+    background: linear-gradient(90deg,
+            transparent 0%,
+            rgba(255, 107, 53, 0.5) 50%,
+            transparent 100%);
+}
+
+/* FUSION THEME (Neutral) */
+.footer-dynamic.fusion {
+    background: var(--dev-bg);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.footer-dynamic.fusion::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80%;
+    height: 1px;
+    background: linear-gradient(90deg,
+            transparent 0%,
+            rgba(255, 255, 255, 0.3) 50%,
+            transparent 100%);
+}
+
+/* CTA Section */
+.footer-cta-section {
+    padding: 4rem 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.footer-cta-content {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+.cta-icon {
+    width: 80px;
+    height: 80px;
+    border-radius: 20px;
+    backdrop-filter: blur(10px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+/* Dev CTA Icon */
+.footer-dynamic.dev .cta-icon {
+    background: rgba(0, 242, 255, 0.1);
+    border: 1px solid rgba(0, 242, 255, 0.2);
+    color: var(--dev-accent);
+}
+
+/* Creative CTA Icon */
+.footer-dynamic.creative .cta-icon {
+    background: rgba(255, 107, 53, 0.1);
+    border: 1px solid rgba(255, 107, 53, 0.2);
+    color: var(--crea-accent);
+}
+
+/* Fusion CTA Icon */
+.footer-dynamic.fusion .cta-icon {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #fff;
+}
+
+.cta-text {
+    max-width: 500px;
+}
+
+.cta-title {
+    font-size: 2rem;
+    font-weight: 700;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 0.5rem;
+}
+
+/* Dev CTA Title */
+.footer-dynamic.dev .cta-title {
+    background: none;
+    -webkit-text-fill-color: #fff;
+    color: #fff;
+}
+
+/* Creative CTA Title */
+.footer-dynamic.creative .cta-title {
+    background: none;
+    -webkit-text-fill-color: #fff;
+    color: #fff;
+}
+
+/* Fusion CTA Title */
+.footer-dynamic.fusion .cta-title {
+    background: none;
+    -webkit-text-fill-color: #fff;
+    color: #fff;
+}
+
+.cta-subtitle {
+    font-size: 1.1rem;
+}
+
+/* Dev CTA Subtitle */
+.footer-dynamic.dev .cta-subtitle {
+    color: var(--dev-text-muted);
+}
+
+/* Creative CTA Subtitle */
+.footer-dynamic.creative .cta-subtitle {
+    color: var(--crea-text-muted);
+}
+
+/* Fusion CTA Subtitle */
+.footer-dynamic.fusion .cta-subtitle {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.footer-cta-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.8rem;
+    padding: 1rem 2rem;
+    background: transparent;
+    border: 2px solid;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 1rem;
+    text-decoration: none;
+    transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+
+/* Dev CTA Button */
+.footer-dynamic.dev .footer-cta-btn {
+    border-color: var(--dev-accent);
+    color: var(--dev-accent);
+}
+
+.footer-dynamic.dev .footer-cta-btn::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: var(--dev-accent);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+    z-index: -1;
+}
+
+.footer-dynamic.dev .footer-cta-btn:hover::before {
+    transform: scaleX(1);
+}
+
+.footer-dynamic.dev .footer-cta-btn:hover {
+    color: #000;
+    box-shadow: 0 0 30px rgba(0, 242, 255, 0.4);
+}
+
+/* Creative CTA Button */
+.footer-dynamic.creative .footer-cta-btn {
+    border-color: var(--crea-accent);
+    color: var(--crea-accent);
+}
+
+/* Fusion CTA Button */
+.footer-dynamic.fusion .footer-cta-btn {
+    border-color: rgba(255, 255, 255, 0.3);
+    color: #fff;
+}
+
+.footer-dynamic.fusion .footer-cta-btn::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: #fff;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+    z-index: -1;
+}
+
+.footer-dynamic.fusion .footer-cta-btn:hover::before {
+    transform: scaleX(1);
+}
+
+.footer-dynamic.fusion .footer-cta-btn:hover {
+    color: #000;
+    box-shadow: 0 0 30px rgba(255, 255, 255, 0.2);
+}
+
+.footer-dynamic.creative .footer-cta-btn::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: var(--crea-accent);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+    z-index: -1;
+}
+
+.footer-dynamic.creative .footer-cta-btn:hover::before {
+    transform: scaleX(1);
+}
+
+.footer-dynamic.creative .footer-cta-btn:hover {
+    color: #000;
+    box-shadow: 0 0 30px var(--crea-accent-glow);
+}
+
+/* Main Footer Content */
+.footer-main {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 4rem;
+    padding: 4rem 0;
+}
+
+.footer-column {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+/* Brand Column */
+.footer-brand {
+    max-width: 350px;
+}
+
+.brand-logo {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.logo-symbol {
+    width: 50px;
+    height: 50px;
+    border: 2px solid;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    font-weight: 700;
+    transition: all 0.3s ease;
+}
+
+/* Dev Logo Symbol */
+.footer-dynamic.dev .logo-symbol {
+    background: rgba(0, 242, 255, 0.1);
+    border-color: var(--dev-accent);
+    color: var(--dev-accent);
+}
+
+/* Creative Logo Symbol */
+.footer-dynamic.creative .logo-symbol {
+    background: rgba(255, 107, 53, 0.1);
+    border-color: var(--crea-accent);
+    color: var(--crea-accent);
+}
+
+/* Fusion Logo Symbol */
+.footer-dynamic.fusion .logo-symbol {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(255, 255, 255, 0.2);
+    color: #fff;
+}
+
+.brand-logo h3 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #fff;
+}
+
+.brand-tagline {
+    line-height: 1.6;
+    font-size: 0.95rem;
+}
+
+/* Dev Brand Tagline */
+.footer-dynamic.dev .brand-tagline {
+    color: var(--dev-text-muted);
+}
+
+/* Creative Brand Tagline */
+.footer-dynamic.creative .brand-tagline {
+    color: var(--crea-text-muted);
+}
+
+/* Fusion Brand Tagline */
+.footer-dynamic.fusion .brand-tagline {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.footer-socials {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.social-link {
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s;
+}
+
+/* Dev Social Links */
+.footer-dynamic.dev .social-link {
+    color: var(--dev-text-muted);
+}
+
+.footer-dynamic.dev .social-link:hover {
+    background: rgba(0, 242, 255, 0.1);
+    border-color: var(--dev-accent);
+    color: var(--dev-accent);
+    transform: translateY(-3px);
+}
+
+/* Creative Social Links */
+.footer-dynamic.creative .social-link {
+    color: var(--crea-text-muted);
+}
+
+.footer-dynamic.creative .social-link:hover {
+    background: rgba(255, 107, 53, 0.1);
+    border-color: var(--crea-accent);
+    color: var(--crea-accent);
+    transform: translateY(-3px);
+}
+
+/* Fusion Social Links */
+.footer-dynamic.fusion .social-link {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.footer-dynamic.fusion .social-link:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: #fff;
+    color: #fff;
+    transform: translateY(-3px);
+}
+
+/* Navigation Columns */
+.footer-column-title {
+    font-size: 0.9rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+/* Dev Column Titles */
+.footer-dynamic.dev .footer-column-title {
+    color: var(--dev-accent);
+}
+
+/* Creative Column Titles */
+.footer-dynamic.creative .footer-column-title {
+    color: var(--crea-accent);
+}
+
+/* Fusion Column Titles */
+.footer-dynamic.fusion .footer-column-title {
+    color: #fff;
+}
+
+.footer-links {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+
+.footer-links a {
+    text-decoration: none;
+    font-size: 0.95rem;
+    transition: all 0.2s;
+    display: inline-flex;
+    align-items: center;
+    position: relative;
+}
+
+/* Dev Footer Links */
+.footer-dynamic.dev .footer-links a {
+    color: var(--dev-text-muted);
+}
+
+.footer-dynamic.dev .footer-links a::before {
+    content: '';
+    position: absolute;
+    left: -10px;
+    width: 4px;
+    height: 0;
+    background: var(--dev-accent);
+    transition: height 0.2s;
+}
+
+.footer-dynamic.dev .footer-links a:hover::before {
+    height: 100%;
+}
+
+.footer-dynamic.dev .footer-links a:hover {
+    color: #fff;
+    transform: translateX(10px);
+}
+
+/* Creative Footer Links */
+.footer-dynamic.creative .footer-links a {
+    color: var(--crea-text-muted);
+}
+
+.footer-dynamic.creative .footer-links a::before {
+    content: '';
+    position: absolute;
+    left: -10px;
+    width: 4px;
+    height: 0;
+    background: var(--crea-accent);
+    transition: height 0.2s;
+}
+
+.footer-dynamic.creative .footer-links a:hover::before {
+    height: 100%;
+}
+
+.footer-dynamic.creative .footer-links a:hover {
+    color: #fff;
+    transform: translateX(10px);
+}
+
+/* Footer Bottom */
+.footer-bottom {
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    padding: 2rem 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.copyright {
+    font-size: 0.85rem;
+}
+
+/* Dev Copyright */
+.footer-dynamic.dev .copyright {
+    color: var(--dev-text-muted);
+}
+
+/* Creative Copyright */
+.footer-dynamic.creative .copyright {
+    color: var(--crea-text-muted);
+}
+
+.made-with {
+    font-size: 0.85rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+/* Dev Made With */
+.footer-dynamic.dev .made-with {
+    color: var(--dev-text-muted);
+}
+
+/* Creative Made With */
+.footer-dynamic.creative .made-with {
+    color: var(--crea-text-muted);
+}
+
+.heart-icon {
+    color: #ff4757;
+    animation: heartbeat 1.5s infinite;
+}
+
+@keyframes heartbeat {
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.1);
+    }
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .footer-main {
+        grid-template-columns: 1fr 1fr;
+        gap: 3rem;
+    }
+
+    .footer-brand {
+        grid-column: 1 / -1;
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 768px) {
+    .footer-cta-section {
+        flex-direction: column;
+        text-align: center;
+        padding: 3rem 0;
+    }
+
+    .footer-cta-content {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .cta-title {
+        font-size: 1.5rem;
+    }
+
+    .footer-main {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .footer-bottom {
+        flex-direction: column;
+        gap: 1rem;
+        text-align: center;
+    }
+}

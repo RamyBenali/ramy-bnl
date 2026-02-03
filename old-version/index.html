@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="assets/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+    <link rel="shortcut icon" href="assets/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-title" content="Ramy Portfolio" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <title data-i18n="meta.title">Ramy's Portfolio</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/dev-theme.css" id="theme-style">
+</head>
+<body>
+    <div class="fullpage-container">
+        <header>
+            <a href="#" class="logo" data-i18n="header.brand">Ramy's portfolio</a>
+            <a href="pages/about.html" class="btn-about" data-i18n="header.about">About me</a>
+            <a href="#" class="logo" data-i18n="header.choose">Choose a side.</a>
+        </header>
+        
+        <div class="fullpage-slider">
+            <div class="option developer-option" data-theme="dev">
+                <div class="option-content">
+                    <div class="option-icon">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <h2 data-i18n="dev.title">Développeur</h2>
+                    <p data-i18n="dev.text">Découvrez mes projets de développement et compétences techniques</p>
+                    <a href="pages/dev.html" class="btn" data-i18n="dev.cta">Explorer</a>
+                </div>
+                <div class="option-overlay"></div>
+            </div>
+            
+            <div class="option creative-option" data-theme="creative">
+                <div class="option-content">
+                    <div class="option-icon">
+                        <i class="fas fa-paint-brush"></i>
+                    </div>
+                    <h2 data-i18n="crea.title">Créatif</h2>
+                    <p data-i18n="crea.text">Explorez mes créations visuelles et projets de montage vidéo</p>
+                    <a href="pages/creative.html" class="btn" data-i18n="crea.cta">Découvrir</a>
+                </div>
+                <div class="option-overlay"></div>
+            </div>
+        </div>
+        
+        <footer>
+            <p data-i18n="footer.rights">&copy; 2025 Ramy Benali. Tous droits réservés.</p>
+        </footer>
+    </div>
+    <!-- Switch de langue -->
+    <div class="lang-switch">
+        <input type="checkbox" id="lang-toggle" />
+        <label for="lang-toggle">
+            <span class="lang-fr">FR</span>
+            <span class="lang-en">EN</span>
+        </label>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+    <script src="scripts/main.js"></script>
+    <script src="assets/i18n/home-translations.js" defer></script>
+    <script src="assets/i18n/i18n.js" defer></script>
+</body>
+</html>

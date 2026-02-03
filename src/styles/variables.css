@@ -1,0 +1,122 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800;900&family=Inter:wght@300;400;500;600;700&display=swap');
+
+:root {
+  /* --- TYPOGRAPHY --- */
+  --font-header: 'Outfit', -apple-system, sans-serif;
+  --font-body: 'Inter', -apple-system, sans-serif;
+
+  /* --- COMMON TOKENS --- */
+  --transition-smooth: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+  --transition-fast: all 0.2s ease;
+  --glass-blur: blur(20px);
+  --radius-l: 24px;
+  --radius-m: 16px;
+  --radius-pill: 999px;
+  --shadow-premium: 0 20px 50px rgba(0, 0, 0, 0.5);
+
+  /* --- DEV TRACK (Cyber/Technical) --- */
+  --dev-bg: #05070a;
+  --dev-surface: rgba(10, 15, 25, 0.7);
+  --dev-accent: #00f2ff;
+  --dev-accent-2: #0066ff;
+  --dev-accent-glow: rgba(0, 242, 255, 0.2);
+  --dev-border: rgba(0, 242, 255, 0.15);
+  --dev-text: #e0f2f1;
+  --dev-text-muted: rgba(224, 242, 241, 0.6);
+  --dev-grid: radial-gradient(circle at 2px 2px, rgba(0, 242, 255, 0.05) 1px, transparent 0);
+
+  /* --- CREATIVE TRACK (Artistic/Warm) --- */
+  --crea-bg: #0a0503;
+  --crea-surface: rgba(20, 12, 8, 0.7);
+  --crea-accent: #ff6b35;
+  --crea-accent-2: #ff8c42;
+  --crea-accent-rgb: 255, 107, 53;
+  --crea-accent-glow: rgba(255, 107, 53, 0.25);
+  --crea-border: rgba(255, 107, 53, 0.2);
+  --crea-text: #fff5f0;
+  --crea-text-muted: rgba(255, 245, 240, 0.65);
+  --crea-grid: radial-gradient(circle at 2px 2px, rgba(255, 107, 53, 0.05) 1px, transparent 0);
+
+  /* --- DYNAMIC VALUES --- */
+  --bg: var(--dev-bg);
+  --text: var(--dev-text);
+  --accent: var(--dev-accent);
+
+  /* --- FUSION THEME (Hybrid) --- */
+  --fusion-gradient: linear-gradient(135deg, var(--dev-accent), var(--crea-accent));
+  --fusion-gradient-text: linear-gradient(135deg, #fff 30%, var(--dev-accent) 70%, var(--crea-accent) 100%);
+  --fusion-glow: drop-shadow(0 0 15px rgba(0, 242, 255, 0.3)) drop-shadow(0 0 15px rgba(255, 107, 53, 0.3));
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  cursor: none;
+  /* Custom cursor implementation planned */
+}
+
+body {
+  font-family: var(--font-body);
+  background: var(--bg);
+  color: var(--text);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  transition: background 0.8s ease, color 0.8s ease;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-header);
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+
+
+
+/* --- DYNAMIC THEME SWITCHING --- */
+body[data-theme="dev"] {
+  --bg: var(--dev-bg);
+  --text: var(--dev-text);
+  --accent: var(--dev-accent);
+}
+
+body[data-theme="creative"] {
+  --bg: var(--crea-bg);
+  --text: var(--crea-text);
+  --accent: var(--crea-accent);
+}
+
+body[data-theme="fusion"] {
+  --bg: var(--dev-bg);
+  /* Use dev-bg as base */
+  --text: #ffffff;
+  --accent: rgba(255, 255, 255, 0.8);
+}
+
+/* Scrollbar styling - Uses dynamic variables */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--accent);
+  border-radius: 10px;
+  opacity: 0.8;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  filter: brightness(1.2);
+}

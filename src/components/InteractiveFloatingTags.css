@@ -1,0 +1,57 @@
+/* Inherit base styles from DevPage.css but adapt for interaction */
+
+.interactive-scene {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    /* Let clicks pass through, but we track mouse globally */
+    z-index: 1;
+}
+
+.floating-tag-wrapper {
+    position: absolute;
+    /* transition: transform 0.1s ease-out; now handled inline for springy feel */
+    pointer-events: auto;
+    /* Allow hovering if needed */
+    will-change: transform;
+}
+
+.floating-tag-inner {
+    background: rgba(10, 15, 30, 0.4);
+    border: 1px solid var(--dev-border);
+    padding: 0.6rem 1.4rem;
+    border-radius: var(--radius-pill);
+    font-family: var(--font-header);
+    font-weight: 700;
+    font-size: 0.9rem;
+    color: var(--dev-text);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    white-space: nowrap;
+    backdrop-filter: blur(4px);
+    transition: all 0.3s ease;
+
+    /* Re-apply the float animation here effectively? 
+       No, if we animate transform here, it adds to parent transform. 
+       Use the existing 'float' keyframes from DevPage.css but apply to inner.
+    */
+    animation: float 6s infinite ease-in-out;
+}
+
+.floating-tag-inner:hover {
+    border-color: var(--dev-accent);
+    color: var(--dev-accent);
+    background: rgba(10, 15, 30, 0.8);
+    box-shadow: 0 0 15px var(--dev-accent-glow);
+}
+
+/* 
+   We need to ensure the parent .t1, .t2 etc. from DevPage.css 
+   apply their TOP/LEFT/RIGHT/BOTTOM positions to the WRAPPER 
+   but NOT the animation (which conflicts with our translate).
+   
+   Solution: In DevPage.css, we will modify the selectors to target 
+   .floating-tag-wrapper.t1 instead of .floating-tag.t1, 
+   and move the animation to the child.
+*/
