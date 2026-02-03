@@ -3,7 +3,6 @@ import Navbar from './Navbar';
 import ContactForm from './ContactForm';
 import Footer from './Footer';
 import CustomCursor from './CustomCursor';
-import { useTranslation } from 'react-i18next';
 import { useContact } from '../context/ContactContext';
 import { useTheme } from '../context/ThemeContext';
 import FloatingLanguageToggle from './FloatingLanguageToggle';
@@ -17,7 +16,6 @@ interface LayoutProps {
 }
 
 const Layout: React.FC<LayoutProps> = ({ children, hideLanguageToggle = false, className = '' }) => {
-    const { t } = useTranslation();
     const { isOpen, closeContact } = useContact();
     const { theme } = useTheme();
 

@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, Github, ExternalLink, ArrowLeft } from 'lucide-react';
+import { X, Github, ExternalLink } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import './ProjectDetailOverlay.css';
 

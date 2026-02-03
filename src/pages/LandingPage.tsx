@@ -20,7 +20,7 @@ const LandingPage: React.FC = () => {
     };
 
     // Animation constants
-    const transition = { type: 'spring', stiffness: 200, damping: 30 };
+    const transition = { type: 'spring' as const, stiffness: 200, damping: 30 };
 
     // Dynamic Frontier Logic
     const splitPosition = hoveredSide === 'dev' ? '70%' : hoveredSide === 'creative' ? '30%' : '50%';
