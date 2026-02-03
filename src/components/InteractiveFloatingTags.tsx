@@ -61,20 +61,7 @@ const MagneticTag: React.FC<MagneticTagProps> = ({ tag, mousePos }) => {
     useEffect(() => {
         if (!ref.current) return;
 
-        const rect = ref.current.getBoundingClientRect();
-        // Calculate center relative to the container logic if possible, 
-        // but here rect is viewport relative, and mousePos is container relative.
-        // Let's use viewport coordinates for simplicity in physics.
-
-        // We need the element's center position in viewport
-        const centerX = rect.left + rect.width / 2;
-        const centerY = rect.top + rect.height / 2;
-
-        // Mouse position in viewport is available from the parent if we passed raw event clientX/Y
-        // Actually, let's just use the logic relative to the element itself vs mouse
-
         // Re-calibrating: The container might be relative.
-        // Let's use a simpler approach: 
         // We know the mouse position relative to the container (mousePos).
         // We need the element's position relative to the container.
 
