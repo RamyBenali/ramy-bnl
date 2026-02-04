@@ -270,7 +270,7 @@ const CreativePage: React.FC = () => {
                                             <Palette size={32} />
                                         </div>
                                         <div className="text-content">
-                                            <h4>DESIGN</h4>
+                                            <h4>{t('creative.tools.design_label')}</h4>
                                             <p>{t('creative.tools.figma_specialist')}</p>
                                         </div>
                                     </div>
@@ -289,7 +289,7 @@ const CreativePage: React.FC = () => {
                                             <Play size={32} />
                                         </div>
                                         <div className="text-content">
-                                            <h4>VIDEO</h4>
+                                            <h4>{t('creative.tools.video_label')}</h4>
                                             <p>{t('creative.tools.motion_graphics')}</p>
                                         </div>
                                     </div>

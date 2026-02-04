@@ -140,6 +140,11 @@ const resources = {
                     "desc": "Je transforme des visions en réalités cinématographiques et des concepts en interfaces intuitives.",
                     "cta": "EXPLORER LE SHOWCASE",
                     "btn_contact": "Me contacter",
+                    "greeting": "Bonjour, je suis",
+                    "bio": "Artiste digital passionné, je transforme des idées en expériences visuelles captivantes. De la conception UI/UX au montage vidéo, je donne vie à vos projets avec créativité et authenticité.",
+                    "q1": "Créatif",
+                    "q2": "Authentique",
+                    "q3": "Passionné",
                     "roles": {
                         "video_creative": "Créatif Vidéo",
                         "motion_designer": "Motion Designer",
@@ -150,6 +155,8 @@ const resources = {
                 "tools": {
                     "title": "Ma Caisse à Outils",
                     "toolkit_title": "Mes Logiciels Préférés",
+                    "design_label": "DESIGN",
+                    "video_label": "VIDEO",
                     "figma_specialist": "Graphic Design",
                     "motion_graphics": "Montage & Motion Design"
                 },
@@ -483,6 +490,11 @@ const resources = {
                     "desc": "I turn visions into cinematic realities and concepts into intuitive interfaces.",
                     "cta": "EXPLORE SHOWCASE",
                     "btn_contact": "Contact Me",
+                    "greeting": "Hi, I am",
+                    "bio": "Passionate digital artist, I transform ideas into captivating visual experiences. From UI/UX design to video editing, I bring your projects to life with creativity and authenticity.",
+                    "q1": "Creative",
+                    "q2": "Authentic",
+                    "q3": "Passionate",
                     "roles": {
                         "video_creative": "Video Creative",
                         "motion_designer": "Motion Designer",
@@ -493,6 +505,8 @@ const resources = {
                 "tools": {
                     "title": "My Toolbox",
                     "toolkit_title": "My Favorite Software",
+                    "design_label": "DESIGN",
+                    "video_label": "VIDEO",
                     "figma_specialist": "Graphic Design",
                     "motion_graphics": "Video Editing & Motion Design"
                 },
