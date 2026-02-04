@@ -147,8 +147,8 @@ const AboutPage: React.FC = () => {
 
                             <div className="social-fusion-row">
                                 <a href="https://github.com/RamyBenali" target="_blank" className="s-icon"><Github size={20} /></a>
-                                <a href="https://linkedin.com/in/ramy-benali" target="_blank" className="s-icon"><Linkedin size={20} /></a>
-                                <a href="https://instagram.com/ramyb_21" target="_blank" className="s-icon"><Instagram size={20} /></a>
+                                <a href="https://www.linkedin.com/in/ramy-benali-248b70282/" target="_blank" className="s-icon"><Linkedin size={20} /></a>
+                                <a href="https://www.instagram.com/rmba.exe/" target="_blank" className="s-icon"><Instagram size={20} /></a>
                             </div>
                         </div>
 

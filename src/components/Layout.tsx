@@ -12,10 +12,11 @@ import './Layout.css';
 interface LayoutProps {
     children: React.ReactNode;
     hideLanguageToggle?: boolean;
+    hideNavbar?: boolean;
     className?: string; // Added optional className
 }
 
-const Layout: React.FC<LayoutProps> = ({ children, hideLanguageToggle = false, className = '' }) => {
+const Layout: React.FC<LayoutProps> = ({ children, hideLanguageToggle = false, hideNavbar = false, className = '' }) => {
     const { isOpen, closeContact } = useContact();
     const { theme } = useTheme();
 
@@ -23,7 +24,7 @@ const Layout: React.FC<LayoutProps> = ({ children, hideLanguageToggle = false, c
         <div className={`layout-wrapper theme-${theme} ${className}`}>
             <LightFollower />
             <CustomCursor />
-            <Navbar />
+            {!hideNavbar && !isOpen && <Navbar />}
             <main className="main-content">
                 {children}
             </main>

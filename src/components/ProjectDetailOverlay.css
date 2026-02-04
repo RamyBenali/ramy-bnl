@@ -54,15 +54,23 @@
 /* --- HERO SECTION --- */
 .overlay-hero {
     position: relative;
-    height: 60vh;
+    height: 70vh;
+    /* Increased height for better visibility of full screens */
     width: 100%;
     overflow: hidden;
+    background: #050608;
+    /* Very dark background for contained images */
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .overlay-hero-img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: contain;
+    /* Show full image without cropping */
+    z-index: 1;
 }
 
 .overlay-hero-gradient {
@@ -72,6 +80,71 @@
             rgba(0, 0, 0, 0.2) 0%,
             rgba(11, 13, 20, 0.8) 80%,
             #0b0d14 100%);
+    z-index: 5;
+    pointer-events: none;
+}
+
+.carousel-controls {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 2rem;
+    z-index: 10;
+    pointer-events: none;
+    /* Allow clicks to pass through to content below */
+}
+
+.carousel-btn,
+.carousel-dots {
+    pointer-events: auto;
+    /* Re-enable clicks for controls */
+}
+
+.carousel-btn {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #fff;
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    backdrop-filter: blur(5px);
+    transition: all 0.3s;
+}
+
+.carousel-btn:hover {
+    background: #fff;
+    color: #000;
+}
+
+.carousel-dots {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 0.8rem;
+    z-index: 10;
+}
+
+.dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.dot.active {
+    background: var(--dev-accent);
+    transform: scale(1.5);
+    box-shadow: 0 0 10px var(--dev-accent-glow);
 }
 
 .overlay-hero-content {
@@ -212,6 +285,34 @@
     font-size: 1.1rem;
 }
 
+@media (max-width: 768px) {
+    .btn-close-overlay {
+        top: 1rem;
+        right: 1rem;
+        width: 3rem;
+        height: 3rem;
+    }
+
+    .overlay-hero {
+        height: 50vh;
+    }
+
+    .overlay-title {
+        font-size: 2rem;
+    }
+
+    .overlay-links {
+        width: 100%;
+        flex-direction: column;
+    }
+
+    .btn-overlay-primary,
+    .btn-overlay-secondary {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
 @media (max-width: 1024px) {
     .content-grid {
         grid-template-columns: 1fr;
@@ -233,3 +334,5 @@
         padding: 3rem 1.5rem;
     }
 }
+
+```

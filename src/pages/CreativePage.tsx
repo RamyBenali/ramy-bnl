@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { motion, AnimatePresence, LayoutGroup } from 'framer-motion';
 import Layout from '../components/Layout';
 import { Play, ChevronRight, Sparkles, Palette, Brush, Eye, Rocket, Figma } from 'lucide-react';
+import { useContact } from '../context/ContactContext';
 import EmbedModal from '../components/EmbedModal';
 import Typewriter from '../components/Typewriter';
 import CreativeInteractiveTags from '../components/CreativeInteractiveTags';
@@ -21,6 +22,7 @@ interface ShowcaseItem {
 
 const CreativePage: React.FC = () => {
     const { t } = useTranslation();
+    const { openContact } = useContact();
     const [selectedItem, setSelectedItem] = useState<ShowcaseItem | null>(null);
     const [activeFilter, setActiveFilter] = useState('all');
 
@@ -75,7 +77,7 @@ const CreativePage: React.FC = () => {
     }));
 
     return (
-        <Layout>
+        <Layout hideNavbar={!!selectedItem}>
             <div className="crea-modern">
                 {/* HERO SECTION - Split Layout */}
                 <section className="crea-hero-split">
@@ -179,7 +181,7 @@ const CreativePage: React.FC = () => {
                                     <Eye size={18} />
                                     {t('creative.hero.cta', 'Voir mes créations')}
                                 </button>
-                                <button className="btn-crea-outline">
+                                <button className="btn-crea-outline" onClick={openContact}>
                                     <Rocket size={18} />
                                     {t('creative.hero.btn_contact', 'Me contacter')}
                                 </button>
@@ -311,7 +313,7 @@ const CreativePage: React.FC = () => {
                     />
                 </div>
 
-                <div className="crea-container">
+                <div id="projects" className="crea-container">
                     <div className="gallery-header">
                         <h2 className="section-title-crea">{t('creative.gallery.title')}</h2>
                         <div className="gallery-filters">

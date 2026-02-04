@@ -20,8 +20,8 @@
     border-radius: 50%;
     filter: blur(80px);
     opacity: 0.8;
-    /* Increased from 0.6 */
-    animation: pulse-float 10s infinite alternate ease-in-out;
+    animation: pulse-float 15s infinite alternate ease-in-out;
+    will-change: transform, opacity;
 }
 
 .s1 {
@@ -111,6 +111,7 @@
     color: #fff;
     line-height: 1.1;
     letter-spacing: -0.02em;
+    will-change: transform, opacity;
 }
 
 .hero-role {
@@ -118,7 +119,7 @@
     font-weight: 700;
     margin-bottom: 1rem;
     min-height: 2.4rem;
-    /* Prevent layout shift */
+    will-change: transform, opacity;
 }
 
 .typewriter-cursor {
@@ -473,11 +474,11 @@
 
     0%,
     100% {
-        transform: translateY(0);
+        transform: translateY(0) translateZ(0);
     }
 
     50% {
-        transform: translateY(-15px);
+        transform: translateY(-15px) translateZ(0);
     }
 }
 

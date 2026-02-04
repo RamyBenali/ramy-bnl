@@ -212,7 +212,7 @@
 }
 
 .footer-dynamic.dev .footer-cta-btn:hover {
-    color: #000;
+    color: #fff;
     box-shadow: 0 0 30px rgba(0, 242, 255, 0.4);
 }
 
@@ -244,7 +244,7 @@
 }
 
 .footer-dynamic.fusion .footer-cta-btn:hover {
-    color: #000;
+    color: #fff;
     box-shadow: 0 0 30px rgba(255, 255, 255, 0.2);
 }
 
@@ -264,7 +264,7 @@
 }
 
 .footer-dynamic.creative .footer-cta-btn:hover {
-    color: #000;
+    color: #fff;
     box-shadow: 0 0 30px var(--crea-accent-glow);
 }
 
@@ -456,11 +456,13 @@
 }
 
 /* Dev Footer Links */
-.footer-dynamic.dev .footer-links a {
+.footer-dynamic.dev .footer-links a,
+.footer-dynamic.dev .footer-link-btn {
     color: var(--dev-text-muted);
 }
 
-.footer-dynamic.dev .footer-links a::before {
+.footer-dynamic.dev .footer-links a::before,
+.footer-dynamic.dev .footer-link-btn::before {
     content: '';
     position: absolute;
     left: -10px;
@@ -470,7 +472,8 @@
     transition: height 0.2s;
 }
 
-.footer-dynamic.dev .footer-links a:hover::before {
+.footer-dynamic.dev .footer-links a:hover::before,
+.footer-dynamic.dev .footer-link-btn:hover::before {
     height: 100%;
 }
 
@@ -481,11 +484,13 @@
 }
 
 /* Creative Footer Links */
-.footer-dynamic.creative .footer-links a {
+.footer-dynamic.creative .footer-links a,
+.footer-dynamic.creative .footer-link-btn {
     color: var(--crea-text-muted);
 }
 
-.footer-dynamic.creative .footer-links a::before {
+.footer-dynamic.creative .footer-links a::before,
+.footer-dynamic.creative .footer-link-btn::before {
     content: '';
     position: absolute;
     left: -10px;
@@ -495,12 +500,41 @@
     transition: height 0.2s;
 }
 
-.footer-dynamic.creative .footer-links a:hover::before {
+.footer-dynamic.creative .footer-links a:hover::before,
+.footer-dynamic.creative .footer-link-btn:hover::before {
     height: 100%;
 }
 
 .footer-dynamic.creative .footer-links a:hover,
 .footer-dynamic.creative .footer-link-btn:hover {
+    color: #fff;
+    transform: translateX(10px);
+}
+
+/* Fusion Footer Links */
+.footer-dynamic.fusion .footer-links a,
+.footer-dynamic.fusion .footer-link-btn {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.footer-dynamic.fusion .footer-links a::before,
+.footer-dynamic.fusion .footer-link-btn::before {
+    content: '';
+    position: absolute;
+    left: -10px;
+    width: 4px;
+    height: 0;
+    background: #fff;
+    transition: height 0.2s;
+}
+
+.footer-dynamic.fusion .footer-links a:hover::before,
+.footer-dynamic.fusion .footer-link-btn:hover::before {
+    height: 100%;
+}
+
+.footer-dynamic.fusion .footer-links a:hover,
+.footer-dynamic.fusion .footer-link-btn:hover {
     color: #fff;
     transform: translateX(10px);
 }

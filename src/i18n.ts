@@ -66,10 +66,11 @@ const resources = {
                     "tools": "Outils"
                 },
                 "projects": {
-                    "title": "SELECTION DE TRAVAUX",
+                    "title": "PROJETS RÉCENTS",
                     "subtitle": "Quelques projets marquants de mon parcours.",
                     "hint": "VOIR LE PROJET",
                     "view_project": "Voir le projet",
+                    "featured": "En vedette",
                     "list": {
                         "pong": {
                             "title": "Pong Game",
@@ -102,10 +103,22 @@ const resources = {
                             "features": ["Tunnel de vente complet", "Accès LearnDash", "Design responsive", "Optimisé conversion"]
                         },
                         "caryago": {
-                            "title": "Caryago (En cours)",
+                            "title": "Caryago",
                             "desc": "Plateforme en ligne de location de véhicule sur tout le territoire algérien.",
                             "modal": "Plateforme intermédiaire entre agences et clients. Réservation en ligne complète.",
                             "features": ["Comptes Client/Agence", "Dashboard Agence complet", "Recherche dynamique", "Système de réservation", "Calendrier interactif", "UI/UX ludique"]
+                        },
+                        "bonzai": {
+                            "title": "Bonzai Checkout",
+                            "desc": "Passerelle de paiement optimisée pour WordPress & WooCommerce.",
+                            "modal": "Bonzai Checkout est une passerelle de paiement innovante conçue pour WooCommerce. Elle permet d'unifier le paiement et la validation de commande sur une seule page pour maximiser le taux de conversion. Disponible en version 'Custom Checkout' ou 'Embed', elle s'adapte aux besoins des e-commerçants amateurs comme professionnels.",
+                            "features": ["Paiement en une page", "Intégration WooCommerce native", "Version Embed & Custom", "Optimisé pour la conversion", "Interface fluide et sécurisée"]
+                        },
+                        "swat": {
+                            "title": "SWAT Intranet",
+                            "desc": "Intranet complet pour une unité de police avec gestion d'effectifs, dashboard modulable et armurerie.",
+                            "modal": "Système d'intranet avancé conçu pour une unité spécialisée sur un jeu vidéo. Comprend un tableau de bord modulable avec tableau blanc, gestion des effectifs, suivi des opérations, modules d'entraînement, planning interactif, gestion documentaire, système de recrutement et armurerie/inventaire complet. Inclus également une interface d'administration totale.",
+                            "features": ["Tableau de bord modulable", "Gestion d'effectifs avancée", "Tableau blanc créatif", "Suivi des opérations & entraînements", "Planning & Calendrier interactif", "Armurerie & Inventaire", "Interface d'administration complète"]
                         }
                     },
                     "modal": {
@@ -126,6 +139,7 @@ const resources = {
                     "title": "CRÉER L'INATTENDU.",
                     "desc": "Je transforme des visions en réalités cinématographiques et des concepts en interfaces intuitives.",
                     "cta": "EXPLORER LE SHOWCASE",
+                    "btn_contact": "Me contacter",
                     "roles": {
                         "video_creative": "Créatif Vidéo",
                         "motion_designer": "Motion Designer",
@@ -395,10 +409,11 @@ const resources = {
                     "tools": "Tools"
                 },
                 "projects": {
-                    "title": "WORK SELECTION",
+                    "title": "RECENT PROJECTS",
                     "subtitle": "A few highlights from my journey.",
                     "hint": "VIEW PROJECT",
                     "view_project": "View Project",
+                    "featured": "Featured",
                     "list": {
                         "pong": {
                             "title": "Pong Game",
@@ -431,10 +446,22 @@ const resources = {
                             "features": ["Full sales funnel", "LearnDash access", "Responsive design", "Conversion optimized"]
                         },
                         "caryago": {
-                            "title": "Caryago (WIP)",
+                            "title": "Caryago",
                             "desc": "Online car rental platform across Algeria.",
                             "modal": "Intermediary platform between agencies and clients. Full online booking.",
                             "features": ["Client/Agency accounts", "Full Agency dashboard", "Dynamic search", "Booking system", "Interactive calendar", "Fun UI/UX"]
+                        },
+                        "bonzai": {
+                            "title": "Bonzai Checkout",
+                            "desc": "Optimized payment gateway for WordPress & WooCommerce.",
+                            "modal": "Bonzai Checkout is an innovative payment gateway built for WooCommerce. It streamlines the checkout process by allowing payment and order validation on the same page, maximizing conversion rates. Available in 'Custom Checkout' and 'Embed' versions, it caters to both beginner and professional e-commerce merchants.",
+                            "features": ["One-page checkout", "Native WooCommerce integration", "Embed & Custom versions", "Conversion optimized", "Fluid & secure interface"]
+                        },
+                        "swat": {
+                            "title": "SWAT Intranet",
+                            "desc": "Comprehensive intranet for a police unit featuring workforce management, modular dashboard, and armory.",
+                            "modal": "Advanced intranet system designed for a specialized video game unit. Includes a modular dashboard with a whiteboard, workforce management, operations tracking, training modules, interactive planning, document management, recruitment system, and a full armory/inventory. Also features a comprehensive admin interface.",
+                            "features": ["Modular dashboard", "Advanced workforce management", "Creative whiteboard", "Operations & training tracking", "Interactive Planning & Calendar", "Armory & Inventory", "Comprehensive admin interface"]
                         }
                     },
                     "modal": {
@@ -455,6 +482,7 @@ const resources = {
                     "title": "CREATING THE UNEXPECTED.",
                     "desc": "I turn visions into cinematic realities and concepts into intuitive interfaces.",
                     "cta": "EXPLORE SHOWCASE",
+                    "btn_contact": "Contact Me",
                     "roles": {
                         "video_creative": "Video Creative",
                         "motion_designer": "Motion Designer",

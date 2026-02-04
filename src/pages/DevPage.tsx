@@ -33,7 +33,7 @@ const DevPage: React.FC = () => {
     const { openContact } = useContact();
     const [selectedProject, setSelectedProject] = useState<Project | null>(null);
 
-    const projectKeys = ['pong', 'echoes', 'home-inspire', 'saldae-trip', 'sopenbiz', 'caryago'];
+    const projectKeys = ['bonzai', 'pong', 'home-inspire', 'echoes', 'saldae-trip', 'sopenbiz', 'caryago', 'swat'];
 
     const projects = projectKeys.map(key => ({
         id: key,
@@ -45,35 +45,67 @@ const DevPage: React.FC = () => {
                 key === 'home-inspire' ? "assets/images/Home-inspire.jpg" :
                     key === 'saldae-trip' ? "assets/images/SaldaeTrip.jpg" :
                         key === 'sopenbiz' ? "assets/images/Sopenbiz.png" :
-                            "assets/images/CaryagoLogo.png",
+                            key === 'bonzai' ? "assets/images/bonzai/screenshot1.png" :
+                                key === 'swat' ? "assets/images/swat/swat-logo.png" :
+                                    "assets/images/caryago/caryago-screen1.png",
         tech: key === 'pong' ? ["C", "Raylib"] :
             key === 'echoes' ? ["HTML5", "React", "MySQL"] :
                 key === 'home-inspire' ? ["Java", "JavaFX", "MySQL"] :
                     key === 'saldae-trip' ? ["Kotlin", "Flutter", "SupaBase"] :
                         key === 'sopenbiz' ? ["WordPress", "Elementor Pro"] :
-                            ["WordPress", "JetEngine", "Dukan"],
+                            key === 'bonzai' ? ["PHP", "JavaScript", "HTML", "CSS"] :
+                                key === 'swat' ? ["React", "TypeScript", "JS", "CSS", "HTML"] :
+                                    ["React", "TypeScript", "JS", "CSS"],
         github: key === 'pong' ? "https://github.com/RamyBenali/Pong-Game" :
             key === 'home-inspire' ? "https://github.com/RamyBenali/HomeInspire" :
-                key === 'saldae-trip' ? "https://github.com/RamyBenali/SaldaeTrip" : undefined,
+                key === 'saldae-trip' ? "https://github.com/RamyBenali/SaldaeTrip" :
+                    key === 'bonzai' ? "https://github.com/BonzaiPro?tab=repositories" : undefined,
         external: key === 'sopenbiz' ? "https://sopenbiz.com/" :
-            key === 'caryago' ? "https://caryago.com/" : undefined,
+            key === 'caryago' ? "https://caryago.lovable.app/" :
+                key === 'swat' ? "https://swat-vision.lovable.app/" : undefined,
         features: t(`dev.projects.list.${key}.features`, { returnObjects: true }) as string[],
-        images: [
-            key === 'pong' ? "assets/images/pong-logo.jpg" :
-                key === 'echoes' ? "assets/images/Echoes.jpg" :
-                    key === 'home-inspire' ? "assets/images/Home-inspire.jpg" :
-                        key === 'saldae-trip' ? "assets/images/SaldaeTrip.jpg" :
-                            key === 'sopenbiz' ? "assets/images/Sopenbiz.png" :
-                                "assets/images/CaryagoLogo.png"
+        images: key === 'pong' ? [
+            "assets/images/pong/screenshot1.png",
+            "assets/images/pong/screenshot2.png",
+            "assets/images/pong/screenshot3.png"
+        ] : key === 'echoes' ? [
+            "assets/images/echoes/screenshot1.png",
+            "assets/images/echoes/screenshot2.png",
+            "assets/images/echoes/screenshot3.png"
+        ] : key === 'home-inspire' ? [
+            "assets/images/homeinspire/screenshot1.png",
+            "assets/images/homeinspire/screenshot2.png",
+            "assets/images/homeinspire/screenshot3.png"
+        ] : key === 'saldae-trip' ? [
+            "assets/images/saldaetrip/screenshot1.png",
+            "assets/images/saldaetrip/screenshot2.png",
+            "assets/images/saldaetrip/screenshot3.png"
+        ] : key === 'sopenbiz' ? [
+            "assets/images/sopenbiz/sopenbiz-screen1.png",
+            "assets/images/sopenbiz/sopenbiz-screen2.png",
+            "assets/images/sopenbiz/sopenbiz-screen3.png"
+        ] : key === 'bonzai' ? [
+            "assets/images/bonzai/screenshot1.png",
+            "assets/images/bonzai/screenshot2.png",
+            "assets/images/bonzai/screenshot3.png"
+        ] : key === 'swat' ? [
+            "assets/images/swat/screenshot1.png",
+            "assets/images/swat/screenshot2.png",
+            "assets/images/swat/screenshot3.png",
+            "assets/images/swat/screenshot4.png"
+        ] : [
+            "assets/images/caryago/caryago-screen1.png",
+            "assets/images/caryago/caryago-screen2.png",
+            "assets/images/caryago/caryago-screen3.png"
         ],
-        featured: key === 'echoes' || key === 'saldae-trip' // Highlight best work
+        featured: key === 'bonzai' || key === 'home-inspire' || key === 'saldae-trip' // Highlight best work
     }));
 
 
 
 
     return (
-        <Layout hideLanguageToggle={!!selectedProject}>
+        <Layout hideLanguageToggle={!!selectedProject} hideNavbar={!!selectedProject}>
             <div className="dev-modern">
                 {/* HERO SECTION - Split Layout (Personal) */}
                 <section className="dev-hero-split">

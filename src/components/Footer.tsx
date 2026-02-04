@@ -1,7 +1,7 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import { Github, Linkedin, ArrowRight, Code2, Heart, Palette } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { Github, Linkedin, Instagram, ArrowRight, Code2, Heart, Palette } from 'lucide-react';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useTheme } from '../context/ThemeContext';
 import { useContact } from '../context/ContactContext';
 import './Footer.css';
@@ -10,6 +10,46 @@ const Footer: React.FC = () => {
     const { t } = useTranslation();
     const { theme, setTheme } = useTheme();
     const { openContact } = useContact();
+    const location = useLocation();
+    const navigate = useNavigate();
+
+    const isDev = location.pathname === '/dev';
+    const isCreative = location.pathname === '/creative';
+    const isAbout = location.pathname === '/about';
+
+    const getNavLinks = () => {
+        if (isDev) {
+            return [
+                { name: t('header.projects'), id: 'projects' },
+                { name: t('header.skills'), id: 'skills' },
+            ];
+        }
+        if (isCreative) {
+            return [
+                { name: t('header.creative_showcase'), id: 'projects' },
+                { name: t('header.creative_toolbox'), id: 'tools' },
+            ];
+        }
+        if (isAbout) {
+            return [
+                { name: t('header.about_infos'), id: 'infos' },
+                { name: t('header.about_journey'), id: 'journey' },
+                { name: t('header.about_skills'), id: 'skills' },
+            ];
+        }
+        return [];
+    };
+
+    const navLinks = getNavLinks();
+
+    const scrollToSection = (id: string) => {
+        const element = document.getElementById(id);
+        if (element) {
+            element.scrollIntoView({ behavior: 'smooth' });
+        } else {
+            navigate(`/${theme}#${id}`);
+        }
+    };
 
     return (
         <footer className={`footer-dynamic ${theme}`}>
@@ -46,13 +86,16 @@ const Footer: React.FC = () => {
                             <a href="https://github.com/RamyBenali" target="_blank" rel="noopener noreferrer" className="social-link">
                                 <Github size={20} />
                             </a>
-                            <a href="https://linkedin.com/in/ramy-benali" target="_blank" rel="noopener noreferrer" className="social-link">
+                            <a href="https://www.linkedin.com/in/ramy-benali-248b70282/" target="_blank" rel="noopener noreferrer" className="social-link">
                                 <Linkedin size={20} />
+                            </a>
+                            <a href="https://www.instagram.com/rmba.exe/" target="_blank" rel="noopener noreferrer" className="social-link">
+                                <Instagram size={20} />
                             </a>
                         </div>
                     </div>
 
-                    {/* Navigation Columns */}
+                    {/* Navigation Column */}
                     <div className="footer-column">
                         <h4 className="footer-column-title">{t('footer.nav_title')}</h4>
                         <ul className="footer-links">
@@ -67,24 +110,39 @@ const Footer: React.FC = () => {
                                 </Link>
                             </li>
                             <li><Link to="/about">{t('footer.nav_about')}</Link></li>
-                            <li><button onClick={openContact} className="footer-link-btn">{t('footer.nav_contact')}</button></li>
                         </ul>
                     </div>
 
+                    {/* Dynamic Sections Column */}
                     <div className="footer-column">
-                        <h4 className="footer-column-title">{t('footer.projects_title')}</h4>
+                        <h4 className="footer-column-title">
+                            {isCreative ? t('footer.nav_creative') : isAbout ? t('footer.nav_about') : t('footer.projects_title')}
+                        </h4>
                         <ul className="footer-links">
-                            <li><a href="#projects">{t('footer.projects_portfolio')}</a></li>
-                            <li><a href="#skills">{t('footer.projects_skills')}</a></li>
-                            <li><a href="https://github.com/RamyBenali" target="_blank" rel="noopener noreferrer">{t('footer.projects_github')}</a></li>
+                            {navLinks.map((link) => (
+                                <li key={link.id}>
+                                    <button onClick={() => scrollToSection(link.id)} className="footer-link-btn">
+                                        {link.name}
+                                    </button>
+                                </li>
+                            ))}
+                            {isDev && (
+                                <li>
+                                    <a href="https://github.com/RamyBenali" target="_blank" rel="noopener noreferrer">
+                                        {t('footer.projects_github')}
+                                    </a>
+                                </li>
+                            )}
                         </ul>
                     </div>
 
+                    {/* Contact Column */}
                     <div className="footer-column">
                         <h4 className="footer-column-title">{t('footer.contact_title')}</h4>
                         <ul className="footer-links">
-                            <li><a href="mailto:ramy.benali@example.com">{t('footer.contact_email')}</a></li>
-                            <li><a href="https://linkedin.com/in/ramy-benali" target="_blank" rel="noopener noreferrer">{t('footer.contact_linkedin')}</a></li>
+                            <li><a href="mailto:benali.ramy.2@gmail.com">{t('footer.contact_email')}</a></li>
+                            <li><a href="https://www.linkedin.com/in/ramy-benali-248b70282/" target="_blank" rel="noopener noreferrer">{t('footer.contact_linkedin')}</a></li>
+                            <li><button onClick={openContact} className="footer-link-btn">{t('footer.nav_contact')}</button></li>
                         </ul>
                     </div>
                 </div>

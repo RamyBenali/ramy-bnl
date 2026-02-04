@@ -73,7 +73,7 @@ const ModernProjectCard: React.FC<ModernProjectCardProps> = ({ project, onClick 
         >
             {project.featured && (
                 <div className="featured-badge">
-                    <span>✨ Featured</span>
+                    <span>✨ {t('dev.projects.featured')}</span>
                 </div>
             )}
             <div

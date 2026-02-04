@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, Github, ExternalLink } from 'lucide-react';
+import { X, Github, ExternalLink, ChevronLeft, ChevronRight } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import './ProjectDetailOverlay.css';
 
@@ -9,10 +9,12 @@ interface Project {
     title: string;
     description: string;
     image: string;
+    images?: string[];
     tech: string[];
     features?: string[];
     github?: string;
     demo?: string;
+    external?: string;
 }
 
 interface ProjectDetailOverlayProps {
@@ -22,10 +24,12 @@ interface ProjectDetailOverlayProps {
 
 const ProjectDetailOverlay: React.FC<ProjectDetailOverlayProps> = ({ project, onClose }) => {
     const { t } = useTranslation();
+    const [currentImageIndex, setCurrentImageIndex] = React.useState(0);
 
     useEffect(() => {
         if (project) {
             document.body.style.overflow = 'hidden';
+            setCurrentImageIndex(0); // Reset index when project changes
         } else {
             document.body.style.overflow = 'auto';
         }
@@ -33,6 +37,18 @@ const ProjectDetailOverlay: React.FC<ProjectDetailOverlayProps> = ({ project, on
     }, [project]);
 
     if (!project) return null;
+
+    const displayImages = project.images && project.images.length > 0 ? project.images : [project.image];
+
+    const nextImage = (e: React.MouseEvent) => {
+        e.stopPropagation();
+        setCurrentImageIndex((prev) => (prev + 1) % displayImages.length);
+    };
+
+    const prevImage = (e: React.MouseEvent) => {
+        e.stopPropagation();
+        setCurrentImageIndex((prev) => (prev - 1 + displayImages.length) % displayImages.length);
+    };
 
     return (
         <AnimatePresence>
@@ -64,17 +80,48 @@ const ProjectDetailOverlay: React.FC<ProjectDetailOverlayProps> = ({ project, on
                         </motion.button>
 
                         <div className="overlay-scroll-wrapper">
-                            {/* Hero Image Section */}
+                            {/* Hero Image Section / Carousel */}
                             <div className="overlay-hero">
-                                <motion.img
-                                    src={project.image}
-                                    alt={project.title}
-                                    className="overlay-hero-img"
-                                    layoutId={`project-image-${project.title}`}
-                                />
+                                <AnimatePresence mode="wait">
+                                    <motion.img
+                                        key={currentImageIndex}
+                                        src={displayImages[currentImageIndex]}
+                                        alt={`${project.title} screenshot ${currentImageIndex + 1}`}
+                                        className="overlay-hero-img"
+                                        initial={{ opacity: 0, x: 20 }}
+                                        animate={{ opacity: 1, x: 0 }}
+                                        exit={{ opacity: 0, x: -20 }}
+                                        transition={{ duration: 0.4 }}
+                                    />
+                                </AnimatePresence>
+
+                                {/* Carousel Controls */}
+                                {displayImages.length > 1 && (
+                                    <div className="carousel-controls">
+                                        <button className="carousel-btn prev" onClick={prevImage}>
+                                            <ChevronLeft size={24} />
+                                        </button>
+                                        <div className="carousel-dots">
+                                            {displayImages.map((_, i) => (
+                                                <div
+                                                    key={i}
+                                                    className={`dot ${i === currentImageIndex ? 'active' : ''}`}
+                                                    onClick={(e) => {
+                                                        e.stopPropagation();
+                                                        setCurrentImageIndex(i);
+                                                    }}
+                                                />
+                                            ))}
+                                        </div>
+                                        <button className="carousel-btn next" onClick={nextImage}>
+                                            <ChevronRight size={24} />
+                                        </button>
+                                    </div>
+                                )}
+
                                 <div className="overlay-hero-gradient" />
 
-                                <div className="overlay-hero-content">
+                                <div className="overlay-hero-content" style={{ zIndex: 20 }}>
                                     <motion.h1
                                         className="overlay-title"
                                         initial={{ opacity: 0, y: 30 }}
@@ -88,8 +135,8 @@ const ProjectDetailOverlay: React.FC<ProjectDetailOverlayProps> = ({ project, on
                                         initial={{ opacity: 0, y: 20 }}
                                         animate={{ opacity: 1, y: 0, transition: { delay: 0.3 } }}
                                     >
-                                        {project.demo && (
-                                            <a href={project.demo} target="_blank" rel="noopener noreferrer" className="btn-overlay-primary">
+                                        {(project.external || project.demo) && (
+                                            <a href={project.external || project.demo} target="_blank" rel="noopener noreferrer" className="btn-overlay-primary">
                                                 {t('dev.projects.modal.visit_site')} <ExternalLink size={18} />
                                             </a>
                                         )}
@@ -144,8 +191,9 @@ const ProjectDetailOverlay: React.FC<ProjectDetailOverlayProps> = ({ project, on
                         </div>
                     </motion.div>
                 </>
-            )}
-        </AnimatePresence>
+            )
+            }
+        </AnimatePresence >
     );
 };
 

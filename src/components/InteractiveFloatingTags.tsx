@@ -1,4 +1,5 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef } from 'react';
+import { motion, useMotionValue, useSpring } from 'framer-motion';
 import './InteractiveFloatingTags.css';
 
 interface TagData {
@@ -19,24 +20,23 @@ const tags: TagData[] = [
 
 const InteractiveFloatingTags: React.FC = () => {
     const containerRef = useRef<HTMLDivElement>(null);
-    const [mousePos, setMousePos] = useState({ x: -1000, y: -1000 });
+    const mouseX = useMotionValue(-1000);
+    const mouseY = useMotionValue(-1000);
 
     useEffect(() => {
-        if (window.innerWidth < 900) return; // Skip logic on mobile
+        if (window.innerWidth < 900) return;
 
         const handleMouseMove = (e: MouseEvent) => {
             if (containerRef.current) {
                 const rect = containerRef.current.getBoundingClientRect();
-                setMousePos({
-                    x: e.clientX - rect.left,
-                    y: e.clientY - rect.top
-                });
+                mouseX.set(e.clientX - rect.left);
+                mouseY.set(e.clientY - rect.top);
             }
         };
 
         window.addEventListener('mousemove', handleMouseMove);
         return () => window.removeEventListener('mousemove', handleMouseMove);
-    }, []);
+    }, [mouseX, mouseY]);
 
     return (
         <div className="orbit-scene interactive-scene" ref={containerRef}>
@@ -44,7 +44,8 @@ const InteractiveFloatingTags: React.FC = () => {
                 <MagneticTag
                     key={index}
                     tag={tag}
-                    mousePos={mousePos}
+                    containerMouseX={mouseX}
+                    containerMouseY={mouseY}
                 />
             ))}
         </div>
@@ -53,59 +54,66 @@ const InteractiveFloatingTags: React.FC = () => {
 
 interface MagneticTagProps {
     tag: TagData;
-    mousePos: { x: number; y: number };
+    containerMouseX: any;
+    containerMouseY: any;
 }
 
-const MagneticTag: React.FC<MagneticTagProps> = ({ tag, mousePos }) => {
+const MagneticTag: React.FC<MagneticTagProps> = ({ tag, containerMouseX, containerMouseY }) => {
     const ref = useRef<HTMLDivElement>(null);
-    const [offset, setOffset] = useState({ x: 0, y: 0 });
+
+    // Using springs for smooth, hardware-accelerated movement
+    const translateX = useSpring(0, { damping: 25, stiffness: 150 });
+    const translateY = useSpring(0, { damping: 25, stiffness: 150 });
 
     useEffect(() => {
-        if (!ref.current) return;
+        const updateOffset = () => {
+            if (!ref.current) return;
 
-        // Re-calibrating: The container might be relative.
-        // We know the mouse position relative to the container (mousePos).
-        // We need the element's position relative to the container.
+            const elemX = ref.current.offsetLeft + ref.current.offsetWidth / 2;
+            const elemY = ref.current.offsetTop + ref.current.offsetHeight / 2;
 
-        const elemX = ref.current.offsetLeft + ref.current.offsetWidth / 2;
-        const elemY = ref.current.offsetTop + ref.current.offsetHeight / 2;
+            const dx = containerMouseX.get() - elemX;
+            const dy = containerMouseY.get() - elemY;
+            const dist = Math.sqrt(dx * dx + dy * dy);
 
-        const dx = mousePos.x - elemX;
-        const dy = mousePos.y - elemY;
-        const dist = Math.sqrt(dx * dx + dy * dy);
+            const interactionRadius = 300;
+            const maxDisplacement = 150;
 
-        const interactionRadius = 300; // Pixels
-        const maxDisplacement = 150; // Max pixels to move away
+            if (dist < interactionRadius) {
+                const force = (interactionRadius - dist) / interactionRadius;
+                const angle = Math.atan2(dy, dx);
 
-        if (dist < interactionRadius) {
-            const force = (interactionRadius - dist) / interactionRadius; // 0 to 1
-            const angle = Math.atan2(dy, dx);
+                translateX.set(-Math.cos(angle) * force * maxDisplacement);
+                translateY.set(-Math.sin(angle) * force * maxDisplacement);
+            } else {
+                translateX.set(0);
+                translateY.set(0);
+            }
+        };
 
-            // Push away: opposite to angle
-            const moveX = -Math.cos(angle) * force * maxDisplacement;
-            const moveY = -Math.sin(angle) * force * maxDisplacement;
+        // Subscribe to motion values without triggering React renders
+        const unsubscribeX = containerMouseX.on("change", updateOffset);
+        const unsubscribeY = containerMouseY.on("change", updateOffset);
 
-            setOffset({ x: moveX, y: moveY });
-        } else {
-            setOffset({ x: 0, y: 0 });
-        }
-    }, [mousePos]);
+        return () => {
+            unsubscribeX();
+            unsubscribeY();
+        };
+    }, [containerMouseX, containerMouseY, translateX, translateY]);
 
     return (
-        <div
+        <motion.div
             ref={ref}
             className={`floating-tag-wrapper ${tag.class}`}
             style={{
-                transform: `translate(${offset.x}px, ${offset.y}px)`,
-                transition: 'transform 0.2s cubic-bezier(0.17, 0.67, 0.83, 0.67)',
-                // Overriding the CSS positioning mechanism for wrapper
+                x: translateX,
+                y: translateY,
             }}
         >
-            {/* Inner div keeps the CSS float animation */}
             <div className="floating-tag-inner">
                 {tag.content}
             </div>
-        </div>
+        </motion.div>
     );
 };
 
