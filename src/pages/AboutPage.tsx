@@ -13,6 +13,7 @@ import {
 } from 'lucide-react'; // Added PenTool, Dumbbell
 import './AboutPage.css';
 
+
 const AboutPage: React.FC = () => {
     const { t } = useTranslation();
     const { openContact } = useContact();

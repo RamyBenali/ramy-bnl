@@ -39,7 +39,11 @@ textarea {
   button,
   input,
   select,
-  textarea {
+  textarea,
+  .landing-side,
+  .side-cta,
+  .landing-brand,
+  .landing-about-link {
     cursor: auto !important;
   }
 }

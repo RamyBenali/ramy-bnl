@@ -36,8 +36,8 @@ const Navbar: React.FC = () => {
         }
         if (isCreative) {
             return [
-                { name: t('header.creative_showcase'), id: 'projects' }, // Gallery ID is 'projects'
-                { name: t('header.creative_toolbox'), id: 'tools' },     // Toolkit ID is 'tools'
+                { name: t('header.creative_showcase'), id: 'projects' },
+                { name: t('header.creative_toolbox'), id: 'tools' },
                 { name: t('header.about'), path: '/about' },
             ];
         }
@@ -73,16 +73,18 @@ const Navbar: React.FC = () => {
     return (
         <header className={`dynamic-island-wrapper ${isScrolled ? 'scrolled' : ''}`}>
             <motion.nav
-                className={`dynamic-island ${theme}`}
+                className={`dynamic-island ${theme} ${isMenuOpen ? 'mobile-open' : ''}`}
                 layout
                 transition={{ type: 'spring', damping: 25, stiffness: 300 }}
             >
                 <div className="island-main">
-                    <button className="island-back" onClick={() => navigate('/')}>
-                        <ArrowLeft size={20} />
-                    </button>
+                    {!isMenuOpen && (
+                        <button className="island-back" onClick={() => navigate('/')}>
+                            <ArrowLeft size={20} />
+                        </button>
+                    )}
 
-                    <div className="island-divider" />
+                    {!isMenuOpen && <div className="island-divider" />}
 
                     <div className="island-links">
                         {navLinks.map((link) => (
@@ -98,7 +100,7 @@ const Navbar: React.FC = () => {
                         ))}
                     </div>
 
-                    <div className="island-divider" />
+                    {!isMenuOpen && <div className="island-divider" />}
 
                     <div className="island-actions">
                         <div className="island-theme-toggle">
@@ -122,44 +124,71 @@ const Navbar: React.FC = () => {
                     </div>
 
                     <button className="island-mobile-toggle" onClick={() => setIsMenuOpen(!isMenuOpen)}>
-                        {isMenuOpen ? <X size={20} /> : <Menu size={20} />}
+                        {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
                     </button>
                 </div>
 
                 <AnimatePresence>
                     {isMenuOpen && (
                         <motion.div
-                            className="island-mobile-menu"
-                            initial={{ height: 0, opacity: 0 }}
-                            animate={{ height: 'auto', opacity: 1 }}
-                            exit={{ height: 0, opacity: 0 }}
+                            className="premium-mobile-content"
+                            initial={{ opacity: 0, y: 10 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            exit={{ opacity: 0, y: 10 }}
+                            transition={{ duration: 0.3 }}
                         >
-                            {navLinks.map((link, idx) => (
-                                link.path ? (
-                                    <Link
-                                        key={link.path}
-                                        to={link.path}
-                                        className="mobile-link"
-                                        onClick={() => setIsMenuOpen(false)}
+                            <div className="mobile-menu-inner">
+                                <div className="mobile-nav-links-grid">
+                                    {navLinks.map((link, idx) => (
+                                        <motion.div
+                                            key={link.id || link.path || idx}
+                                            initial={{ x: -20, opacity: 0 }}
+                                            animate={{ x: 0, opacity: 1 }}
+                                            transition={{ delay: idx * 0.1 }}
+                                        >
+                                            {link.path ? (
+                                                <Link to={link.path} className="mobile-premium-link" onClick={() => setIsMenuOpen(false)}>
+                                                    <span className="link-num">0{idx + 1}</span>
+                                                    <span className="link-text">{link.name}</span>
+                                                </Link>
+                                            ) : (
+                                                <button className="mobile-premium-link" onClick={() => { setIsMenuOpen(false); scrollToSection(link.id!); }}>
+                                                    <span className="link-num">0{idx + 1}</span>
+                                                    <span className="link-text">{link.name}</span>
+                                                </button>
+                                            )}
+                                        </motion.div>
+                                    ))}
+                                    <motion.div
+                                        initial={{ x: -20, opacity: 0 }}
+                                        animate={{ x: 0, opacity: 1 }}
+                                        transition={{ delay: navLinks.length * 0.1 }}
                                     >
-                                        {link.name}
-                                    </Link>
-                                ) : (
-                                    <button
-                                        key={link.id || idx}
-                                        className="mobile-link"
-                                        onClick={() => {
-                                            setIsMenuOpen(false);
-                                            scrollToSection(link.id!);
-                                        }}
-                                    >
-                                        {link.name}
-                                    </button>
-                                )
-                            ))}
-                            <button className="mobile-link" onClick={() => { setIsMenuOpen(false); openContact(); }}>
-                                {t('header.contact')}
-                            </button>
+                                        <button className="mobile-premium-link contact-highlight" onClick={() => { setIsMenuOpen(false); openContact(); }}>
+                                            <span className="link-num">0{navLinks.length + 1}</span>
+                                            <span className="link-text">{t('header.contact')}</span>
+                                        </button>
+                                    </motion.div>
+                                </div>
+
+                                <div className="mobile-bottom-actions">
+                                    <p className="mode-label">Switch Experience</p>
+                                    <div className="mode-switcher-premium">
+                                        <button
+                                            className={`premium-mode-btn ${theme === 'dev' ? 'active' : ''}`}
+                                            onClick={() => handleThemeSwitch('dev')}
+                                        >
+                                            Developer
+                                        </button>
+                                        <button
+                                            className={`premium-mode-btn ${theme === 'creative' ? 'active' : ''}`}
+                                            onClick={() => handleThemeSwitch('creative')}
+                                        >
+                                            Creative
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
                         </motion.div>
                     )}
                 </AnimatePresence>

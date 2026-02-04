@@ -1,9 +1,10 @@
 .contact-overlay {
     position: fixed;
     inset: 0;
-    background: rgba(0, 0, 0, 0.8);
-    backdrop-filter: blur(10px);
-    z-index: 2000;
+    background: rgba(0, 0, 0, 0.3);
+    /* Lower opacity for glassy feel */
+    backdrop-filter: blur(8px);
+    z-index: 11000;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -14,12 +15,16 @@
     position: relative;
     width: 95%;
     max-width: 420px;
-    background: #0a0a0b;
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(10, 10, 11, 0.4);
+    /* Much more transparent */
+    backdrop-filter: blur(30px);
+    /* Heavy blur for premium glass */
+    -webkit-backdrop-filter: blur(30px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
     border-radius: 24px;
     padding: 2.2rem;
     z-index: 2001;
-    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.8);
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.3);
     max-height: 85vh;
     overflow-y: auto;
     color: #fff;
@@ -36,17 +41,19 @@
 
 /* Creative Theme (Orange) */
 .contact-modal.creative {
-    background: #0f0500;
-    border-color: rgba(255, 120, 0, 0.3);
-    box-shadow: 0 20px 50px rgba(255, 120, 0, 0.15);
+    background: rgba(15, 5, 0, 0.4);
+    /* Lower opacity */
+    border-color: rgba(255, 120, 0, 0.2);
+    box-shadow: 0 20px 50px rgba(255, 120, 0, 0.1);
 }
 
 /* Fusion Theme (Neutral/About) */
 .contact-modal.fusion {
-    background: #ffffff;
+    background: rgba(255, 255, 255, 0.4);
+    /* Lower opacity */
     border-color: rgba(0, 0, 0, 0.1);
     color: #1a1a1a;
-    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.05);
 }
 
 .contact-modal.fusion .contact-header p {
@@ -102,8 +109,71 @@
 }
 
 @media (max-width: 600px) {
+    .contact-overlay {
+        padding: 0;
+        /* Full screen feel on mobile */
+    }
+
+    .contact-modal {
+        width: 100%;
+        height: 100%;
+        max-height: 100vh;
+        border-radius: 0;
+        /* Square/Full-screen look on mobile */
+        padding: 80px 1.5rem 1.5rem 1.5rem;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .contact-header {
+        margin-bottom: 1.5rem;
+        text-align: left;
+        /* More pro look */
+        padding-top: 1rem;
+    }
+
+    .contact-header h2 {
+        font-size: 1.5rem;
+    }
+
+    .contact-form {
+        gap: 1rem;
+        padding-bottom: 2rem;
+    }
+
     .form-grid {
         grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+        padding: 0.75rem;
+        font-size: 0.9rem;
+    }
+
+    .turnstile-container {
+        margin: 0.5rem 0;
+        min-height: auto;
+    }
+
+    .submit-btn {
+        margin-top: auto;
+        /* Push to bottom */
+        padding: 1.25rem;
+        border-radius: 0;
+        /* Square button on mobile */
+    }
+
+    .close-btn {
+        top: 2.5rem;
+        /* Moved further down */
+        right: 1.5rem;
+        padding: 0.5rem;
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        z-index: 2002;
     }
 }
 

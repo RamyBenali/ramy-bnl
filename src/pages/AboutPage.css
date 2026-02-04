@@ -94,13 +94,36 @@
     margin: 0 auto 2rem auto;
 }
 
-.fusion-lead {
-    font-size: 1.25rem;
-    color: rgba(255, 255, 255, 0.6);
-    max-width: 600px;
-    margin: 0 auto;
-    line-height: 1.6;
+@media (max-width: 900px) {
+    .hero-fusion {
+        padding-top: 100px;
+        min-height: auto;
+    }
+
+    .fusion-title {
+        font-size: 3.5rem;
+    }
+
+    .fusion-pill {
+        gap: 0.5rem;
+        padding: 0.4rem 1rem;
+    }
+
+    .fusion-pill span {
+        font-size: 0.75rem;
+    }
+
+    .fusion-lead {
+        font-size: 1rem;
+        padding: 0 1rem;
+    }
+
+    .fusion-divider {
+        height: 40px;
+        margin-bottom: 3rem;
+    }
 }
+
 
 /* --- PROFILE FUSION SECTION --- */
 .profile-fusion-section {
@@ -148,6 +171,36 @@
     color: rgba(255, 255, 255, 0.7);
     margin-bottom: 2rem;
 }
+
+@media (max-width: 900px) {
+    .profile-fusion-section {
+        margin-bottom: 4rem;
+    }
+
+    .profile-fusion-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .profile-bio-card,
+    .profile-infos-card {
+        padding: 1.5rem;
+    }
+
+    .bio-name {
+        font-size: 2.2rem;
+    }
+
+    .infos-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .stat-val {
+        font-size: 2.5rem;
+    }
+}
+
 
 .bio-tags {
     display: flex;
@@ -598,5 +651,23 @@
 @media (max-width: 900px) {
     .access-grid {
         grid-template-columns: 1fr;
+        padding: 0 1rem;
+        gap: 1.5rem;
+    }
+
+    .access-card {
+        padding: 1.5rem;
+    }
+
+    .access-title {
+        font-size: 1.5rem;
+    }
+
+    .access-desc {
+        font-size: 0.9rem;
+    }
+
+    .access-section {
+        padding-bottom: 60px;
     }
 }

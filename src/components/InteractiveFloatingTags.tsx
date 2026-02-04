@@ -22,6 +22,8 @@ const InteractiveFloatingTags: React.FC = () => {
     const [mousePos, setMousePos] = useState({ x: -1000, y: -1000 });
 
     useEffect(() => {
+        if (window.innerWidth < 900) return; // Skip logic on mobile
+
         const handleMouseMove = (e: MouseEvent) => {
             if (containerRef.current) {
                 const rect = containerRef.current.getBoundingClientRect();

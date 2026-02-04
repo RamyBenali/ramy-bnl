@@ -14,10 +14,24 @@ import {
 } from 'lucide-react';
 import './DevPage.css';
 
+interface Project {
+    id: string | number;
+    title: string;
+    description: string;
+    modalDescription: string;
+    image: string;
+    tech: string[];
+    github?: string;
+    external?: string;
+    features: string[];
+    images: string[];
+    featured: boolean;
+}
+
 const DevPage: React.FC = () => {
     const { t } = useTranslation();
     const { openContact } = useContact();
-    const [selectedProject, setSelectedProject] = useState<any>(null);
+    const [selectedProject, setSelectedProject] = useState<Project | null>(null);
 
     const projectKeys = ['pong', 'echoes', 'home-inspire', 'saldae-trip', 'sopenbiz', 'caryago'];
 

@@ -9,9 +9,19 @@ import CreativeInteractiveTags from '../components/CreativeInteractiveTags';
 import CreativeHeroIcons from '../components/CreativeHeroIcons';
 import './CreativePage.css';
 
+interface ShowcaseItem {
+    id: number;
+    type: 'figma' | 'video';
+    title: string;
+    description: string;
+    pill: string;
+    cover: string;
+    src: string;
+}
+
 const CreativePage: React.FC = () => {
     const { t } = useTranslation();
-    const [selectedItem, setSelectedItem] = useState<any>(null);
+    const [selectedItem, setSelectedItem] = useState<ShowcaseItem | null>(null);
     const [activeFilter, setActiveFilter] = useState('all');
 
     const showcaseKeys = [
@@ -22,9 +32,9 @@ const CreativePage: React.FC = () => {
         'medify', 'porte_ouverte'
     ];
 
-    const showcaseItems = showcaseKeys.map((key, idx) => ({
+    const showcaseItems: ShowcaseItem[] = showcaseKeys.map((key, idx) => ({
         id: idx,
-        type: key.endsWith('_f') || ['binary_identity', 'echoes_design', 'medify', 'porte_ouverte'].includes(key) ? 'figma' : 'video',
+        type: (key.endsWith('_f') || ['binary_identity', 'echoes_design', 'medify', 'porte_ouverte'].includes(key) ? 'figma' : 'video') as 'figma' | 'video',
         title: t(`creative.gallery.list.${key}.title`),
         description: t(`creative.gallery.list.${key}.desc`),
         pill: t(`creative.gallery.list.${key}.pill`),
@@ -287,78 +297,95 @@ const CreativePage: React.FC = () => {
                     </div>
                 </section>
 
-                {/* CURATED GALLERY */}
-                <section id="projects" className="gallery-section">
-                    <div className="crea-container">
-                        <div className="gallery-header">
-                            <h2 className="section-title-crea">{t('creative.gallery.title')}</h2>
-                            <div className="gallery-filters">
-                                <button
-                                    className={`filter-btn ${activeFilter === 'all' ? 'active' : ''}`}
-                                    onClick={() => setActiveFilter('all')}
-                                >
-                                    {t('creative.gallery.filters.all')}
-                                </button>
-                                <button
-                                    className={`filter-btn ${activeFilter === 'video' ? 'active' : ''}`}
-                                    onClick={() => setActiveFilter('video')}
-                                >
-                                    {t('creative.gallery.filters.video')}
-                                </button>
-                                <button
-                                    className={`filter-btn ${activeFilter === 'design' ? 'active' : ''}`}
-                                    onClick={() => setActiveFilter('design')} // 'figma' type corresponds to Design
-                                >
-                                    {t('creative.gallery.filters.design')}
-                                </button>
-                            </div>
-                        </div>
+                {/* Artistic Background - Simplified for performance */}
+                <div className="artistic-background">
+                    <motion.div
+                        className="paint-blob pb1"
+                        animate={{ x: [0, 40, 0], y: [0, 20, 0] }}
+                        transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
+                    />
+                    <motion.div
+                        className="paint-blob pb2"
+                        animate={{ x: [0, -30, 0], y: [0, 50, 0] }}
+                        transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
+                    />
+                </div>
 
-                        <div className="immersive-grid">
-                            <LayoutGroup>
-                                <AnimatePresence mode='popLayout'>
-                                    {showcaseItems
-                                        .filter(item => activeFilter === 'all' || (activeFilter === 'design' ? item.type === 'figma' : item.type === 'video'))
-                                        .map((item, _idx) => (
-                                            <motion.article
-                                                layout
-                                                key={item.id}
-                                                className="immersive-card"
-                                                initial={{ opacity: 0, scale: 0.9 }}
-                                                animate={{ opacity: 1, scale: 1 }}
-                                                exit={{ opacity: 0, scale: 0.9 }}
-                                                transition={{ duration: 0.4 }}
-                                                onClick={() => setSelectedItem(item)}
-                                            >
-                                                <div className="immersive-image" style={{ backgroundImage: `url(${item.cover})` }}>
-                                                    <div className="immersive-overlay">
-                                                        {item.type === 'figma' ? (
-                                                            <Figma size={50} />
-                                                        ) : (
-                                                            <Play size={50} />
-                                                        )}
-                                                    </div>
-                                                </div>
-                                                <div className="immersive-info">
-                                                    <span className="card-pill">{item.pill}</span>
-                                                    <h3>{item.title}</h3>
-                                                    <p>{item.description}</p>
-                                                    <div className="card-link">
-                                                        {t('creative.gallery.hint')} <ChevronRight size={16} />
-                                                    </div>
-                                                </div>
-                                            </motion.article>
-                                        ))}
-                                </AnimatePresence>
-                            </LayoutGroup>
+                <div className="crea-container">
+                    <div className="gallery-header">
+                        <h2 className="section-title-crea">{t('creative.gallery.title')}</h2>
+                        <div className="gallery-filters">
+                            <button
+                                className={`filter-btn ${activeFilter === 'all' ? 'active' : ''}`}
+                                onClick={() => setActiveFilter('all')}
+                            >
+                                {t('creative.gallery.filters.all')}
+                            </button>
+                            <button
+                                className={`filter-btn ${activeFilter === 'video' ? 'active' : ''}`}
+                                onClick={() => setActiveFilter('video')}
+                            >
+                                {t('creative.gallery.filters.video')}
+                            </button>
+                            <button
+                                className={`filter-btn ${activeFilter === 'design' ? 'active' : ''}`}
+                                onClick={() => setActiveFilter('design')}
+                            >
+                                {t('creative.gallery.filters.design')}
+                            </button>
                         </div>
                     </div>
-                </section>
+
+                    <div className="immersive-grid">
+                        <LayoutGroup>
+                            <AnimatePresence mode='popLayout'>
+                                {showcaseItems
+                                    .filter(item => activeFilter === 'all' || (activeFilter === 'design' ? item.type === 'figma' : item.type === 'video'))
+                                    .map((item, _idx) => (
+                                        <motion.article
+                                            layout
+                                            key={item.id}
+                                            className="immersive-card"
+                                            initial={{ opacity: 0, scale: 0.95 }}
+                                            animate={{ opacity: 1, scale: 1 }}
+                                            exit={{ opacity: 0, scale: 0.95 }}
+                                            transition={{ duration: 0.3 }}
+                                            onClick={() => setSelectedItem(item)}
+                                        >
+                                            <div className="immersive-image">
+                                                <img
+                                                    src={item.cover}
+                                                    alt={item.title}
+                                                    loading="lazy"
+                                                    className="gallery-cover-img"
+                                                />
+                                                <div className="immersive-overlay">
+                                                    {item.type === 'figma' ? (
+                                                        <Figma size={40} />
+                                                    ) : (
+                                                        <Play size={40} />
+                                                    )}
+                                                </div>
+                                            </div>
+                                            <div className="immersive-info">
+                                                <span className="card-pill">{item.pill}</span>
+                                                <h3>{item.title}</h3>
+                                                <p>{item.description}</p>
+                                                <div className="card-link">
+                                                    {t('creative.gallery.hint')} <ChevronRight size={16} />
+                                                </div>
+                                            </div>
+                                        </motion.article>
+                                    ))}
+                            </AnimatePresence>
+                        </LayoutGroup>
+                    </div>
+                </div>
 
                 <EmbedModal
                     isOpen={!!selectedItem}
                     onClose={() => setSelectedItem(null)}
-                    src={selectedItem?.src}
+                    src={selectedItem?.src || null}
                     title={selectedItem?.title || ''}
                 />
             </div>

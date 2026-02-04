@@ -64,10 +64,39 @@
 }
 
 @media (max-width: 900px) {
+    .project-modal-overlay {
+        padding: 0;
+    }
+
+    .project-modal-container {
+        border-radius: 0;
+        max-height: 100vh;
+        height: 100vh;
+    }
+
     .modal-content-grid {
         grid-template-columns: 1fr;
     }
+
+    .modal-slider-section {
+        min-height: 300px;
+    }
+
+    .modal-info-section {
+        padding: 1.5rem;
+    }
+
+    .modal-title {
+        font-size: 1.8rem;
+    }
+
+    .modal-close-btn {
+        top: 15px;
+        right: 15px;
+        background: rgba(0, 0, 0, 0.5);
+    }
 }
+
 
 .modal-slider-section {
     background: rgba(0, 0, 0, 0.2);
