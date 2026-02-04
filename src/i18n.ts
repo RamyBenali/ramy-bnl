@@ -254,7 +254,6 @@ const resources = {
                 "infos": {
                     "title": "Mes Infos",
                     "age": "Âge",
-                    "phone": "Téléphone",
                     "city": "Ville",
                     "status": "Statut",
                     "langs": "Langues"
@@ -603,7 +602,6 @@ const resources = {
                 "infos": {
                     "title": "My Infos",
                     "age": "Age",
-                    "phone": "Phone",
                     "city": "City",
                     "status": "Status",
                     "langs": "Languages"

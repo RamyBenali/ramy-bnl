@@ -124,10 +124,6 @@ const AboutPage: React.FC = () => {
                                     <span className="i-val">21 ans</span>
                                 </div>
                                 <div className="info-item">
-                                    <span className="i-label"><Smartphone size={14} /> {t('about.infos.phone', 'Téléphone')}</span>
-                                    <span className="i-val">+213 555 35 46 81</span>
-                                </div>
-                                <div className="info-item">
                                     <span className="i-label"><MapPin size={14} /> {t('about.infos.city', 'Ville')}</span>
                                     <span className="i-val">Béjaïa (DZ)</span>
                                 </div>
