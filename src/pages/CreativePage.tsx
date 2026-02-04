@@ -28,7 +28,7 @@ const CreativePage: React.FC = () => {
 
     const showcaseKeys = [
         'powerfitness1', 'powerfitness2', 'aylan1', 'aylan2',
-        'palmera1', 'weazel', 'belcourt', 'ofeeling',
+        'weazel', 'belcourt', 'ofeeling',
         'vision3', 'vlog', 'palmera2', 'homeinspire_f',
         'binary_identity', 'echoes_design', 'saldaetrip_f',
         'medify', 'porte_ouverte'
@@ -61,19 +61,18 @@ const CreativePage: React.FC = () => {
             key === 'powerfitness2' ? "https://player.vimeo.com/video/1114686311" :
                 key === 'aylan1' ? "https://player.vimeo.com/video/1114691957" :
                     key === 'aylan2' ? "https://player.vimeo.com/video/1114691983" :
-                        key === 'palmera1' ? "https://drive.google.com/file/d/1wo7ibROZ6FuC1_gIvmPoUOeNb_9JkTyB/preview" :
-                            key === 'weazel' ? "https://drive.google.com/file/d/1mBCT0vooP22mEifom-iWETWuZ0hT_Pl1/preview" :
-                                key === 'belcourt' ? "https://drive.google.com/file/d/1IU8favC8h31p69ORrsm-cHd8rFlgsJ4L/preview" :
-                                    key === 'ofeeling' ? "https://drive.google.com/file/d/1Y0wUHQEDgesu0gaGEpFdaaGZkAVMTlpq/preview" :
-                                        key === 'vision3' ? "https://www.youtube.com/embed/5FoXX6dRAAA" :
-                                            key === 'vlog' ? "https://drive.google.com/file/d/1RfDLbXr0dbFM2cn5AxtR4Tbs0aCQQFqC/preview" :
-                                                key === 'palmera2' ? "https://drive.google.com/file/d/1ghGpeO-thezMf_dQ3YxXb2zbgPVd87SW/preview" :
-                                                    key === 'homeinspire_f' ? "https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Fdesign%2FFHA0tnDw6x4uWszDp1RkJI" :
-                                                        key === 'binary_identity' ? "https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Fdesign%2Fc8IKKzvayzD8sdypDKH7Ee" :
-                                                            key === 'echoes_design' ? "https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Fdesign%2FmNacvc3E69Ep8XOrVG5A6M" :
-                                                                key === 'saldaetrip_f' ? "https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Fdesign%2FtqOS4wClGjLEeoXkjnWeMW" :
-                                                                    key === 'medify' ? "https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Fdesign%2FPZH3nH0Cq2xdkG0OF46H7o" :
-                                                                        "https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Fdesign%2Fro1AXrMIX7PxOsXpHc6ib1"
+                        key === 'weazel' ? "https://drive.google.com/file/d/1ldxdP8fB07EH3S6uRtDikxe2uwMQ3pA0/preview" :
+                            key === 'belcourt' ? "https://drive.google.com/file/d/1IU8favC8h31p69ORrsm-cHd8rFlgsJ4L/preview" :
+                                key === 'ofeeling' ? "https://drive.google.com/file/d/1Y0wUHQEDgesu0gaGEpFdaaGZkAVMTlpq/preview" :
+                                    key === 'vision3' ? "https://www.youtube.com/embed/5FoXX6dRAAA" :
+                                        key === 'vlog' ? "https://drive.google.com/file/d/1RfDLbXr0dbFM2cn5AxtR4Tbs0aCQQFqC/preview" :
+                                            key === 'palmera2' ? "https://drive.google.com/file/d/1UOIF4D8KODPu4_AnSQayRymA3OGcMwkL/preview" :
+                                                key === 'homeinspire_f' ? "https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Fdesign%2FFHA0tnDw6x4uWszDp1RkJI" :
+                                                    key === 'binary_identity' ? "https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Fdesign%2Fc8IKKzvayzD8sdypDKH7Ee" :
+                                                        key === 'echoes_design' ? "https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Fdesign%2FmNacvc3E69Ep8XOrVG5A6M" :
+                                                            key === 'saldaetrip_f' ? "https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Fdesign%2FtqOS4wClGjLEeoXkjnWeMW" :
+                                                                key === 'medify' ? "https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Fdesign%2FPZH3nH0Cq2xdkG0OF46H7o" :
+                                                                    "https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Fdesign%2Fro1AXrMIX7PxOsXpHc6ib1"
     }));
 
     return (
