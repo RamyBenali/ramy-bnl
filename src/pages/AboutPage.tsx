@@ -26,7 +26,7 @@ const AboutPage: React.FC = () => {
         offset: ["start start", "end end"]
     });
 
-    const yHero = useTransform(scrollYProgress, [0, 0.2], [0, window.innerWidth < 900 ? 0 : 200]);
+    const yHero = useTransform(scrollYProgress, [0, 0.2], [0, (window.innerWidth < 1200 || window.innerHeight < 950) ? 0 : 200]);
     const opacityHero = useTransform(scrollYProgress, [0, 0.2], [1, 0]);
 
     const experience = t('about.resume.experience_list', { returnObjects: true }) as any[];

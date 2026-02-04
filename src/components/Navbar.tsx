@@ -22,6 +22,17 @@ const Navbar: React.FC = () => {
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
+    useEffect(() => {
+        const handleResize = () => {
+            if (window.innerWidth > 900 && isMenuOpen) {
+                setIsMenuOpen(false);
+            }
+        };
+
+        window.addEventListener('resize', handleResize);
+        return () => window.removeEventListener('resize', handleResize);
+    }, [isMenuOpen]);
+
     const isDev = location.pathname === '/dev';
     const isCreative = location.pathname === '/creative';
     const isAbout = location.pathname === '/about';

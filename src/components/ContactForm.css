@@ -14,7 +14,7 @@
 .contact-modal {
     position: relative;
     width: 95%;
-    max-width: 420px;
+    max-width: 500px;
     background: rgba(10, 10, 11, 0.4);
     /* Much more transparent */
     backdrop-filter: blur(30px);
@@ -57,6 +57,17 @@
 }
 
 .contact-modal.fusion .contact-header p {
+    color: #333;
+    font-weight: 500;
+}
+
+.contact-modal.fusion .form-group label {
+    opacity: 0.9;
+    color: #000;
+}
+
+.contact-modal.fusion .form-group input::placeholder,
+.contact-modal.fusion .form-group textarea::placeholder {
     color: #666;
 }
 
@@ -208,6 +219,11 @@
     font-family: inherit;
     font-size: 0.95rem;
     transition: all 0.3s ease;
+}
+
+.form-group textarea {
+    resize: none;
+    min-height: 120px;
 }
 
 /* Fix for Chrome Autocomplete (White background/text) */
