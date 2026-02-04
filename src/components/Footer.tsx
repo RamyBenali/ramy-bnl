@@ -3,11 +3,13 @@ import { useTranslation } from 'react-i18next';
 import { Github, Linkedin, ArrowRight, Code2, Heart, Palette } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useTheme } from '../context/ThemeContext';
+import { useContact } from '../context/ContactContext';
 import './Footer.css';
 
 const Footer: React.FC = () => {
     const { t } = useTranslation();
     const { theme, setTheme } = useTheme();
+    const { openContact } = useContact();
 
     return (
         <footer className={`footer-dynamic ${theme}`}>
@@ -23,10 +25,10 @@ const Footer: React.FC = () => {
                             <p className="cta-subtitle">{t('footer.cta_subtitle')}</p>
                         </div>
                     </div>
-                    <Link to="/contact" className="footer-cta-btn">
+                    <button onClick={openContact} className="footer-cta-btn">
                         <span>{t('footer.cta_btn')}</span>
                         <ArrowRight size={20} />
-                    </Link>
+                    </button>
                 </div>
 
                 {/* Main Footer Content */}
@@ -65,7 +67,7 @@ const Footer: React.FC = () => {
                                 </Link>
                             </li>
                             <li><Link to="/about">{t('footer.nav_about')}</Link></li>
-                            <li><Link to="/contact">{t('footer.nav_contact')}</Link></li>
+                            <li><button onClick={openContact} className="footer-link-btn">{t('footer.nav_contact')}</button></li>
                         </ul>
                     </div>
 

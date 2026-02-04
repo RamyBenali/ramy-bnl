@@ -97,7 +97,9 @@
 @media (max-width: 900px) {
     .hero-fusion {
         padding-top: 100px;
-        min-height: auto;
+        min-height: 60vh;
+        /* Give it more room on mobile */
+        margin-bottom: 2rem;
     }
 
     .fusion-title {
@@ -174,7 +176,10 @@
 
 @media (max-width: 900px) {
     .profile-fusion-section {
+        margin-top: 0;
         margin-bottom: 4rem;
+        padding-top: 2rem;
+        /* Buffer for scroll */
     }
 
     .profile-fusion-grid {

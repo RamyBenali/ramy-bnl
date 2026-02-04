@@ -185,7 +185,9 @@
     transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
     position: relative;
     overflow: hidden;
-    z-index: 1;
+    cursor: pointer;
+    font-family: inherit;
+    line-height: normal;
 }
 
 /* Dev CTA Button */
@@ -437,13 +439,20 @@
     gap: 0.8rem;
 }
 
-.footer-links a {
+.footer-links a,
+.footer-link-btn {
     text-decoration: none;
     font-size: 0.95rem;
     transition: all 0.2s;
     display: inline-flex;
     align-items: center;
     position: relative;
+    background: transparent;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    font-family: inherit;
+    text-align: left;
 }
 
 /* Dev Footer Links */
@@ -465,7 +474,8 @@
     height: 100%;
 }
 
-.footer-dynamic.dev .footer-links a:hover {
+.footer-dynamic.dev .footer-links a:hover,
+.footer-dynamic.dev .footer-link-btn:hover {
     color: #fff;
     transform: translateX(10px);
 }
@@ -489,7 +499,8 @@
     height: 100%;
 }
 
-.footer-dynamic.creative .footer-links a:hover {
+.footer-dynamic.creative .footer-links a:hover,
+.footer-dynamic.creative .footer-link-btn:hover {
     color: #fff;
     transform: translateX(10px);
 }
