@@ -9,6 +9,7 @@ interface Project {
     title: string;
     description: string;
     image: string;
+    video?: string;
     images?: string[];
     tech: string[];
     features?: string[];
@@ -50,6 +51,8 @@ const ProjectDetailOverlay: React.FC<ProjectDetailOverlayProps> = ({ project, on
         setCurrentImageIndex((prev) => (prev - 1 + displayImages.length) % displayImages.length);
     };
 
+    const isVideo = (path: string) => path.toLowerCase().endsWith('.webm') || path.toLowerCase().endsWith('.mp4');
+
     return (
         <AnimatePresence>
             {project && (
@@ -83,16 +86,32 @@ const ProjectDetailOverlay: React.FC<ProjectDetailOverlayProps> = ({ project, on
                             {/* Hero Image Section / Carousel */}
                             <div className="overlay-hero">
                                 <AnimatePresence mode="wait">
-                                    <motion.img
-                                        key={currentImageIndex}
-                                        src={displayImages[currentImageIndex]}
-                                        alt={`${project.title} screenshot ${currentImageIndex + 1}`}
-                                        className="overlay-hero-img"
-                                        initial={{ opacity: 0, x: 20 }}
-                                        animate={{ opacity: 1, x: 0 }}
-                                        exit={{ opacity: 0, x: -20 }}
-                                        transition={{ duration: 0.4 }}
-                                    />
+                                    {isVideo(displayImages[currentImageIndex]) ? (
+                                        <motion.video
+                                            key={currentImageIndex}
+                                            src={displayImages[currentImageIndex]}
+                                            className="overlay-hero-img"
+                                            autoPlay
+                                            loop
+                                            muted
+                                            playsInline
+                                            initial={{ opacity: 0, x: 20 }}
+                                            animate={{ opacity: 1, x: 0 }}
+                                            exit={{ opacity: 0, x: -20 }}
+                                            transition={{ duration: 0.4 }}
+                                        />
+                                    ) : (
+                                        <motion.img
+                                            key={currentImageIndex}
+                                            src={displayImages[currentImageIndex]}
+                                            alt={`${project.title} screenshot ${currentImageIndex + 1}`}
+                                            className="overlay-hero-img"
+                                            initial={{ opacity: 0, x: 20 }}
+                                            animate={{ opacity: 1, x: 0 }}
+                                            exit={{ opacity: 0, x: -20 }}
+                                            transition={{ duration: 0.4 }}
+                                        />
+                                    )}
                                 </AnimatePresence>
 
                                 {/* Carousel Controls */}

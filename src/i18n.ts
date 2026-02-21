@@ -119,6 +119,12 @@ const resources = {
                             "desc": "Intranet complet pour une unité de police avec gestion d'effectifs, dashboard modulable et armurerie.",
                             "modal": "Système d'intranet avancé conçu pour une unité spécialisée sur un jeu vidéo. Comprend un tableau de bord modulable avec tableau blanc, gestion des effectifs, suivi des opérations, modules d'entraînement, planning interactif, gestion documentaire, système de recrutement et armurerie/inventaire complet. Inclus également une interface d'administration totale.",
                             "features": ["Tableau de bord modulable", "Gestion d'effectifs avancée", "Tableau blanc créatif", "Suivi des opérations & entraînements", "Planning & Calendrier interactif", "Armurerie & Inventaire", "Interface d'administration complète"]
+                        },
+                        "drakos": {
+                            "title": "Drakos",
+                            "desc": "Site e-commerce de bracelets en pierres naturelles en Algérie.",
+                            "modal": "Drakos est une plateforme e-commerce spécialisée dans la vente de bracelets en pierres naturelles pour hommes et femmes en Algérie. Le site propose un design élégant, un parcours d'achat fluide et une gestion administrative complète des produits, commandes et clients.",
+                            "features": ["Design premium et immersif", "Parcours de paiement optimisé", "Gestion complète (Produits/Commandes)", "Tableau de bord administrateur", "Collections dynamiques", "Optimisé pour mobile"]
                         }
                     },
                     "modal": {
@@ -467,6 +473,12 @@ const resources = {
                             "desc": "Comprehensive intranet for a police unit featuring workforce management, modular dashboard, and armory.",
                             "modal": "Advanced intranet system designed for a specialized video game unit. Includes a modular dashboard with a whiteboard, workforce management, operations tracking, training modules, interactive planning, document management, recruitment system, and a full armory/inventory. Also features a comprehensive admin interface.",
                             "features": ["Modular dashboard", "Advanced workforce management", "Creative whiteboard", "Operations & training tracking", "Interactive Planning & Calendar", "Armory & Inventory", "Comprehensive admin interface"]
+                        },
+                        "drakos": {
+                            "title": "Drakos",
+                            "desc": "E-commerce site for natural stone bracelets in Algeria.",
+                            "modal": "Drakos is an e-commerce platform specializing in natural stone bracelets for men and women in Algeria. The site features an elegant design, a smooth purchasing journey, and a complete administrative management for products, orders, and customers.",
+                            "features": ["Premium and immersive design", "Optimized checkout flow", "Complete management (Products/Orders)", "Admin dashboard", "Dynamic collections", "Mobile optimized"]
                         }
                     },
                     "modal": {

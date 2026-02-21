@@ -33,7 +33,7 @@ const DevPage: React.FC = () => {
     const { openContact } = useContact();
     const [selectedProject, setSelectedProject] = useState<Project | null>(null);
 
-    const projectKeys = ['bonzai', 'pong', 'home-inspire', 'echoes', 'saldae-trip', 'sopenbiz', 'caryago', 'swat'];
+    const projectKeys = ['drakos', 'bonzai', 'pong', 'home-inspire', 'echoes', 'saldae-trip', 'sopenbiz', 'caryago', 'swat'];
 
     const projects = projectKeys.map(key => ({
         id: key,
@@ -47,22 +47,26 @@ const DevPage: React.FC = () => {
                         key === 'sopenbiz' ? "assets/images/Sopenbiz.png" :
                             key === 'bonzai' ? "assets/images/bonzai/screenshot1.png" :
                                 key === 'swat' ? "assets/images/swat/swat-logo.png" :
-                                    "assets/images/caryago/caryago-screen1.png",
+                                    key === 'drakos' ? "assets/images/Drakos/screen-drakos-1.png" :
+                                        "assets/images/caryago/caryago-screen1.png",
+        video: key === 'drakos' ? "assets/images/Drakos/Portfolio drakos demo.webm" : undefined,
         tech: key === 'pong' ? ["C", "Raylib"] :
             key === 'echoes' ? ["HTML5", "React", "MySQL"] :
                 key === 'home-inspire' ? ["Java", "JavaFX", "MySQL"] :
                     key === 'saldae-trip' ? ["Kotlin", "Flutter", "SupaBase"] :
                         key === 'sopenbiz' ? ["WordPress", "Elementor Pro"] :
                             key === 'bonzai' ? ["PHP", "JavaScript", "HTML", "CSS"] :
-                                key === 'swat' ? ["React", "TypeScript", "JS", "CSS", "HTML"] :
-                                    ["React", "TypeScript", "JS", "CSS"],
+                                key === 'drakos' ? ["React", "TypeScript", "JS", "CSS"] :
+                                    key === 'swat' ? ["React", "TypeScript", "JS", "CSS", "HTML"] :
+                                        ["React", "TypeScript", "JS", "CSS"],
         github: key === 'pong' ? "https://github.com/RamyBenali/Pong-Game" :
             key === 'home-inspire' ? "https://github.com/RamyBenali/HomeInspire" :
                 key === 'saldae-trip' ? "https://github.com/RamyBenali/SaldaeTrip" :
                     key === 'bonzai' ? "https://github.com/BonzaiPro?tab=repositories" : undefined,
         external: key === 'sopenbiz' ? "https://sopenbiz.com/" :
-            key === 'caryago' ? "https://caryago.lovable.app/" :
-                key === 'swat' ? "https://swat-vision.lovable.app/" : undefined,
+            key === 'caryago' ? "https://caryago.com/" :
+                key === 'drakos' ? "https://drakos.pages.dev" :
+                    key === 'swat' ? "https://swat-vision.lovable.app/" : undefined,
         features: t(`dev.projects.list.${key}.features`, { returnObjects: true }) as string[],
         images: key === 'pong' ? [
             "assets/images/pong/screenshot1.png",
@@ -93,12 +97,17 @@ const DevPage: React.FC = () => {
             "assets/images/swat/screenshot2.png",
             "assets/images/swat/screenshot3.png",
             "assets/images/swat/screenshot4.png"
+        ] : key === 'drakos' ? [
+            "assets/images/Drakos/Portfolio drakos demo.webm",
+            "assets/images/Drakos/screen-drakos-1.png",
+            "assets/images/Drakos/screen-drakos-2.png",
+            "assets/images/Drakos/screen-drakos-3.png"
         ] : [
             "assets/images/caryago/caryago-screen1.png",
             "assets/images/caryago/caryago-screen2.png",
             "assets/images/caryago/caryago-screen3.png"
         ],
-        featured: key === 'bonzai' || key === 'home-inspire' || key === 'saldae-trip' // Highlight best work
+        featured: key === 'drakos' || key === 'bonzai' || key === 'home-inspire' || key === 'saldae-trip' // Highlight best work
     }));
 
 

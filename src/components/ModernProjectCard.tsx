@@ -9,6 +9,7 @@ interface Project {
     title: string;
     description: string;
     image: string;
+    video?: string;
     tech: string[];
     github?: string;
     demo?: string;
@@ -83,11 +84,31 @@ const ModernProjectCard: React.FC<ModernProjectCardProps> = ({ project, onClick 
                 }}
                 className="modern-card-content"
             >
-                {/* Image Background with Gradient Overlay */}
-                <div
-                    className="card-bg-image"
-                    style={{ backgroundImage: `url(${project.image})` }}
-                />
+                {/* Background: Video or Image */}
+                {project.video ? (
+                    <video
+                        src={project.video}
+                        className="card-bg-video"
+                        autoPlay
+                        loop
+                        muted
+                        playsInline
+                        style={{
+                            position: "absolute",
+                            top: 0,
+                            left: 0,
+                            width: "100%",
+                            height: "100%",
+                            objectFit: "cover",
+                            zIndex: 0
+                        }}
+                    />
+                ) : (
+                    <div
+                        className="card-bg-image"
+                        style={{ backgroundImage: `url(${project.image})` }}
+                    />
+                )}
                 <div className="card-gradient-overlay" />
 
                 {/* Content */}
