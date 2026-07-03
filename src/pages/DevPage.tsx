@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
-import { motion, LayoutGroup } from 'framer-motion';
+import { motion, LayoutGroup, MotionConfig } from 'framer-motion';
 import Layout from '../components/Layout';
-import ModernProjectCard from '../components/ModernProjectCard';
+import FeaturedProjectCard from '../components/FeaturedProjectCard';
+import ProjectRow from '../components/ProjectRow';
 import ProjectDetailOverlay from '../components/ProjectDetailOverlay';
 import Typewriter from '../components/Typewriter';
 import InteractiveFloatingTags from '../components/InteractiveFloatingTags';
@@ -20,12 +21,15 @@ interface Project {
     description: string;
     modalDescription: string;
     image: string;
+    video?: string;
     tech: string[];
     github?: string;
     external?: string;
     features: string[];
     images: string[];
     featured: boolean;
+    context: string;
+    contextLabel: string;
 }
 
 const DevPage: React.FC = () => {
@@ -33,88 +37,209 @@ const DevPage: React.FC = () => {
     const { openContact } = useContact();
     const [selectedProject, setSelectedProject] = useState<Project | null>(null);
 
-    const projectKeys = ['drakos', 'bonzai', 'pong', 'home-inspire', 'echoes', 'saldae-trip', 'sopenbiz', 'caryago', 'swat'];
+    // Order shown on the page (best / most recent work first)
+    const projectKeys = ['squidlane', 'alfea', 'drakos', 'nexus', 'karrily', 'bonzai', 'detectinfo', 'swat', 'home-inspire', 'saldae-trip', 'echoes', 'caryago', 'sopenbiz', 'pong'];
 
-    const projects = projectKeys.map(key => ({
-        id: key,
-        title: t(`dev.projects.list.${key}.title`),
-        description: t(`dev.projects.list.${key}.desc`),
-        modalDescription: t(`dev.projects.list.${key}.modal`),
-        image: key === 'pong' ? "assets/images/pong-logo.jpg" :
-            key === 'echoes' ? "assets/images/Echoes.jpg" :
-                key === 'home-inspire' ? "assets/images/Home-inspire.jpg" :
-                    key === 'saldae-trip' ? "assets/images/SaldaeTrip.jpg" :
-                        key === 'sopenbiz' ? "assets/images/Sopenbiz.png" :
-                            key === 'bonzai' ? "assets/images/bonzai/screenshot1.png" :
-                                key === 'swat' ? "assets/images/swat/swat-logo.png" :
-                                    key === 'drakos' ? "assets/images/Drakos/screen-drakos-1.png" :
-                                        "assets/images/caryago/caryago-screen1.png",
-        video: key === 'drakos' ? "assets/images/Drakos/Portfolio drakos demo.webm" : undefined,
-        tech: key === 'pong' ? ["C", "Raylib"] :
-            key === 'echoes' ? ["HTML5", "React", "MySQL"] :
-                key === 'home-inspire' ? ["Java", "JavaFX", "MySQL"] :
-                    key === 'saldae-trip' ? ["Kotlin", "Flutter", "SupaBase"] :
-                        key === 'sopenbiz' ? ["WordPress", "Elementor Pro"] :
-                            key === 'bonzai' ? ["PHP", "JavaScript", "HTML", "CSS"] :
-                                key === 'drakos' ? ["React", "TypeScript", "JS", "CSS"] :
-                                    key === 'swat' ? ["React", "TypeScript", "JS", "CSS", "HTML"] :
-                                        ["React", "TypeScript", "JS", "CSS"],
-        github: key === 'pong' ? "https://github.com/RamyBenali/Pong-Game" :
-            key === 'home-inspire' ? "https://github.com/RamyBenali/HomeInspire" :
-                key === 'saldae-trip' ? "https://github.com/RamyBenali/SaldaeTrip" :
-                    key === 'bonzai' ? "https://github.com/BonzaiPro?tab=repositories" : undefined,
-        external: key === 'sopenbiz' ? "https://sopenbiz.com/" :
-            key === 'caryago' ? "https://caryago.com/" :
-                key === 'drakos' ? "https://drakos.pages.dev" :
-                    key === 'swat' ? "https://swat-vision.lovable.app/" : undefined,
-        features: t(`dev.projects.list.${key}.features`, { returnObjects: true }) as string[],
-        images: key === 'pong' ? [
-            "assets/images/pong/screenshot1.png",
-            "assets/images/pong/screenshot2.png",
-            "assets/images/pong/screenshot3.png"
-        ] : key === 'echoes' ? [
-            "assets/images/echoes/screenshot1.png",
-            "assets/images/echoes/screenshot2.png",
-            "assets/images/echoes/screenshot3.png"
-        ] : key === 'home-inspire' ? [
-            "assets/images/homeinspire/screenshot1.png",
-            "assets/images/homeinspire/screenshot2.png",
-            "assets/images/homeinspire/screenshot3.png"
-        ] : key === 'saldae-trip' ? [
-            "assets/images/saldaetrip/screenshot1.png",
-            "assets/images/saldaetrip/screenshot2.png",
-            "assets/images/saldaetrip/screenshot3.png"
-        ] : key === 'sopenbiz' ? [
-            "assets/images/sopenbiz/sopenbiz-screen1.png",
-            "assets/images/sopenbiz/sopenbiz-screen2.png",
-            "assets/images/sopenbiz/sopenbiz-screen3.png"
-        ] : key === 'bonzai' ? [
-            "assets/images/bonzai/screenshot1.png",
-            "assets/images/bonzai/screenshot2.png",
-            "assets/images/bonzai/screenshot3.png"
-        ] : key === 'swat' ? [
-            "assets/images/swat/screenshot1.png",
-            "assets/images/swat/screenshot2.png",
-            "assets/images/swat/screenshot3.png",
-            "assets/images/swat/screenshot4.png"
-        ] : key === 'drakos' ? [
-            "assets/images/Drakos/Portfolio drakos demo.webm",
-            "assets/images/Drakos/screen-drakos-1.png",
-            "assets/images/Drakos/screen-drakos-2.png",
-            "assets/images/Drakos/screen-drakos-3.png"
-        ] : [
-            "assets/images/caryago/caryago-screen1.png",
-            "assets/images/caryago/caryago-screen2.png",
-            "assets/images/caryago/caryago-screen3.png"
-        ],
-        featured: key === 'drakos' || key === 'bonzai' || key === 'home-inspire' || key === 'saldae-trip' // Highlight best work
-    }));
+    // Per-project metadata (images, stack, links). Text lives in i18n (dev.projects.list.<key>).
+    // context: 'pro' | 'client' | 'uni' | 'perso' — shown as a label on cards/rows.
+    const projectMeta: Record<string, {
+        image: string;
+        video?: string;
+        tech: string[];
+        github?: string;
+        external?: string;
+        images: string[];
+        featured?: boolean;
+        context: string;
+    }> = {
+        squidlane: {
+            context: 'pro',
+            image: "assets/images/squidlane/screenshot1.png",
+            tech: ["Laravel", "React", "TypeScript", "Tailwind", "Livewire"],
+            external: "https://www.squidlane.com",
+            images: [
+                "assets/images/squidlane/screenshot1.png",
+                "assets/images/squidlane/screenshot2.png",
+                "assets/images/squidlane/screenshot3.png"
+            ],
+            featured: true
+        },
+        alfea: {
+            context: 'perso',
+            image: "assets/images/alfea/screenshot1.png",
+            tech: ["React", "TypeScript", "Supabase", "Tailwind"],
+            images: [
+                "assets/images/alfea/screenshot1.png",
+                "assets/images/alfea/screenshot2.png",
+                "assets/images/alfea/screenshot3.png"
+            ],
+            featured: true
+        },
+        drakos: {
+            context: 'client',
+            image: "assets/images/Drakos/screen-drakos-1.png",
+            video: "assets/images/Drakos/Portfolio drakos demo.webm",
+            tech: ["React", "TypeScript", "JS", "CSS"],
+            external: "https://drakos.pages.dev",
+            images: [
+                "assets/images/Drakos/Portfolio drakos demo.webm",
+                "assets/images/Drakos/screen-drakos-1.png",
+                "assets/images/Drakos/screen-drakos-2.png",
+                "assets/images/Drakos/screen-drakos-3.png"
+            ],
+            featured: true
+        },
+        nexus: {
+            context: 'uni',
+            image: "assets/images/nexus/screenshot1.png",
+            tech: ["React", "TypeScript", "Express", "Supabase", "Python"],
+            images: [
+                "assets/images/nexus/screenshot1.png",
+                "assets/images/nexus/screenshot2.png",
+                "assets/images/nexus/screenshot3.png"
+            ],
+            featured: true
+        },
+        karrily: {
+            context: 'uni',
+            image: "assets/images/karrily/screenshot1.png",
+            tech: ["React", "TypeScript", "Express", "Supabase", "Capacitor"],
+            images: [
+                "assets/images/karrily/screenshot1.png",
+                "assets/images/karrily/screenshot2.png",
+                "assets/images/karrily/screenshot3.png"
+            ],
+            featured: true
+        },
+        bonzai: {
+            context: 'pro',
+            image: "assets/images/bonzai/screenshot1.png",
+            tech: ["PHP", "JavaScript", "HTML", "CSS"],
+            github: "https://github.com/BonzaiPro?tab=repositories",
+            images: [
+                "assets/images/bonzai/screenshot1.png",
+                "assets/images/bonzai/screenshot2.png",
+                "assets/images/bonzai/screenshot3.png"
+            ]
+        },
+        detectinfo: {
+            context: 'uni',
+            image: "assets/images/detectinfo/screenshot1.png",
+            tech: ["Python", "PyTorch", "Mamba", "Flask"],
+            images: [
+                "assets/images/detectinfo/screenshot1.png",
+                "assets/images/detectinfo/screenshot2.png",
+                "assets/images/detectinfo/screenshot3.png"
+            ]
+        },
+        swat: {
+            context: 'perso',
+            image: "assets/images/swat/swat-logo.png",
+            tech: ["React", "TypeScript", "JS", "CSS", "HTML"],
+            external: "https://swat-vision.lovable.app/",
+            images: [
+                "assets/images/swat/screenshot1.png",
+                "assets/images/swat/screenshot2.png",
+                "assets/images/swat/screenshot3.png",
+                "assets/images/swat/screenshot4.png"
+            ]
+        },
+        "home-inspire": {
+            context: 'uni',
+            image: "assets/images/Home-inspire.jpg",
+            tech: ["Java", "JavaFX", "MySQL"],
+            github: "https://github.com/RamyBenali/HomeInspire",
+            images: [
+                "assets/images/homeinspire/screenshot1.png",
+                "assets/images/homeinspire/screenshot2.png",
+                "assets/images/homeinspire/screenshot3.png"
+            ]
+        },
+        "saldae-trip": {
+            context: 'uni',
+            image: "assets/images/SaldaeTrip.jpg",
+            tech: ["Kotlin", "Flutter", "SupaBase"],
+            github: "https://github.com/RamyBenali/SaldaeTrip",
+            images: [
+                "assets/images/saldaetrip/screenshot1.png",
+                "assets/images/saldaetrip/screenshot2.png",
+                "assets/images/saldaetrip/screenshot3.png"
+            ]
+        },
+        echoes: {
+            context: 'uni',
+            image: "assets/images/Echoes.jpg",
+            tech: ["HTML5", "React", "MySQL"],
+            images: [
+                "assets/images/echoes/screenshot1.png",
+                "assets/images/echoes/screenshot2.png",
+                "assets/images/echoes/screenshot3.png"
+            ]
+        },
+        caryago: {
+            context: 'client',
+            image: "assets/images/caryago/caryago-screen1.png",
+            tech: ["React", "TypeScript", "JS", "CSS"],
+            external: "https://caryago.com/",
+            images: [
+                "assets/images/caryago/caryago-screen1.png",
+                "assets/images/caryago/caryago-screen2.png",
+                "assets/images/caryago/caryago-screen3.png"
+            ]
+        },
+        sopenbiz: {
+            context: 'client',
+            image: "assets/images/Sopenbiz.png",
+            tech: ["WordPress", "Elementor Pro"],
+            external: "https://sopenbiz.com/",
+            images: [
+                "assets/images/sopenbiz/sopenbiz-screen1.png",
+                "assets/images/sopenbiz/sopenbiz-screen2.png",
+                "assets/images/sopenbiz/sopenbiz-screen3.png"
+            ]
+        },
+        pong: {
+            context: 'perso',
+            image: "assets/images/pong-logo.jpg",
+            tech: ["C", "Raylib"],
+            github: "https://github.com/RamyBenali/Pong-Game",
+            images: [
+                "assets/images/pong/screenshot1.png",
+                "assets/images/pong/screenshot2.png",
+                "assets/images/pong/screenshot3.png"
+            ]
+        }
+    };
+
+    const projects: Project[] = projectKeys.map(key => {
+        const meta = projectMeta[key];
+        return {
+            id: key,
+            title: t(`dev.projects.list.${key}.title`),
+            description: t(`dev.projects.list.${key}.desc`),
+            modalDescription: t(`dev.projects.list.${key}.modal`),
+            image: meta.image,
+            video: meta.video,
+            tech: meta.tech,
+            github: meta.github,
+            external: meta.external,
+            features: t(`dev.projects.list.${key}.features`, { returnObjects: true }) as string[],
+            images: meta.images,
+            featured: meta.featured ?? false,
+            context: meta.context,
+            contextLabel: t(`dev.projects.context.${meta.context}`)
+        };
+    });
+
+    const featuredProjects = projects.filter(p => p.featured);
+    const otherProjects = projects.filter(p => !p.featured);
 
 
 
 
     return (
         <Layout hideLanguageToggle={!!selectedProject} hideNavbar={!!selectedProject}>
+            <MotionConfig reducedMotion="user">
             <div className="dev-modern">
                 {/* HERO SECTION - Split Layout (Personal) */}
                 <section className="dev-hero-split">
@@ -282,24 +407,47 @@ const DevPage: React.FC = () => {
                     </div>
                 </section>
 
-                {/* PROJECTS GRID - Now Second */}
+                {/* PROJECTS — featured editorial grid + compact archive list */}
                 <section id="projects" className="work-section">
                     <div className="container">
                         <div className="work-header">
-                            <h2 className="section-title-alt">{t('dev.projects.title')}</h2>
-                            <p>{t('dev.projects.subtitle')}</p>
+                            <span className="work-kicker">{t('dev.projects.kicker')}</span>
+                            <h2 className="work-title">{t('dev.projects.title')}</h2>
+                            <p className="work-sub">{t('dev.projects.subtitle')}</p>
                         </div>
-                        <div className="modern-projects-grid">
-                            <LayoutGroup>
-                                {projects.map((p, idx) => (
-                                    <ModernProjectCard
-                                        key={idx}
-                                        project={{ ...p, id: idx }}
-                                        onClick={() => setSelectedProject({ ...p, id: idx })}
+
+                        <LayoutGroup>
+                            <div className="featured-grid">
+                                {featuredProjects.map((p, idx) => (
+                                    <FeaturedProjectCard
+                                        key={p.id}
+                                        project={p}
+                                        index={idx}
+                                        hero={idx === 0}
+                                        onClick={() => setSelectedProject(p)}
                                     />
                                 ))}
-                            </LayoutGroup>
-                        </div>
+                            </div>
+
+                            <div className="archive-block">
+                                <div className="archive-head">
+                                    <h3>{t('dev.projects.more_title')}</h3>
+                                    <span className="archive-count">
+                                        {String(otherProjects.length).padStart(2, '0')}
+                                    </span>
+                                </div>
+                                <div className="archive-list">
+                                    {otherProjects.map((p, idx) => (
+                                        <ProjectRow
+                                            key={p.id}
+                                            project={p}
+                                            index={featuredProjects.length + idx}
+                                            onClick={() => setSelectedProject(p)}
+                                        />
+                                    ))}
+                                </div>
+                            </div>
+                        </LayoutGroup>
                     </div>
                 </section>
 
@@ -308,6 +456,7 @@ const DevPage: React.FC = () => {
                     onClose={() => setSelectedProject(null)}
                 />
             </div >
+            </MotionConfig>
         </Layout >
     );
 };

@@ -1,0 +1,153 @@
+/* ============================================
+   FEATURED PROJECT CARD — editorial, media-first
+   ============================================ */
+
+.feat-card {
+    display: flex;
+    flex-direction: column;
+    gap: 1.4rem;
+    cursor: pointer;
+    outline: none;
+}
+
+.feat-card:focus-visible {
+    outline: 1px solid rgba(0, 242, 255, 0.5);
+    outline-offset: 6px;
+    border-radius: var(--radius-m);
+}
+
+/* --- Media --- */
+.feat-media {
+    position: relative;
+    aspect-ratio: 16 / 10;
+    border-radius: var(--radius-m);
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: #0b0f16;
+    transition: border-color 0.35s ease;
+}
+
+.feat-media img,
+.feat-media video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top center;
+    display: block;
+    transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.feat-card:hover .feat-media {
+    border-color: rgba(255, 255, 255, 0.18);
+}
+
+.feat-card:hover .feat-media img,
+.feat-card:hover .feat-media video {
+    transform: scale(1.035);
+}
+
+/* --- Body --- */
+.feat-body {
+    display: flex;
+    flex-direction: column;
+    gap: 0.55rem;
+    padding: 0 0.2rem;
+}
+
+.feat-meta {
+    display: flex;
+    align-items: center;
+    gap: 0.9rem;
+    margin-bottom: 0.2rem;
+}
+
+.feat-index {
+    font-family: var(--font-header);
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--dev-text-muted);
+    font-variant-numeric: tabular-nums;
+    letter-spacing: 0.08em;
+}
+
+.feat-arrow {
+    margin-left: auto;
+    color: var(--dev-text-muted);
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.feat-card:hover .feat-arrow {
+    color: var(--dev-accent);
+    transform: translate(2px, -2px);
+}
+
+.feat-title {
+    font-size: 1.55rem;
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: -0.01em;
+    line-height: 1.15;
+}
+
+.feat-desc {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: var(--dev-text-muted);
+    max-width: 58ch;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.feat-tech {
+    font-size: 0.8rem;
+    color: rgba(224, 242, 241, 0.42);
+    letter-spacing: 0.02em;
+    margin-top: 0.25rem;
+}
+
+/* --- Hero variant (full-width, media + text side by side) --- */
+.feat-card--hero {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap: 3rem;
+    align-items: center;
+}
+
+.feat-card--hero .feat-media {
+    aspect-ratio: 16 / 9;
+}
+
+.feat-card--hero .feat-title {
+    font-size: clamp(1.9rem, 3vw, 2.5rem);
+}
+
+.feat-card--hero .feat-desc {
+    -webkit-line-clamp: 3;
+    font-size: 1.02rem;
+}
+
+@media (max-width: 960px) {
+    .feat-card--hero {
+        display: flex;
+        flex-direction: column;
+        gap: 1.4rem;
+        align-items: stretch;
+    }
+
+    .feat-card--hero .feat-title {
+        font-size: 1.7rem;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+    .feat-media img,
+    .feat-media video,
+    .feat-arrow,
+    .feat-media {
+        transition: none !important;
+    }
+}

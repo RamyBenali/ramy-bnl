@@ -31,7 +31,7 @@ const CreativePage: React.FC = () => {
         'weazel', 'belcourt', 'ofeeling',
         'vision3', 'vlog', 'palmera2', 'homeinspire_f',
         'binary_identity', 'echoes_design', 'saldaetrip_f',
-        'medify', 'porte_ouverte'
+        'medify', 'porte_ouverte', 'drakos_f'
     ];
 
     const showcaseItems: ShowcaseItem[] = showcaseKeys.map((key, idx) => ({
@@ -56,7 +56,8 @@ const CreativePage: React.FC = () => {
                                                             key === 'echoes_design' ? "assets/creative/covers/echoes.png" :
                                                                 key === 'saldaetrip_f' ? "assets/creative/covers/SaldaeTrip.jpg" :
                                                                     key === 'medify' ? "assets/creative/covers/medify.png" :
-                                                                        "assets/creative/covers/porte-ouverte.png",
+                                                                        key === 'drakos_f' ? "assets/creative/covers/drakos.png" :
+                                                                            "assets/creative/covers/porte-ouverte.png",
         src: key === 'powerfitness1' ? "https://player.vimeo.com/video/1114686103" :
             key === 'powerfitness2' ? "https://player.vimeo.com/video/1114686311" :
                 key === 'aylan1' ? "https://player.vimeo.com/video/1114691957" :
@@ -72,7 +73,8 @@ const CreativePage: React.FC = () => {
                                                         key === 'echoes_design' ? "https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Fdesign%2FmNacvc3E69Ep8XOrVG5A6M" :
                                                             key === 'saldaetrip_f' ? "https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Fdesign%2FtqOS4wClGjLEeoXkjnWeMW" :
                                                                 key === 'medify' ? "https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Fdesign%2FPZH3nH0Cq2xdkG0OF46H7o" :
-                                                                    "https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Fdesign%2Fro1AXrMIX7PxOsXpHc6ib1"
+                                                                    key === 'drakos_f' ? "https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Fdesign%2Fl7srVJmyKDxtXwZxLCpCxn%2FDrakos---e-commerce-web-app-project%3Ft%3DgRFjCwt0K7ylEMAo-1" :
+                                                                        "https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Fdesign%2Fro1AXrMIX7PxOsXpHc6ib1"
     }));
 
     return (

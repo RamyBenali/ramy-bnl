@@ -66,12 +66,50 @@ const resources = {
                     "tools": "Outils"
                 },
                 "projects": {
-                    "title": "PROJETS RÉCENTS",
-                    "subtitle": "Quelques projets marquants de mon parcours.",
+                    "kicker": "Travaux sélectionnés",
+                    "title": "Projets",
+                    "subtitle": "Du SaaS de paiement au projet universitaire — une sélection de ce que je conçois et développe.",
+                    "more_title": "Plus de projets",
+                    "context": {
+                        "pro": "Professionnel",
+                        "client": "Client",
+                        "uni": "Universitaire",
+                        "perso": "Personnel"
+                    },
                     "hint": "VOIR LE PROJET",
                     "view_project": "Voir le projet",
                     "featured": "En vedette",
                     "list": {
+                        "squidlane": {
+                            "title": "SquidLane",
+                            "desc": "Plateforme d'orchestration de paiement et de checkout embarqué pour marchands.",
+                            "modal": "SquidLane est une plateforme SaaS d'orchestration de paiement qui permet aux marchands d'encaisser en ligne via un checkout embarqué (embed), sans redirection. En tant qu'assistant développeur, j'ai développé en autonomie le tracking publicitaire (GA4, Google Ads, Meta Pixel), le checkout embarqué, le paiement en plusieurs fois et de nombreuses autres fonctionnalités. La plateforme s'intègre à Shopify et se synchronise avec la comptabilité Bonzai.",
+                            "features": ["Checkout embarqué (embed) sans redirection", "Tracking ads : GA4 / Google Ads / Meta Pixel", "Paiement en plusieurs fois (2 à 12x)", "Intégration Shopify", "Synchronisation comptable Bonzai", "Webhooks & suivi des événements"]
+                        },
+                        "alfea": {
+                            "title": "Alfea",
+                            "desc": "Boutique e-commerce premium de bijoux artisanaux.",
+                            "modal": "Alfea est une plateforme e-commerce premium conçue pour une marque de bijoux artisanaux. Développée de A à Z, elle propose une vitrine élégante et responsive, un système de compte client avec historique de commandes, un paiement à la livraison (COD) adapté au marché algérien, et un tableau de bord d'administration complet (produits, commandes, analytics, SEO).",
+                            "features": ["Vitrine premium & animations soignées", "Panier & checkout (paiement à la livraison)", "Comptes clients & historique de commandes", "Dashboard admin complet (produits, commandes, analytics)", "Livraison par wilaya & intégration WhatsApp", "Recherche, collections & favoris"]
+                        },
+                        "karrily": {
+                            "title": "Karrily",
+                            "desc": "Marketplace P2P de location, vente et troc d'objets (web & mobile).",
+                            "modal": "Karrily est une marketplace peer-to-peer permettant de louer, acheter/vendre ou troquer des objets entre particuliers. Projet full-stack universitaire, disponible en web et en application mobile (iOS/Android via Capacitor), avec messagerie intégrée, système d'avis et un assistant IA.",
+                            "features": ["Annonces multi-types : location, vente, troc", "Recherche & filtres avancés", "Messagerie intégrée entre utilisateurs", "Avis & notation des utilisateurs", "Assistant IA (recommandations)", "Web + application mobile (iOS/Android)"]
+                        },
+                        "nexus": {
+                            "title": "Nexus",
+                            "desc": "Marketplace multi-vendeurs de produits tech avec IA prédictive.",
+                            "modal": "Nexus est une marketplace multi-vendeurs de produits tech, boostée par l'intelligence artificielle. Projet universitaire full-stack, il combine une boutique client, un espace vendeur et une administration complète, avec un chatbot IA multilingue et des modèles de machine learning pour la prévision de la demande et du chiffre d'affaires.",
+                            "features": ["Marketplace multi-rôles (client, vendeur, admin)", "Chatbot IA multilingue (FR/EN/AR)", "Prévisions ML (demande & revenus)", "Espace vendeur & gestion de boutique", "Checkout multi-étapes", "Avis, favoris & notifications"]
+                        },
+                        "detectinfo": {
+                            "title": "DétectInfo",
+                            "desc": "Détecteur de fake news en temps réel basé sur l'architecture Mamba.",
+                            "modal": "DétectInfo est un système de détection de fausses informations propulsé par Mamba, une architecture deep learning de type State Space Model. Il analyse en temps réel articles et titres pour les classer comme fiables ou trompeurs, avec un score de confiance. Le modèle a été entraîné sur près de 45 000 articles, avec une interface web moderne et une authentification sécurisée.",
+                            "features": ["Classification via architecture Mamba (SSM)", "Détection en temps réel avec score de confiance", "Modèle entraîné sur ~45 000 articles", "Vectorisation TF-IDF & optimisation des hyperparamètres", "Authentification sécurisée (PBKDF2)", "Interface web moderne (glassmorphism)"]
+                        },
                         "pong": {
                             "title": "Pong Game",
                             "desc": "Jeu de pong élégant avec design moderne et physique réaliste.",
@@ -133,8 +171,8 @@ const resources = {
                         "overview": "Aperçu",
                         "key_features": "Fonctionnalités",
                         "technologies": "Technologies",
-                        "role_year": "Rôle & Année",
-                        "fullstack_dev": "Développeur Fullstack • 2025"
+                        "role_year": "Rôle & Contexte",
+                        "fullstack_dev": "Développeur Fullstack"
                     }
                 }
             },
@@ -190,7 +228,8 @@ const resources = {
                         "echoes_design": { "title": "Echoes Design", "desc": "Design complet d'événement", "pill": "UI/UX" },
                         "saldaetrip_f": { "title": "SaldaeTrip", "desc": "Application Mobile tourisme", "pill": "PROTOTYPE" },
                         "medify": { "title": "Medify", "desc": "Application santé et bien-être", "pill": "UI/UX" },
-                        "porte_ouverte": { "title": "Binary Porte Ouverte", "desc": "Design université de Béjaïa", "pill": "UI/UX" }
+                        "porte_ouverte": { "title": "Binary Porte Ouverte", "desc": "Design université de Béjaïa", "pill": "UI/UX" },
+                        "drakos_f": { "title": "Drakos", "desc": "E-commerce moderne (Bijoux en pierres)", "pill": "UI/UX" }
                     }
                 }
             },
@@ -420,12 +459,50 @@ const resources = {
                     "tools": "Tools"
                 },
                 "projects": {
-                    "title": "RECENT PROJECTS",
-                    "subtitle": "A few highlights from my journey.",
+                    "kicker": "Selected work",
+                    "title": "Projects",
+                    "subtitle": "From payment SaaS to university projects — a selection of what I design and build.",
+                    "more_title": "More projects",
+                    "context": {
+                        "pro": "Professional",
+                        "client": "Client",
+                        "uni": "University",
+                        "perso": "Personal"
+                    },
                     "hint": "VIEW PROJECT",
                     "view_project": "View Project",
                     "featured": "Featured",
                     "list": {
+                        "squidlane": {
+                            "title": "SquidLane",
+                            "desc": "Payment orchestration and embedded checkout platform for merchants.",
+                            "modal": "SquidLane is a payment orchestration SaaS that lets merchants accept online payments through an embedded checkout (embed), with no redirect. As an assistant developer, I independently built the ad tracking (GA4, Google Ads, Meta Pixel), the embedded checkout, installment payments, and many other features. The platform integrates with Shopify and syncs with the Bonzai accounting backend.",
+                            "features": ["Embedded checkout (embed), no redirect", "Ad tracking: GA4 / Google Ads / Meta Pixel", "Installment payments (2 to 12x)", "Shopify integration", "Bonzai accounting sync", "Webhooks & event tracking"]
+                        },
+                        "alfea": {
+                            "title": "Alfea",
+                            "desc": "Premium e-commerce store for handcrafted jewelry.",
+                            "modal": "Alfea is a premium e-commerce platform built for a handcrafted jewelry brand. Built end to end, it features an elegant, responsive storefront, a customer account system with order history, cash-on-delivery (COD) checkout tailored to the Algerian market, and a complete admin dashboard (products, orders, analytics, SEO).",
+                            "features": ["Premium storefront & polished animations", "Cart & checkout (cash on delivery)", "Customer accounts & order history", "Full admin dashboard (products, orders, analytics)", "Wilaya-based shipping & WhatsApp integration", "Search, collections & wishlist"]
+                        },
+                        "karrily": {
+                            "title": "Karrily",
+                            "desc": "P2P marketplace for renting, selling and trading items (web & mobile).",
+                            "modal": "Karrily is a peer-to-peer marketplace to rent, buy/sell, or trade items between individuals. A full-stack university project, available on web and as a mobile app (iOS/Android via Capacitor), with built-in messaging, a review system, and an AI assistant.",
+                            "features": ["Multi-type listings: rent, sell, trade", "Advanced search & filters", "Built-in user messaging", "User reviews & ratings", "AI assistant (recommendations)", "Web + mobile app (iOS/Android)"]
+                        },
+                        "nexus": {
+                            "title": "Nexus",
+                            "desc": "AI-powered multi-vendor marketplace for tech products.",
+                            "modal": "Nexus is an AI-powered multi-vendor marketplace for tech products. A full-stack university project combining a customer storefront, a vendor space, and full administration, with a multilingual AI chatbot and machine-learning models for demand and revenue forecasting.",
+                            "features": ["Multi-role marketplace (customer, vendor, admin)", "Multilingual AI chatbot (FR/EN/AR)", "ML forecasting (demand & revenue)", "Vendor space & store management", "Multi-step checkout", "Reviews, wishlist & notifications"]
+                        },
+                        "detectinfo": {
+                            "title": "DétectInfo",
+                            "desc": "Real-time fake-news detector powered by the Mamba architecture.",
+                            "modal": "DétectInfo is a fake-news detection system powered by Mamba, a State Space Model deep-learning architecture. It analyzes articles and headlines in real time to classify them as reliable or misleading, with a confidence score. The model was trained on nearly 45,000 articles, with a modern web interface and secure authentication.",
+                            "features": ["Classification via Mamba architecture (SSM)", "Real-time detection with confidence score", "Model trained on ~45,000 articles", "TF-IDF vectorization & hyperparameter tuning", "Secure authentication (PBKDF2)", "Modern web interface (glassmorphism)"]
+                        },
                         "pong": {
                             "title": "Pong Game",
                             "desc": "Elegant pong game with modern design and realistic physics.",
@@ -487,8 +564,8 @@ const resources = {
                         "overview": "Overview",
                         "key_features": "Key Features",
                         "technologies": "Technologies",
-                        "role_year": "Role & Year",
-                        "fullstack_dev": "Fullstack Developer • 2025"
+                        "role_year": "Role & Context",
+                        "fullstack_dev": "Fullstack Developer"
                     }
                 }
             },
@@ -544,7 +621,8 @@ const resources = {
                         "echoes_design": { "title": "Echoes Design", "desc": "Full event design", "pill": "UI/UX" },
                         "saldaetrip_f": { "title": "SaldaeTrip", "desc": "Tourism Mobile app", "pill": "PROTOTYPE" },
                         "medify": { "title": "Medify", "desc": "Health & wellness app", "pill": "UI/UX" },
-                        "porte_ouverte": { "title": "Binary Open Day", "desc": "Béjaïa University design", "pill": "UI/UX" }
+                        "porte_ouverte": { "title": "Binary Open Day", "desc": "Béjaïa University design", "pill": "UI/UX" },
+                        "drakos_f": { "title": "Drakos", "desc": "Modern E-commerce (Stone jewelry)", "pill": "UI/UX" }
                     }
                 }
             },

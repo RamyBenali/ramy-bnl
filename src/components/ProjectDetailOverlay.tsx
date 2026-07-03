@@ -8,6 +8,8 @@ interface Project {
     id?: string | number;
     title: string;
     description: string;
+    modalDescription?: string;
+    contextLabel?: string;
     image: string;
     video?: string;
     images?: string[];
@@ -177,7 +179,7 @@ const ProjectDetailOverlay: React.FC<ProjectDetailOverlayProps> = ({ project, on
                                 <div className="content-grid">
                                     <div className="content-main">
                                         <h3>{t('dev.projects.modal.overview')}</h3>
-                                        <div className="project-long-desc" dangerouslySetInnerHTML={{ __html: project.description }} />
+                                        <div className="project-long-desc" dangerouslySetInnerHTML={{ __html: project.modalDescription || project.description }} />
 
                                         {project.features && (
                                             <div className="features-block">
@@ -202,7 +204,10 @@ const ProjectDetailOverlay: React.FC<ProjectDetailOverlayProps> = ({ project, on
                                         </div>
                                         <div className="sidebar-block">
                                             <h4>{t('dev.projects.modal.role_year')}</h4>
-                                            <p className="sidebar-text">{t('dev.projects.modal.fullstack_dev')}</p>
+                                            <p className="sidebar-text">
+                                                {t('dev.projects.modal.fullstack_dev')}
+                                                {project.contextLabel ? ` · ${project.contextLabel}` : ''}
+                                            </p>
                                         </div>
                                     </div>
                                 </div>
