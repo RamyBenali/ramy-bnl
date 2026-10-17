@@ -95,7 +95,7 @@ const AboutPage: React.FC = () => {
                             <h2 className="bio-greeting">{t('about.bio.greeting', 'Salut, je suis')}</h2>
                             <h1 className="bio-name">Ramy Benali</h1>
                             <p className="bio-text">
-                                {t('about.bio.text', "Étudiant en Master Génie Logiciel...")}
+                                {t('about.bio.text', "Développeur fullstack et créatif polyvalent...")}
                             </p>
 
                             <div className="bio-tags">
@@ -125,7 +125,7 @@ const AboutPage: React.FC = () => {
                                 </div>
                                 <div className="info-item">
                                     <span className="i-label"><MapPin size={14} /> {t('about.infos.city', 'Ville')}</span>
-                                    <span className="i-val">Béjaïa (DZ)</span>
+                                    <span className="i-val">Montbéliard (FR)</span>
                                 </div>
                                 <div className="info-item">
                                     <span className="i-label"><Mail size={14} /> Email</span>
@@ -133,7 +133,7 @@ const AboutPage: React.FC = () => {
                                 </div>
                                 <div className="info-item">
                                     <span className="i-label"><Briefcase size={14} /> {t('about.infos.status', 'Statut')}</span>
-                                    <span className="i-val">Étudiant / Freelance</span>
+                                    <span className="i-val">Étudiant · en recherche de stage</span>
                                 </div>
                                 <div className="info-item">
                                     <span className="i-label"><Globe size={14} /> {t('about.infos.langs', 'Langues')}</span>
@@ -143,7 +143,7 @@ const AboutPage: React.FC = () => {
 
                             <div className="social-fusion-row">
                                 <a href="https://github.com/RamyBenali" target="_blank" className="s-icon"><Github size={20} /></a>
-                                <a href="https://www.linkedin.com/in/ramy-benali-248b70282/" target="_blank" className="s-icon"><Linkedin size={20} /></a>
+                                <a href="https://www.linkedin.com/in/ramy-benali-dev" target="_blank" className="s-icon"><Linkedin size={20} /></a>
                                 <a href="https://www.instagram.com/rmba.exe/" target="_blank" className="s-icon"><Instagram size={20} /></a>
                             </div>
                         </div>

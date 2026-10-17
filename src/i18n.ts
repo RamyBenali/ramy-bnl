@@ -32,7 +32,7 @@ const resources = {
             },
             "dev": {
                 "hero": {
-                    "available": "DISPONIBLE POUR PROJETS",
+                    "available": "EN RECHERCHE DE STAGE · MARS 2027",
                     "title_1": "ARCHITECTE",
                     "title_2": "DIGITAL",
                     "tag": "Je conçois des systèmes performants et des interfaces futuristes pour la prochaine génération du web.",
@@ -40,7 +40,7 @@ const resources = {
                     "btn_contact": "ME CONTACTER",
                     "greeting": "Bonjour, je suis",
                     "role": "Développeur Fullstack",
-                    "bio": "Étudiant en Master Génie Logiciel, je m'épanouis dans la création de solutions digitales innovantes. Passionné par le développement fullstack, je combine expertise technique et créativité pour transformer des concepts complexes en expériences utilisateur exceptionnelles.",
+                    "bio": "Développeur fullstack avec une double casquette UX/UI. Je développe depuis 2025 une solution de paiement en ligne utilisée par une centaine de marchands. Titulaire d'un Master 1 Génie Logiciel, je suis en L3 Produits & Services Multimédia et je cherche un stage de 3 mois à partir de mi-mars 2027.",
                     "read_more": "En savoir plus.",
                     "q1": "Polyvalent et adaptable",
                     "q2": "Performance et qualité",
@@ -54,7 +54,7 @@ const resources = {
                 },
                 "bento": {
                     "stack": "Stack Technique",
-                    "description": "Étudiant en Master Génie Logiciel, passionné par l'optimisation et la scalabilité.",
+                    "description": "Développeur fullstack, en L3 après un Master 1 Génie Logiciel.",
                     "github": "Activités GitHub intenses",
                     "interact": "Interaction focus",
                     "interact_desc": "Design piloté par l'utilisateur."
@@ -245,11 +245,11 @@ const resources = {
                     "age": "Âge",
                     "age_val": "21 ans",
                     "city": "Ville",
-                    "city_val": "Béjaïa (DZ)",
+                    "city_val": "Montbéliard (FR)",
                     "langs": "Langues",
                     "langs_val": "FR, EN, AR, KAB",
                     "status": "Statut",
-                    "status_val": "Étudiant / Freelance",
+                    "status_val": "Étudiant · en recherche de stage",
                     "available": "DISPONIBLE"
                 },
                 "bento": {
@@ -265,6 +265,7 @@ const resources = {
                     "exp": "EXPÉRIENCE",
                     "download": "TÉLÉCHARGER LE CV",
                     "education_list": [
+                        { "date": "2026 - 2027", "title": "L3 Produits & Services Multimédia", "place": "Univ. Marie et Louis Pasteur" },
                         { "date": "2025 - 2026", "title": "Master 1 Génie Logiciel", "place": "Univ. Béjaïa" },
                         { "date": "2024 - 2025", "title": "Licence 3 Systèmes Info.", "place": "Univ. Béjaïa" },
                         { "date": "2023 - 2024", "title": "Licence 2 Informatique", "place": "Univ. Béjaïa" },
@@ -272,7 +273,7 @@ const resources = {
                         { "date": "2022", "title": "Baccalauréat Sciences Exp.", "place": "Mention Bien" }
                     ],
                     "experience_list": [
-                        { "date": "Août 2025 — Prés.", "title": "Assistant Ops", "place": "Frog Tech OÜ" },
+                        { "date": "Août 2025 — Prés.", "title": "Assistant Développeur", "place": "Frog Tech OÜ" },
                         { "date": "Juil — Août 2025", "title": "CM & Vidéaste", "place": "Palmera del maghra" },
                         { "date": "Août — Déc 2024", "title": "Stage Alternance", "place": "Inspire Agency" },
                         { "date": "2024", "title": "Agent de prospection", "place": "UB Company" },
@@ -288,7 +289,7 @@ const resources = {
                 },
                 "bio": {
                     "greeting": "Salut, je suis",
-                    "text": "Étudiant en Master Génie Logiciel et créatif polyvalent, je conçois des expériences digitales élégantes : apps web & mobile, interfaces soignées, motion design et identité visuelle. J'aime transformer des idées en produits utiles et beaux."
+                    "text": "Développeur fullstack et créatif polyvalent, en L3 après un Master 1 Génie Logiciel, je conçois des expériences digitales élégantes : apps web & mobile, interfaces soignées, motion design et identité visuelle. J'aime transformer des idées en produits utiles et beaux."
                 },
                 "tags": {
                     "fs": "Full-stack",
@@ -425,7 +426,7 @@ const resources = {
             },
             "dev": {
                 "hero": {
-                    "available": "AVAILABLE FOR PROJECTS",
+                    "available": "LOOKING FOR AN INTERNSHIP · MARCH 2027",
                     "title_1": "DIGITAL",
                     "title_2": "ARCHITECT",
                     "tag": "I design high-performance systems and futuristic interfaces for the next generation of the web.",
@@ -433,7 +434,7 @@ const resources = {
                     "btn_contact": "CONTACT ME",
                     "greeting": "Hi, I'm",
                     "role": "Fullstack Developer",
-                    "bio": "Software Engineering Master's student, I thrive in creating innovative digital solutions. Passionate about fullstack development, I combine technical expertise and creativity to transform complex concepts into exceptional user experiences.",
+                    "bio": "Fullstack developer with a strong UX/UI side. Since 2025, I have been building an online payment solution used by about a hundred merchants. I hold a first-year Master's in Software Engineering, I am now in a Bachelor's in Multimedia Products & Services, and I am looking for a 3-month internship starting mid-March 2027.",
                     "read_more": "Learn more.",
                     "q1": "Versatile and adaptable",
                     "q2": "Performance and quality",
@@ -638,11 +639,11 @@ const resources = {
                     "age": "Age",
                     "age_val": "21 years",
                     "city": "City",
-                    "city_val": "Béjaïa (DZ)",
+                    "city_val": "Montbéliard (FR)",
                     "langs": "Languages",
                     "langs_val": "FR, EN, AR, KAB",
                     "status": "Status",
-                    "status_val": "Student / Freelance",
+                    "status_val": "Student · looking for an internship",
                     "available": "AVAILABLE"
                 },
                 "bento": {
@@ -658,6 +659,7 @@ const resources = {
                     "exp": "EXPERIENCE",
                     "download": "DOWNLOAD CV",
                     "education_list": [
+                        { "date": "2026 - 2027", "title": "Bachelor Multimedia Products & Services", "place": "Univ. Marie et Louis Pasteur" },
                         { "date": "2025 - 2026", "title": "Master 1 Software Eng.", "place": "Univ. Béjaïa" },
                         { "date": "2024 - 2025", "title": "Licence 3 Computer Systems", "place": "Univ. Béjaïa" },
                         { "date": "2023 - 2024", "title": "Licence 2 Comp. Science", "place": "Univ. Béjaïa" },
@@ -665,7 +667,7 @@ const resources = {
                         { "date": "2022", "title": "Baccalaureate Exp. Sciences", "place": "With Honors" }
                     ],
                     "experience_list": [
-                        { "date": "Aug 2025 — Pres.", "title": "Ops Assistant", "place": "Frog Tech OÜ" },
+                        { "date": "Aug 2025 — Pres.", "title": "Assistant Developer", "place": "Frog Tech OÜ" },
                         { "date": "Jul — Aug 2025", "title": "CM & Videographer", "place": "Palmera del maghra" },
                         { "date": "Aug — Dec 2024", "title": "Internship", "place": "Inspire Agency" },
                         { "date": "2024", "title": "Prospecting Agent", "place": "UB Company" },
@@ -681,7 +683,7 @@ const resources = {
                 },
                 "bio": {
                     "greeting": "Hi, I am",
-                    "text": "Software Engineering Master's student and versatile creative, I design elegant digital experiences: web & mobile apps, polished interfaces, motion design, and visual identity. I love transforming ideas into useful and beautiful products."
+                    "text": "Fullstack developer and versatile creative, with a first-year Master's in Software Engineering, I design elegant digital experiences: web & mobile apps, polished interfaces, motion design, and visual identity. I love transforming ideas into useful and beautiful products."
                 },
                 "tags": {
                     "fs": "Full-stack",

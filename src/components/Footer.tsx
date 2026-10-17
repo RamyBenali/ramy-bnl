@@ -86,7 +86,7 @@ const Footer: React.FC = () => {
                             <a href="https://github.com/RamyBenali" target="_blank" rel="noopener noreferrer" className="social-link">
                                 <Github size={20} />
                             </a>
-                            <a href="https://www.linkedin.com/in/ramy-benali-248b70282/" target="_blank" rel="noopener noreferrer" className="social-link">
+                            <a href="https://www.linkedin.com/in/ramy-benali-dev" target="_blank" rel="noopener noreferrer" className="social-link">
                                 <Linkedin size={20} />
                             </a>
                             <a href="https://www.instagram.com/rmba.exe/" target="_blank" rel="noopener noreferrer" className="social-link">
@@ -141,7 +141,7 @@ const Footer: React.FC = () => {
                         <h4 className="footer-column-title">{t('footer.contact_title')}</h4>
                         <ul className="footer-links">
                             <li><a href="mailto:benali.ramy.2@gmail.com">{t('footer.contact_email')}</a></li>
-                            <li><a href="https://www.linkedin.com/in/ramy-benali-248b70282/" target="_blank" rel="noopener noreferrer">{t('footer.contact_linkedin')}</a></li>
+                            <li><a href="https://www.linkedin.com/in/ramy-benali-dev" target="_blank" rel="noopener noreferrer">{t('footer.contact_linkedin')}</a></li>
                             <li><button onClick={openContact} className="footer-link-btn">{t('footer.nav_contact')}</button></li>
                         </ul>
                     </div>
